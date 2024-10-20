@@ -1,0 +1,5 @@
+name: dal_project
+
+packages:
+  - apps/**
+  - packages/**
