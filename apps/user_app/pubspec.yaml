@@ -10,6 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   components: ^0.0.1
+  supabase_flutter: ^2.8.0
+  flutter_dotenv: ^5.2.1
+  get_it: ^8.0.0
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - .env
