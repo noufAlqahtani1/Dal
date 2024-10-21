@@ -1,0 +1,73 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "dal_project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "business_app",
+            "cwd": "apps\\business_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "business_app (profile mode)",
+            "cwd": "apps\\business_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "business_app (release mode)",
+            "cwd": "apps\\business_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "user_app",
+            "cwd": "apps\\user_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "user_app (profile mode)",
+            "cwd": "apps\\user_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "user_app (release mode)",
+            "cwd": "apps\\user_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "components",
+            "cwd": "packages\\components",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "components (profile mode)",
+            "cwd": "packages\\components",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "components (release mode)",
+            "cwd": "packages\\components",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
