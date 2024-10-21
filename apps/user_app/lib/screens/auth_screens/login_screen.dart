@@ -1,4 +1,3 @@
-import 'package:components/component/text_field/custom_text_field.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -144,7 +143,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 48,
                 ),
-                const CustomTextField(
+                const CustomTextFormField(
                   hintStyle: TextStyle(color: Color(0x80000000)),
                   labelText: "Email",
                   hintText: "Enter your email",
