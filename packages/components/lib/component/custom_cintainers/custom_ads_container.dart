@@ -1,6 +1,6 @@
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomAdsContainer extends StatelessWidget {
   const CustomAdsContainer(
@@ -17,7 +17,7 @@ class CustomAdsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
       width: 160,
       height: 230,
       decoration: BoxDecoration(boxShadow: [

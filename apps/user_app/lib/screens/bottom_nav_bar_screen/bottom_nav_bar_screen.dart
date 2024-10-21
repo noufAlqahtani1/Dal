@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:user_app/screens/home_screen/home_screen.dart';
 
+import '../reminder_screen /reminder_screen.dart';
 import 'bloc/nav_bar_bloc.dart';
 
 class BottomNavBarScreen extends StatelessWidget {
@@ -16,14 +17,13 @@ class BottomNavBarScreen extends StatelessWidget {
         int index = 0;
         List navBarPages = const [
           HomeScreen(),
-          Icon(
-            Icons.location_on,
-            size: 150,
-          ),
+        
+         
           Icon(
             Icons.notifications,
             size: 150,
           ),
+           ReminderScreen(),
           Icon(
             Icons.person,
             size: 150,
