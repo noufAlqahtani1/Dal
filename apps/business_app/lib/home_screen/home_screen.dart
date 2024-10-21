@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 85, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 16),
         child: Column(
           children: [
             Center(
