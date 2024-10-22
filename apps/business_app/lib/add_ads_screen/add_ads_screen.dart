@@ -22,6 +22,13 @@ class AddAdsScreen extends StatelessWidget {
           body: BlocBuilder<AddAdsCubit, AddAdsState>(
             builder: (context, state) {
               final cubit = context.read<AddAdsCubit>();
+              DateTime? startDate;
+              DateTime? endDate;
+              String displayDate = (state is SelectDateState &&
+                      state.startDate != null &&
+                      state.endDate != null)
+                  ? '${state.startDate!.day.toString().padLeft(2, '0')}/${state.startDate!.month.toString().padLeft(2, '0')}/${state.startDate!.year} - ${state.endDate!.day.toString().padLeft(2, '0')}/${state.endDate!.month.toString().padLeft(2, '0')}/${state.endDate!.year}'
+                  : '00/00/0000 - 00/00/0000';
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -98,12 +105,13 @@ class AddAdsScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const CustomText(
-                            text: '00/00/0000',
+                          CustomText(
+                            text: displayDate,
                             color: Color(0xff848484),
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
+                          // --------------- date --------------
                           TextButton(
                             onPressed: () {
                               showModalBottomSheet(
@@ -148,10 +156,17 @@ class AddAdsScreen extends StatelessWidget {
                                             color: Color.fromARGB(
                                                 255, 211, 182, 198),
                                           ),
-                                          onRangeSelected: (value) {},
+                                          onRangeSelected: (value) {
+                                            startDate = value.start;
+                                            endDate = value.end;
+                                          },
                                         ),
                                         CustomElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            cubit.selectAdsRangeDate(
+                                                startDate!, endDate!);
+                                            Navigator.pop(context);
+                                          },
                                           backgroundColor:
                                               const Color(0xffA51361),
                                           child: const CustomText(
@@ -242,7 +257,7 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      // -------------------- image picker
+                      // -------------------- image picker ---------------
                       InkWell(
                         onTap: () async {
                           cubit.pickAdsImage();
@@ -276,7 +291,7 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 50,
                       ),
-                      // button
+                      // ---------------- button --------------
                       CustomElevatedButton(
                         backgroundColor: const Color(0xffA51361),
                         onPressed: () {

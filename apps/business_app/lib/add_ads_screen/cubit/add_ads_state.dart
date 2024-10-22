@@ -29,3 +29,10 @@ final class AdsImageState extends AddAdsState {
   AdsImageState({required this.image});
 }
 
+final class SelectDateState extends AddAdsState {
+  final DateTime? startDate;
+  final DateTime? endDate;
+  final File? image;
+  SelectDateState({this.startDate, this.endDate, this.image});
+}
+

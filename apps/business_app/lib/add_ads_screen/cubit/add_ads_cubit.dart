@@ -11,14 +11,14 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   AddAdsCubit() : super(AddAdsInitial());
 
   TextEditingController addTypeController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
 
   ImagePicker pick = ImagePicker();
   File? image;
   int locationValue = 0;
   int? categoeryValue = 0;
+  DateTime? startDate;
+  DateTime? endDate;
 
   Future<void> pickAdsImage() async {
     final XFile? imageFile = await pick.pickImage(source: ImageSource.gallery);
@@ -27,13 +27,19 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     }
   }
 
-  selectCategory(int value){
+  selectCategory(int value) {
     categoeryValue = value;
     emit(CategoryState(categoryValue: value));
   }
+
   selectLocation(int value) {
     locationValue = value;
     emit(LocationState(locationValue: value));
   }
 
+  selectAdsRangeDate(DateTime start, DateTime end) {
+    startDate = start;
+    endDate = end;
+    emit(SelectDateState(startDate: startDate, endDate: endDate, image: image));
+  }
 }
