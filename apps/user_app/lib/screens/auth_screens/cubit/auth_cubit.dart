@@ -70,11 +70,8 @@ class AuthCubit extends Cubit<AuthStatee> {
   verifyOTP({required String otp, required String email}) async {
     emit(LoadingState());
     try {
-      final Map<String, dynamic> isConfirmed = await supabase
-          .from("users")
-          .select()
-          .eq("id", supabase.auth.currentUser!.id)
-          .single();
+      final Map<String, dynamic> isConfirmed =
+          await supabase.from("users").select().eq("email", email).single();
       await supabase.auth.verifyOTP(
           type: isConfirmed['confirmed_at'] == null
               ? OtpType.signup
@@ -82,16 +79,18 @@ class AuthCubit extends Cubit<AuthStatee> {
           email: email,
           token: otp);
 
-      DateTime dateNow = DateTime.now();
-
-      await supabase.from("users").update({"confirmed_at": dateNow}).eq(
-          "id", supabase.auth.currentUser!.id);
+      if (isConfirmed['confirmed_at'] == null) {
+        await supabase
+            .from("users")
+            .update({"confirmed_at": "2024-10-22 10:38:33.565971+00"}).eq(
+                "email", email);
+      }
 
       // await OneSignal.login(supabase.auth.currentUser!.id); ---- Later when connecting with OneSignal
 
       await getIt.get<DataLayer>().getUserInfo();
 
-      response = [];
+      
 
       emit(SuccessState());
     } on AuthException catch (e) {
