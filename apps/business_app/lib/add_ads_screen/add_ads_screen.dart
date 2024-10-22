@@ -9,7 +9,7 @@ class AddAdsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
+    
     return BlocProvider(
       create: (context) => AddAdsCubit(),
       child: Builder(builder: (context) {
@@ -21,6 +21,7 @@ class AddAdsScreen extends StatelessWidget {
           ),
           body: BlocBuilder<AddAdsCubit, AddAdsState>(
             builder: (context, state) {
+              final formKey = GlobalKey<FormState>();
               final cubit = context.read<AddAdsCubit>();
               DateTime? startDate;
               DateTime? endDate;
