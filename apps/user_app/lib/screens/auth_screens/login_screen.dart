@@ -1,4 +1,4 @@
-import 'package:components/component/text_field/custom_text_field.dart';
+import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:user_app/paints/custom_paints/shape1.dart';
 
