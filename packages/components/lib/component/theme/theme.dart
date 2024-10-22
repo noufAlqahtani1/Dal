@@ -23,7 +23,7 @@ class AppThemes {
           color: AppColors.black2, fontSize: 14, fontWeight: FontWeight.w500),
       bodyLarge: TextStyle(
           color: AppColors.black2, fontSize: 16, fontWeight: FontWeight.w500),
-           bodyMedium: TextStyle(
+      bodyMedium: TextStyle(
           color: AppColors.black2, fontSize: 14, fontWeight: FontWeight.w500),
       bodySmall: TextStyle(
           color: AppColors.black2, fontSize: 12, fontWeight: FontWeight.w500),
@@ -39,7 +39,22 @@ class AppThemes {
     canvasColor: AppColors.black2,
     indicatorColor: AppColors.white1,
     textTheme: TextTheme(
-      bodyLarge: TextStyle(color: AppColors.white1),
+      headlineLarge: TextStyle(
+          color: AppColors.white2, fontSize: 36, fontWeight: FontWeight.w500),
+      headlineMedium: TextStyle(
+          color: AppColors.white2, fontSize: 32, fontWeight: FontWeight.w500),
+      headlineSmall: TextStyle(
+          color: AppColors.white2, fontSize: 24, fontWeight: FontWeight.w500),
+      labelLarge: TextStyle(
+          color: AppColors.white2, fontSize: 16, fontWeight: FontWeight.w700),
+      labelSmall: TextStyle(
+          color: AppColors.white2, fontSize: 14, fontWeight: FontWeight.w500),
+      bodyLarge: TextStyle(
+          color: AppColors.white2, fontSize: 16, fontWeight: FontWeight.w500),
+      bodyMedium: TextStyle(
+          color: AppColors.white2, fontSize: 14, fontWeight: FontWeight.w500),
+      bodySmall: TextStyle(
+          color: AppColors.white2, fontSize: 12, fontWeight: FontWeight.w500),
     ),
     brightness: Brightness.light,
   );
