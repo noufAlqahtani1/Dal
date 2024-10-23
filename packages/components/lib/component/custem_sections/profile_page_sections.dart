@@ -182,3 +182,62 @@ class LanguageSection extends StatelessWidget {
     );
   }
 }
+
+
+class PlanSection extends StatelessWidget {
+  const PlanSection(
+      {super.key,
+      required this.plan,
+      required this.planDesc,
+      required this.endDate,
+      required this.remainDays});
+  final String plan;
+  final String planDesc;
+  final String endDate;
+  final int remainDays;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Subscriptions',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: Text(plan,
+                        style:
+                            TextStyle(color: Theme.of(context).primaryColor)),
+                  ),
+                  Text(
+                    planDesc,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
+            VerticalDivider(),
+            Expanded(
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                  ),
+                  Text(endDate)
+                ],
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}

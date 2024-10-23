@@ -28,7 +28,12 @@ class ProfileScreen extends StatelessWidget {
                     onPressed: () {},
                   ),
                   const Divider(height: 40),
-                  //plan info section
+                  PlanSection(
+                      plan: 'Basic Plan',
+                      planDesc:
+                          'Post your ads for passing customers for a month at a single business location, with access to basic ad stats.',
+                      endDate: '00-00-00000',
+                      remainDays: 22),
                   const Divider(height: 40),
                   AppearanceSection(
                     onChanged: (bool) {
