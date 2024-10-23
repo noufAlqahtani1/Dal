@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:user_app/screens/auth_screens/cubit/auth_cubit.dart';
 import 'package:pinput/pinput.dart';
 import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
-import 'package:user_app/screens/home_screen/home_screen.dart';
 
 class VerifyScreen extends StatelessWidget {
   final String? email;
@@ -190,12 +189,12 @@ class VerifyScreen extends StatelessWidget {
                               text: TextSpan(
                                   text:
                                       "We’ve send you a confirmation code at ",
-                                  style: TextStyle(
-                                      color: Color(0xff444444), fontSize: 16),
+                                  style: const TextStyle(
+                                      color:  Color(0xff444444), fontSize: 16),
                                   children: [
                                 TextSpan(
                                     text: "\n$email",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Color(0xff8CBFAE), fontSize: 16))
                               ])),
                         ),
@@ -237,7 +236,7 @@ class VerifyScreen extends StatelessWidget {
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: CustomText(
+                            child: const CustomText(
                                 text: "Resend OTP",
                                 color: Color(0xff444444),
                                 fontSize: 14))
