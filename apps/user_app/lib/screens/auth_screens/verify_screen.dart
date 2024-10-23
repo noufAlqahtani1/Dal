@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:user_app/screens/auth_screens/cubit/auth_cubit.dart';
 import 'package:pinput/pinput.dart';
+import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
 import 'package:user_app/screens/home_screen/home_screen.dart';
 
 class VerifyScreen extends StatelessWidget {
@@ -27,8 +28,10 @@ class VerifyScreen extends StatelessWidget {
                       content: CircularProgressIndicator()));
             }
             if (state is SuccessState) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BottomNavBarScreen()));
             }
             if (state is ErrorState) {
               Navigator.pop(context);

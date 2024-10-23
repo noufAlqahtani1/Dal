@@ -2,6 +2,7 @@ import 'package:components/component/custom_bottom_nav_bar/custom_bottom_nav_bar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app/screens/home_screen/home_screen.dart';
+import 'package:user_app/screens/reminders_screen/reminder.dart';
 
 import 'bloc/nav_bar_bloc.dart';
 
@@ -20,10 +21,7 @@ class BottomNavBarScreen extends StatelessWidget {
             Icons.location_on,
             size: 150,
           ),
-          Icon(
-            Icons.notifications,
-            size: 150,
-          ),
+          ReminderScreen(),
           Icon(
             Icons.person,
             size: 150,
