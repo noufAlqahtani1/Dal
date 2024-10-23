@@ -11,7 +11,7 @@ class ReminderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "My Reminder"),
+      appBar: CustomAppBar(title: "My Reminder",),
       body: const SingleChildScrollView(
           child: SizedBox(
             child: Column(
