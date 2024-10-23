@@ -16,12 +16,19 @@ class MyAdsScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-      appBar: CustomAppBar(title: "My Ads"),
+      appBar: CustomAppBar(title: "My Ads",
+      bottom: MyAdsTabBar(),),
         body: const TabBarView(
           children: [
             CurrentAdsTap(),
             PastAdsTab(),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: const Color(0xffA51361),
+          child:  Icon(Icons.add, color: Colors.white),
+          shape: const CircleBorder(),
         ),
       ),
     );

@@ -12,14 +12,14 @@ class CurrentAdsTap extends StatelessWidget {
             child: const Column(
                     children: [
             Row(
-                     
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomAdsContainer(
                     companyName: 'Half Millon',
                     ComapanyLogo: 'assets/png/company_logo.png',
                     remainingDay: '4d',
-                    offers: '50% off'),
+                    offers: '50% off',
+                    ),
                 CustomAdsContainer(
                     companyName: 'Half Millon',
                     ComapanyLogo: 'assets/png/company_logo.png',
