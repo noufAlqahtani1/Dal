@@ -12,12 +12,13 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
-   ImagePicker pick = ImagePicker();
+  ImagePicker pick = ImagePicker();
   File? image;
 
-   Future<void> pickAdsImage() async {
+  Future<void> pickAdsImage() async {
     final XFile? imageFile = await pick.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
+      image = File(imageFile.path);
       emit(AdsImageState(image: File(imageFile.path)));
     }
   }
