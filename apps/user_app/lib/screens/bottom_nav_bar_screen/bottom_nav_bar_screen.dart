@@ -2,9 +2,8 @@ import 'package:components/component/custom_bottom_nav_bar/custom_bottom_nav_bar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_app/screens/home_screen/home_screen.dart';
-import 'package:user_app/screens/reminders_screen/reminder.dart';
+import 'package:user_app/screens/reminder_screen%20/reminder_screen.dart';
 
-import '../reminder_screen /reminder_screen.dart';
 import 'bloc/nav_bar_bloc.dart';
 
 class BottomNavBarScreen extends StatelessWidget {
