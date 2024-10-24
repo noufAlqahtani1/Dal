@@ -1,4 +1,5 @@
-import 'package:business_app/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
+import 'package:business_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
+import 'package:components/component/theme/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      
-      home: BottomNavBarScreen());
+    return MaterialApp(
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
+        themeMode: ThemeMode.system,
+        home: const BottomNavBarScreen());
   }
 }

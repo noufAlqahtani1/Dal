@@ -21,9 +21,9 @@
     },
     {
       "name": "boolean_selector",
-      "rootUri": "file:///C:/Users/algha/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
+      "rootUri": "file:///C:/Users/algha/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.1"
     },
     {
       "name": "charcode",
@@ -51,7 +51,7 @@
     },
     {
       "name": "collection",
-      "rootUri": "file:///C:/Users/algha/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.0",
+      "rootUri": "file:///C:/Users/algha/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -260,7 +260,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-10-23T10:26:52.631193Z",
+  "generated": "2024-10-24T18:44:52.070449Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///C:/.dev/flutter",

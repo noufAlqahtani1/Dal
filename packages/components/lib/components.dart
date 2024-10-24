@@ -1,5 +1,4 @@
 library components;
-
 // Export components here --
 
 export 'package:components/component/custom_text/custom_text.dart';

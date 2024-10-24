@@ -44,7 +44,7 @@ class VerifyScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            backgroundColor: const Color(0xffF7F7F7),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: Form(
               key: cubit.formKey,
               child: Stack(
@@ -173,12 +173,10 @@ class VerifyScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: CustomText(
-                              text: "Check your email",
-                              color: Color(0xff444444),
-                              fontSize: 32),
+                          child: Text("Check your email",
+                              style: Theme.of(context).textTheme.headlineLarge),
                         ),
                         const SizedBox(
                           height: 20,
@@ -190,7 +188,7 @@ class VerifyScreen extends StatelessWidget {
                                   text:
                                       "We’ve send you a confirmation code at ",
                                   style: const TextStyle(
-                                      color:  Color(0xff444444), fontSize: 16),
+                                      color: Color(0xff444444), fontSize: 16),
                                   children: [
                                 TextSpan(
                                     text: "\n$email",
@@ -201,12 +199,10 @@ class VerifyScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: CustomText(
-                              text: "Confirmation code: ",
-                              color: Color(0xff444444),
-                              fontSize: 16),
+                          child: Text("Confirmation code: ",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ),
                         const SizedBox(
                           height: 10,
@@ -227,19 +223,15 @@ class VerifyScreen extends StatelessWidget {
                               if (cubit.formKey.currentState!.validate()) {}
                             },
                             backgroundColor: const Color(0xffA51361),
-                            child: const CustomText(
-                                text: "Verify",
-                                color: Color(0xffF7F7F7),
-                                fontSize: 14)),
+                            child: Text("Verify",
+                                style: Theme.of(context).textTheme.bodyMedium)),
                         const SizedBox(
                           height: 20,
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: const CustomText(
-                                text: "Resend OTP",
-                                color: Color(0xff444444),
-                                fontSize: 14))
+                            child: Text("Resend OTP",
+                                style: Theme.of(context).textTheme.bodyMedium))
                       ],
                     ),
                   ),

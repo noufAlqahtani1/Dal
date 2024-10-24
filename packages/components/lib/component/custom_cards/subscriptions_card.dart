@@ -59,15 +59,9 @@ class CustomSubscriptionsCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText(
-                    text: duration,
-                    color: Color(0xff444444),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600),
-                CustomText(
-                    text: '${price.toString()} SAR',
-                    color: Color(0xff444444),
-                    fontSize: 14)
+                Text(duration, style: Theme.of(context).textTheme.bodyMedium),
+                Text('${price.toString()} SAR',
+                    style: Theme.of(context).textTheme.bodyMedium)
               ],
             ),
           ),
@@ -75,11 +69,9 @@ class CustomSubscriptionsCard extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        CustomText(
-          text: plan,
-          color: Color(0xff444444),
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
+        Text(
+          plan,
+          style: Theme.of(context).textTheme.bodyMedium,
         )
       ],
     );

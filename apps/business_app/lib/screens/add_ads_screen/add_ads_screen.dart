@@ -66,7 +66,7 @@ class AddAdsScreen extends StatelessWidget {
                     BlocBuilder<AddAdsCubit, AddAdsState>(
                       builder: (context, state) {
                         return CustomDrobDownButton(
-                          value: cubit.categoryValue,
+                          value: cubit.categoeryValue,
                           items: [
                             const DropdownMenuEntry(value: 0, label: "Cafes"),
                             const DropdownMenuEntry(value: 1, label: "Bakery"),
@@ -102,14 +102,14 @@ class AddAdsScreen extends StatelessWidget {
                     ),
                     BlocBuilder<AddAdsCubit, AddAdsState>(
                       builder: (context, state) {
-                        final dateText = (startDate != null && endDate != null)
-                            ? cubit.dateFormat(startDate!, endDate!)
-                            : 'Select date range';
+                        // final dateText = (startDate != null && endDate != null)
+                        //     ? cubit.dateFormat(startDate!, endDate!)
+                        //     : 'Select date range';
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomText(
-                              text: dateText,
+                              text: "EDIT THIS!!",
                               color: const Color(0xff848484),
                               fontSize: 16,
                               fontWeight: FontWeight.w600,

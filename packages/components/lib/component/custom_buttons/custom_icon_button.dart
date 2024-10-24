@@ -16,18 +16,16 @@ class CustomIconButton extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            backgroundColor: const Color(0xffA51361),
+            backgroundColor: Theme.of(context).primaryColor,
             child:
                 IconButton(onPressed: onPressed, icon: SvgPicture.asset(icon)),
           ),
           const SizedBox(
             height: 4,
           ),
-          CustomText(
-            text: title,
-            color: const Color(0xffA51361),
-            fontSize: 10,
-          )
+          Text(title,
+              style:
+                  TextStyle(color: Theme.of(context).hintColor, fontSize: 10))
         ],
       ),
     );
