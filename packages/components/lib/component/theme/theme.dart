@@ -7,6 +7,7 @@ class AppThemes {
     primaryColor: AppColors.pink,
     hintColor: AppColors.yellow,
     scaffoldBackgroundColor: AppColors.white1,
+    dividerColor: AppColors.pink,
     cardColor: AppColors.white2,
     canvasColor: AppColors.grey,
     indicatorColor: AppColors.black2,
@@ -34,6 +35,7 @@ class AppThemes {
   static final darkTheme = ThemeData(
     primaryColor: AppColors.pink,
     hintColor: AppColors.yellow,
+    dividerColor: AppColors.yellow,
     scaffoldBackgroundColor: AppColors.black1,
     cardColor: AppColors.black2,
     canvasColor: AppColors.black2,

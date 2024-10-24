@@ -1,15 +1,12 @@
 import 'package:components/component/theme/theme.dart';
+import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:user_app/screens/home_screen/home_screen.dart';
-import 'package:user_app/screens/auth_screens/login_screen.dart';
-
-import 'package:device_preview/device_preview.dart';
-import 'package:user_app/screens/profile_screen/profile_screen.dart';
+import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
 
 void main() {
   runApp(DevicePreview(
-    enabled: false,
-    builder: (context) => MainApp(), // Wrap your app
+    enabled: true,
+    builder: (context) => MainApp(), 
   ));
 }
 
@@ -23,7 +20,7 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
-      home: ProfileScreen(),
+      home: const BottomNavBarScreen(),
     );
   }
 }
