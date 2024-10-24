@@ -66,7 +66,7 @@ class AddAdsScreen extends StatelessWidget {
                     BlocBuilder<AddAdsCubit, AddAdsState>(
                       builder: (context, state) {
                         return CustomDrobDownButton(
-                          value: cubit.categoeryValue,
+                          value: cubit.categoryValue,
                           items: [
                             const DropdownMenuEntry(value: 0, label: "Cafes"),
                             const DropdownMenuEntry(value: 1, label: "Bakery"),
