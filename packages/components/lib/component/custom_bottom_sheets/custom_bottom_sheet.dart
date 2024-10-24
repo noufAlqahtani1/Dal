@@ -12,9 +12,11 @@ class CustomBottomSheet extends StatelessWidget {
       required this.iconImage,
       required this.description,
       required this.remainingDay,
-      required this.onPressed});
+      required this.offerType,
+      this.onPressed});
   final String image;
   final String companyName;
+  final String offerType;
   final String iconImage;
   final String description;
   final String remainingDay;
@@ -47,11 +49,25 @@ class CustomBottomSheet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText(
-                      text: companyName,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                      color: const Color(0xff444444),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          text: offerType,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: const Color(0xffA51361),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        CustomText(
+                          text: companyName,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          color: const Color(0xff444444),
+                        ),
+                      ],
                     ),
                     Container(
                       width: 35,
@@ -82,7 +98,7 @@ class CustomBottomSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                        onPressed: onPressed,
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff8CBFAE)),
                         child: Row(

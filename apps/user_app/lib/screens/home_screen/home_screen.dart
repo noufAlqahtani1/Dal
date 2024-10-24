@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             foregroundColor: const Color(0xffF7F7F7),
             leadingWidth: 200,
             leading: Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20, bottom: 10),
               child: Row(
                 children: [
                   Container(
@@ -48,16 +48,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset('assets/svg/notification.svg'))
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset('assets/svg/notification.svg')),
+              )
             ],
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: ListView(
-              children: [
-                Container(
+          body: ListView(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Container(
                   width: 370,
                   height: 157,
                   decoration: BoxDecoration(
@@ -101,282 +105,305 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        CustomIconButton(
-                          icon: 'assets/svg/coffee.svg',
-                          title: 'Cafes',
-                          onPressed: () {},
-                        ),
-                        CustomIconButton(
-                          icon: 'assets/svg/Bakery.svg',
-                          title: 'Bakery',
-                          onPressed: () {
-                            showModalBottomSheet(
-                                context: context,
-                                isScrollControlled: true,
-                                builder: (context) {
-                                  return FlutterMap(
-                                    options: MapOptions(
-                                        onTap: (tapPosition, point) {
-                                          print(
-                                              "${point.latitude},${point.longitude}");
-                                        },
-                                        initialCenter: const LatLng(
-                                            24.826387045454805,
-                                            46.763465973089424)),
-                                    children: [
-                                      TileLayer(
-                                        urlTemplate:
-                                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                                        userAgentPackageName: 'com.example.app',
-                                      ),
-                                      const MarkerLayer(markers: [
-                                        Marker(
-                                            width: 100,
-                                            height: 100,
-                                            point: LatLng(24.826932334627926,
-                                                46.77479562383812),
-                                            child: Icon(
-                                                color: Colors.blueAccent,
-                                                size: 35,
-                                                Icons.bakery_dining)),
-                                        Marker(
-                                            width: 100,
-                                            height: 100,
-                                            point: LatLng(24.825841754565865,
-                                                46.769989105435364),
-                                            child: Icon(
-                                                color: Colors.blueAccent,
-                                                size: 35,
-                                                Icons.bakery_dining)),
-                                        Marker(
-                                            width: 100,
-                                            height: 100,
-                                            point: LatLng(24.829035569055947,
-                                                46.77033242817841),
-                                            child: Icon(
-                                                color: Colors.blueAccent,
-                                                size: 35,
-                                                Icons.bakery_dining)),
-                                        Marker(
-                                            width: 100,
-                                            height: 100,
-                                            point: LatLng(24.819142266372218,
-                                                46.77299317943709),
-                                            child: Icon(
-                                                color: Colors.blueAccent,
-                                                size: 35,
-                                                Icons.bakery_dining)),
-                                      ]),
-                                    ],
-                                  );
-                                });
-                          },
-                        ),
-                        CustomIconButton(
-                          icon: 'assets/svg/Breakfast.svg',
-                          title: 'Breakfast',
-                          onPressed: () {},
-                        ),
-                        CustomIconButton(
-                          icon: 'assets/svg/Ice_creams.svg',
-                          title: 'Ice creams',
-                          onPressed: () {},
-                        ),
-                        CustomIconButton(
-                          icon: 'assets/svg/Dinning.svg',
-                          title: 'Dinning',
-                          onPressed: () {},
-                        ),
-                        CustomIconButton(
-                          icon: 'assets/svg/Drinks.svg',
-                          title: 'Drinks',
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomIconButton(
+                        icon: 'assets/svg/coffee.svg',
+                        title: 'Cafes',
+                        onPressed: () {},
+                      ),
+                      CustomIconButton(
+                        icon: 'assets/svg/Bakery.svg',
+                        title: 'Bakery',
+                        onPressed: () {
+                          showModalBottomSheet(
+                              isDismissible: true,
+                              context: context,
+                              isScrollControlled: true,
+                              builder: (context) {
+                                return Stack(
+                                  children: [
+                                    FlutterMap(
+                                      options: MapOptions(
+                                          onTap: (tapPosition, point) {
+                                            print(
+                                                "${point.latitude},${point.longitude}");
+                                          },
+                                          initialCenter: const LatLng(
+                                              24.826387045454805,
+                                              46.763465973089424)),
+                                      children: [
+                                        TileLayer(
+                                          urlTemplate:
+                                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                          userAgentPackageName:
+                                              'com.example.app',
+                                        ),
+                                        const MarkerLayer(markers: [
+                                          Marker(
+                                              width: 100,
+                                              height: 100,
+                                              point: LatLng(24.826932334627926,
+                                                  46.77479562383812),
+                                              child: Icon(
+                                                  color: Colors.blueAccent,
+                                                  size: 35,
+                                                  Icons.bakery_dining)),
+                                          Marker(
+                                              width: 100,
+                                              height: 100,
+                                              point: LatLng(24.825841754565865,
+                                                  46.769989105435364),
+                                              child: Icon(
+                                                  color: Colors.blueAccent,
+                                                  size: 35,
+                                                  Icons.bakery_dining)),
+                                          Marker(
+                                              width: 100,
+                                              height: 100,
+                                              point: LatLng(24.829035569055947,
+                                                  46.77033242817841),
+                                              child: Icon(
+                                                  color: Colors.blueAccent,
+                                                  size: 35,
+                                                  Icons.bakery_dining)),
+                                          Marker(
+                                              width: 100,
+                                              height: 100,
+                                              point: LatLng(24.819142266372218,
+                                                  46.77299317943709),
+                                              child: Icon(
+                                                  color: Colors.blueAccent,
+                                                  size: 35,
+                                                  Icons.bakery_dining)),
+                                        ]),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(24),
+                                      child: IconButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          icon: Icon(
+                                              size: 40,
+                                              color: Colors.red,
+                                              Icons.close_rounded)),
+                                    ),
+                                  ],
+                                );
+                              });
+                        },
+                      ),
+                      CustomIconButton(
+                        icon: 'assets/svg/Breakfast.svg',
+                        title: 'Breakfast',
+                        onPressed: () {},
+                      ),
+                      CustomIconButton(
+                        icon: 'assets/svg/Ice_creams.svg',
+                        title: 'Ice creams',
+                        onPressed: () {},
+                      ),
+                      CustomIconButton(
+                        icon: 'assets/svg/Dinning.svg',
+                        title: 'Dinning',
+                        onPressed: () {},
+                      ),
+                      CustomIconButton(
+                        icon: 'assets/svg/Drinks.svg',
+                        title: 'Drinks',
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 24,
-                ),
-                const CustomText(
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: CustomText(
                   text: 'Top',
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff444444),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  height: 250,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      builder: (context, state) {
-                        if (state is LoadingState) {
-                          return const FadeTransitionSwitcher(
-                            child: Row(
-                              children: [
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                        if (state is SuccessState) {
-                          return FadeTransitionSwitcher(
-                            child: Row(
-                              key: ValueKey(cubit.allAds!.length),
-                              children: cubit.allAds!
-                                  .map(
-                                    (e) => CustomAdsContainer(
-                                      companyLogo: e['bannerimg'] ??
-                                          "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
-                                      remainingDay: '4d',
-                                      companyName: e['title'] ?? "----",
-                                      offers: e['offer_type'] ?? "----",
-                                      onTap: () {
-                                        showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            context: context,
-                                            builder: (context) {
-                                              return CustomBottomSheet(
-                                                image: e['bannerimg'],
-                                                companyName:
-                                                    e['title'] ?? "---",
-                                                iconImage:
-                                                    'assets/svg/coffee.svg',
-                                                description:
-                                                    e['description'] ?? "---",
-                                                remainingDay: '4d',
-                                                onPressed: () {
-                                                  getIt
-                                                      .get<DataLayer>()
-                                                      .myReminders
-                                                      .add(e);
-                                                },
-                                              );
-                                            });
-                                      },
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          );
-                        }
-                        return const SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: Text("error fetching data.."));
-                      },
-                    ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                height: 250,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      if (state is LoadingState) {
+                        return const FadeTransitionSwitcher(
+                          child: Row(
+                            children: [
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      if (state is SuccessState) {
+                        return FadeTransitionSwitcher(
+                          child: Row(
+                            key: ValueKey(cubit.allAds!.length),
+                            children: cubit.allAds!
+                                .map(
+                                  (e) => CustomAdsContainer(
+                                    companyLogo: e['bannerimg'] ??
+                                        "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
+                                    remainingDay: '4d',
+                                    companyName: e['title'] ?? "----",
+                                    offers: e['offer_type'] ?? "----",
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return CustomBottomSheet(
+                                              image: e['bannerimg'],
+                                              companyName: e['title'] ?? "---",
+                                              iconImage:
+                                                  'assets/svg/coffee.svg',
+                                              description:
+                                                  e['description'] ?? "---",
+                                              remainingDay: '4d',
+                                              onPressed: () {
+                                                getIt
+                                                    .get<DataLayer>()
+                                                    .myReminders
+                                                    .add(e);
+                                              },
+                                              offerType: '40',
+                                            );
+                                          });
+                                    },
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        );
+                      }
+                      return const SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Text("error fetching data.."));
+                    },
                   ),
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
-                const CustomText(
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: CustomText(
                   text: 'Around you',
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff444444),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  height: 250,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      builder: (context, state) {
-                        if (state is LoadingState) {
-                          return const FadeTransitionSwitcher(
-                            child: Row(
-                              children: [
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                ShimmerContainer(height: 230, width: 160),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                        if (state is SuccessState) {
-                          return FadeTransitionSwitcher(
-                            child: Row(
-                              key: ValueKey(cubit.allAds!.length),
-                              children: cubit.allAds!
-                                  .map(
-                                    (e) => CustomAdsContainer(
-                                      companyLogo: e['bannerimg'] ??
-                                          "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
-                                      remainingDay: '4d',
-                                      companyName: e['title'] ?? "----",
-                                      offers: e['offer_type'] ?? "----",
-                                      onTap: () {
-                                        showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            context: context,
-                                            builder: (context) {
-                                              return CustomBottomSheet(
-                                                image: e['bannerimg'],
-                                                companyName:
-                                                    e['title'] ?? "---",
-                                                iconImage:
-                                                    'assets/svg/coffee.svg',
-                                                description:
-                                                    e['description'] ?? "---",
-                                                remainingDay: '4d',
-                                                onPressed: () {},
-                                              );
-                                            });
-                                      },
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          );
-                        }
-                        return const SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: Text("error fetching data.."));
-                      },
-                    ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                height: 250,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      if (state is LoadingState) {
+                        return const FadeTransitionSwitcher(
+                          child: Row(
+                            children: [
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              ShimmerContainer(height: 230, width: 160),
+                              SizedBox(
+                                width: 20,
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      if (state is SuccessState) {
+                        return FadeTransitionSwitcher(
+                          child: Row(
+                            key: ValueKey(cubit.allAds!.length),
+                            children: cubit.allAds!
+                                .map(
+                                  (e) => CustomAdsContainer(
+                                    companyLogo: e['bannerimg'] ??
+                                        "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
+                                    remainingDay: '4d',
+                                    companyName: e['title'] ?? "----",
+                                    offers: e['offer_type'] ?? "----",
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return CustomBottomSheet(
+                                              image: e['bannerimg'],
+                                              companyName: e['title'] ?? "---",
+                                              iconImage:
+                                                  'assets/svg/coffee.svg',
+                                              description:
+                                                  e['description'] ?? "---",
+                                              remainingDay: '4d',
+                                              onPressed: () {},
+                                              offerType: '40',
+                                            );
+                                          });
+                                    },
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        );
+                      }
+                      return const SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Text("error fetching data.."));
+                    },
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       }),

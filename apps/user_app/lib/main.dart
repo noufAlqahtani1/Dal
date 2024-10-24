@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppThemes.lightTheme,
+      theme: AppThemes.darkTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
       home: BottomNavBarScreen(),
