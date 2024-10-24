@@ -9,12 +9,13 @@ class CustomAdsContainer extends StatelessWidget {
       required this.remainingDay,
       required this.companyName,
       required this.offers,
-      this.onTap});
+      this.onTap, this.height});
   final String companyLogo;
   final String remainingDay;
   final String companyName;
   final String offers;
   final Function()? onTap;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class CustomAdsContainer extends StatelessWidget {
             Image.network(
               companyLogo,
               fit: BoxFit.fill,
+              height: 160,
             ),
             Positioned(
               top: 0,
@@ -74,7 +76,7 @@ class CustomAdsContainer extends StatelessWidget {
               right: 0,
               child: Container(
                 width: 160,
-                height: 70,
+                height: 72,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: const BoxDecoration(

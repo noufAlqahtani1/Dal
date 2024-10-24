@@ -92,13 +92,13 @@ class CustomBottomSheet extends StatelessWidget {
                   fontSize: 14,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: onPressed,
                         style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff8CBFAE)),
                         child: Row(

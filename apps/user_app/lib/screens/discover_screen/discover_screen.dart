@@ -39,7 +39,7 @@ class DiscoverScreen extends StatelessWidget {
                           point: LatLng(
                               bloc.position?.latitude ?? 24.853236951003687,
                               bloc.position?.longitude ?? 46.71308977170682),
-                          child: Icon(
+                          child: const Icon(
                               color: Colors.blueAccent,
                               size: 35,
                               Icons.location_on_rounded))

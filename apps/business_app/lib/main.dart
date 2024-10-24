@@ -1,3 +1,4 @@
+import 'package:business_app/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home:BottomNavBarScreen(),
     );
   }
 }

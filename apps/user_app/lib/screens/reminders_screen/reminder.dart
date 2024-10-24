@@ -32,11 +32,14 @@ class ReminderScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = getIt.get<DataLayer>().myReminders;
 
-          return CustomAdsContainer(
-            companyLogo: item[index]['bannerimg'],
-            remainingDay: '4d',
-            companyName: item[index]['title'],
-            offers: item[index]['offer_type'],
+          return Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: CustomAdsContainer(
+              companyLogo: item[index]['bannerimg'],
+              remainingDay: '4d',
+              companyName: item[index]['title'],
+              offers: item[index]['offer_type'],
+            ),
           );
         },
       ),

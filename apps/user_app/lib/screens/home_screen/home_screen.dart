@@ -148,16 +148,41 @@ class HomeScreen extends StatelessWidget {
                                           userAgentPackageName:
                                               'com.example.app',
                                         ),
-                                        const MarkerLayer(markers: [
+                                        MarkerLayer(markers: [
                                           Marker(
                                               width: 100,
                                               height: 100,
-                                              point: LatLng(24.826932334627926,
+                                              point: const LatLng(
+                                                  24.826932334627926,
                                                   46.77479562383812),
-                                              child: Icon(
-                                                  color: Colors.blueAccent,
-                                                  size: 35,
-                                                  Icons.bakery_dining)),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          AlertDialog(
+                                                            content:
+                                                                CustomBottomSheet(
+                                                              image:
+                                                                  "https://axzkcivwmekelxlqpxvx.supabase.co/storage/v1/object/public/offer%20images/skrayz.png?t=2024-10-24T11%3A23%3A54.100Z",
+                                                              companyName:
+                                                                  "سكرايز",
+                                                              iconImage:
+                                                                  'assets/svg/coffee.svg',
+                                                              description:
+                                                                  "مع كل فاتورة امركيانو حار بـ 1 ريال سعودي 🍵",
+                                                              remainingDay:
+                                                                  '4d',
+                                                              onPressed: () {},
+                                                              offerType: '40',
+                                                            ),
+                                                          ));
+                                                },
+                                                child: Icon(
+                                                    color: Colors.blueAccent,
+                                                    size: 35,
+                                                    Icons.bakery_dining),
+                                              )),
                                           Marker(
                                               width: 100,
                                               height: 100,
@@ -384,7 +409,12 @@ class HomeScreen extends StatelessWidget {
                                               description:
                                                   e['description'] ?? "---",
                                               remainingDay: '4d',
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                getIt
+                                                    .get<DataLayer>()
+                                                    .myReminders
+                                                    .add(e);
+                                              },
                                               offerType: '40',
                                             );
                                           });
