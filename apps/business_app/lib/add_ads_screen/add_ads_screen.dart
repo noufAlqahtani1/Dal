@@ -104,7 +104,6 @@ class AddAdsScreen extends StatelessWidget {
                         final dateText = (startDate != null && endDate != null)
                             ? cubit.dateFormat(startDate!, endDate!)
                             : 'Select date range';
-                        print('--------');
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

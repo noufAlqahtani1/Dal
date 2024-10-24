@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         foregroundColor: const Color(0xffF7F7F7),
         leadingWidth: 200,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20, bottom: 10),
           child: Row(
             children: [
               Container(
@@ -37,9 +37,12 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/notification.svg'))
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset('assets/svg/notification.svg')),
+          )
         ],
       ),
       body: ListView(
@@ -164,12 +167,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),
@@ -184,12 +189,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),
@@ -204,12 +211,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),
@@ -249,12 +258,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),
@@ -269,12 +280,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),
@@ -289,12 +302,14 @@ class HomeScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return const CustomBottomSheet(
-                                image: 'assets/png/ads.png',
-                                companyName: 'Half Million',
-                                iconImage: 'assets/svg/coffee.svg',
-                                description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
-                                remainingDay: '4d');
+                              image: 'assets/png/ads.png',
+                              companyName: 'Half Million',
+                              iconImage: 'assets/svg/coffee.svg',
+                              description:
+                                  'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                              remainingDay: '4d',
+                              offerType: '50% Off',
+                            );
                           });
                     },
                   ),

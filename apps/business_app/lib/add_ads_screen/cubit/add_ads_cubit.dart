@@ -45,7 +45,6 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   }
 
   String dateFormat(DateTime start, DateTime end){
-    print('------date-----');
     String displayDate =  '${start.day.toString().padLeft(2, '0')}/${start.month.toString().padLeft(2, '0')}/${start.year} - ${end.day.toString().padLeft(2, '0')}/${end.month.toString().padLeft(2, '0')}/${end.year}';
     return displayDate;    
   }
