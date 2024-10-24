@@ -47,7 +47,7 @@ class CreateAccountScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            backgroundColor: const Color(0xffF7F7F7),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: Form(
               key: cubit.formKey,
               child: Stack(
@@ -176,12 +176,10 @@ class CreateAccountScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: CustomText(
-                              text: "Sign Up",
-                              color: Color(0xff444444),
-                              fontSize: 32),
+                          child: Text("Sign Up",
+                              style: Theme.of(context).textTheme.bodyLarge),
                         ),
                         const SizedBox(
                           height: 48,
@@ -214,20 +212,16 @@ class CreateAccountScreen extends StatelessWidget {
                               }
                             },
                             backgroundColor: const Color(0xffA51361),
-                            child: const CustomText(
-                                text: "Sign Up",
-                                color: Color(0xffF7F7F7),
-                                fontSize: 14)),
+                            child: Text("Sign Up",
+                                style: Theme.of(context).textTheme.bodyMedium)),
                         const SizedBox(
                           height: 20,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CustomText(
-                                text: "Already Have An Account?",
-                                color: Color(0xff444444),
-                                fontSize: 14),
+                            Text("Already Have An Account?",
+                                style: Theme.of(context).textTheme.bodyMedium),
                             TextButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -235,10 +229,10 @@ class CreateAccountScreen extends StatelessWidget {
                                       MaterialPageRoute(
                                           builder: (context) => LoginScreen()));
                                 },
-                                child: const CustomText(
-                                    text: "Login",
-                                    color: Color(0xff8CBFAE),
-                                    fontSize: 14)),
+                                child: Text("Login",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium)),
                           ],
                         )
                       ],

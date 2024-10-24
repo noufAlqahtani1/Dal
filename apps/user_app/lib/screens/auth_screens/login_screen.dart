@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            backgroundColor: const Color(0xffF7F7F7),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: Form(
               key: cubit.formKey,
               child: Stack(
@@ -180,12 +180,10 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
-                          child: CustomText(
-                              text: "Login",
-                              color: Color(0xff444444),
-                              fontSize: 32),
+                          child: Text("Login",
+                              style: Theme.of(context).textTheme.bodyMedium),
                         ),
                         const SizedBox(
                           height: 48,
@@ -219,25 +217,22 @@ class LoginScreen extends StatelessWidget {
                               }
                             },
                             backgroundColor: const Color(0xffA51361),
-                            child: const CustomText(
-                                text: "Login",
-                                color: Color(0xffF7F7F7),
-                                fontSize: 14)),
+                            child: Text("Login",
+                                style: Theme.of(context).textTheme.bodyMedium)),
                         const SizedBox(
                           height: 20,
                         ),
                         TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CreateAccountScreen()));
-                            },
-                            child: const CustomText(
-                                text: "Create An Account",
-                                color: Color(0xff444444),
-                                fontSize: 14))
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CreateAccountScreen()));
+                          },
+                          child: Text("Create An Account",
+                              style: Theme.of(context).textTheme.bodyMedium),
+                        )
                       ],
                     ),
                   ),

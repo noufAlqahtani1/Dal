@@ -13,7 +13,7 @@ class CustomDrobDownButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).canvasColor,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: DropdownButton<int>(

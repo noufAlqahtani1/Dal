@@ -1,7 +1,7 @@
 import 'package:components/component/custom_containers/custom_ads_container.dart';
-import 'package:components/component/custom_text/custom_text.dart';
 
 import 'package:flutter/material.dart';
+
 ///// reminder screen
 class ReminderScreen extends StatelessWidget {
   const ReminderScreen({super.key});
@@ -9,23 +9,19 @@ class ReminderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: const Color(0xffA51361),
         foregroundColor: const Color(0xffF7F7F7),
         centerTitle: true,
-        title: const CustomText(
-          text: "My Reminder",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Color(0xfff7f7f7),
-        ),
+        title: Text("My Reminder",
+            style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
           child: SizedBox(
-            child: Column(
-                    children: [
+        child: Column(
+          children: [
             Row(
-                     
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomAdsContainer(
@@ -58,9 +54,9 @@ class ReminderScreen extends StatelessWidget {
                 ],
               ),
             ),
-                    ],
-                  ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }

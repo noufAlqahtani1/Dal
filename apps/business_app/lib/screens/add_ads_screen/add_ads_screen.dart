@@ -38,18 +38,14 @@ class AddAdsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomText(
-                        text: 'Add Type',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      Text('Add Type',
+                          style: Theme.of(context).textTheme.bodyLarge),
                       const SizedBox(
                         height: 8,
                       ),
                       CustomTextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        fillColor: const Color(0xffEAEAEA),
+                        fillColor: Theme.of(context).canvasColor,
                         hintText: 'example: 15% Off',
                         hintStyle: const TextStyle(color: Color(0xff848484)),
                         controller: cubit.addTypeController,
@@ -63,12 +59,8 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const CustomText(
-                        text: 'Category',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      Text('Category',
+                          style: Theme.of(context).textTheme.bodyLarge),
                       const SizedBox(
                         height: 8,
                       ),
@@ -98,21 +90,15 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const CustomText(
-                        text: 'Ads Duration',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Ads Duration',
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(
-                            text: displayDate,
-                            color: const Color(0xff848484),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          Text(displayDate,
+                              style: Theme.of(context).textTheme.bodyMedium),
                           // --------------- date --------------
                           TextButton(
                             onPressed: () {
@@ -171,41 +157,37 @@ class AddAdsScreen extends StatelessWidget {
                                           },
                                           backgroundColor:
                                               const Color(0xffA51361),
-                                          child: const CustomText(
-                                            text: 'Confirm',
-                                            color: Color(0xffF7F7F7),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
+                                          child: Text(
+                                            'Confirm',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge,
                                           ),
                                         )
                                       ],
                                     );
                                   });
                             },
-                            child: const CustomText(
-                              text: 'Change',
-                              color: Color(0xffA51361),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            child: Text('Change',
+                                style: TextStyle(
+                                  color: Theme.of(context).dividerColor,
+                                )),
                           )
                         ],
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      const CustomText(
-                        text: 'Description',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Description',
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       CustomTextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        fillColor: const Color(0xffEAEAEA),
+                        fillColor: Theme.of(context).canvasColor,
                         hintText: '',
                         hintStyle: const TextStyle(color: Color(0xff848484)),
                         maxLines: 6,
@@ -220,11 +202,9 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const CustomText(
-                        text: 'Location',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Location',
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
@@ -250,12 +230,8 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const CustomText(
-                        text: 'Ads image',
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      Text('Ads image',
+                          style: Theme.of(context).textTheme.bodyLarge),
                       const SizedBox(
                         height: 8,
                       ),
@@ -268,16 +244,16 @@ class AddAdsScreen extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 8),
                           height: 172,
-                          width: 172,
+                          width: double.infinity,
                           decoration: BoxDecoration(
+                              color: Theme.of(context).canvasColor,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
                                     blurStyle: BlurStyle.outer,
                                     blurRadius: 4,
                                     offset: const Offset(0, 1),
-                                    color: const Color(0xff000000)
-                                        .withOpacity(0.25))
+                                    color: Colors.transparent)
                               ]),
                           child: (state is AdsImageState && state.image != null)
                               ? ClipRRect(
@@ -287,7 +263,10 @@ class AddAdsScreen extends StatelessWidget {
                                     fit: BoxFit.fill,
                                   ),
                                 )
-                              : const Icon(Icons.photo),
+                              : Icon(
+                                  Icons.photo,
+                                  color: Theme.of(context).hintColor,
+                                ),
                         ),
                       ),
                       const SizedBox(
@@ -295,16 +274,12 @@ class AddAdsScreen extends StatelessWidget {
                       ),
                       // ---------------- button --------------
                       CustomElevatedButton(
-                        backgroundColor: const Color(0xffA51361),
+                        backgroundColor: Theme.of(context).primaryColor,
                         onPressed: () {
                           if (formKey.currentState?.validate() == true) {}
                         },
-                        child: const CustomText(
-                          text: 'Post Ad',
-                          color: Color(0xffF7F7F7),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        child: Text('Post Ad',
+                            style: Theme.of(context).textTheme.titleMedium),
                       )
                     ],
                   ),

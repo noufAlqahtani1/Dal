@@ -8,7 +8,8 @@ class CustomAdsContainer extends StatelessWidget {
       required this.ComapanyLogo,
       required this.remainingDay,
       required this.companyName,
-      required this.offers, this.onTap});
+      required this.offers,
+      this.onTap});
   final String ComapanyLogo;
   final String remainingDay;
   final String companyName;
@@ -54,12 +55,8 @@ class CustomAdsContainer extends StatelessWidget {
                       width: 24,
                     ),
                     const SizedBox(width: 3),
-                    CustomText(
-                      text: remainingDay,
-                      color: const Color(0xffB8B8B8),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    Text(remainingDay,
+                        style: TextStyle(color: AppColors().grey2)),
                   ],
                 ),
               ),
@@ -71,7 +68,8 @@ class CustomAdsContainer extends StatelessWidget {
               child: Container(
                 width: 160,
                 height: 70,
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: const BoxDecoration(
                   color: Color(0xffF7F7F7),
                   borderRadius: BorderRadius.only(
@@ -82,18 +80,13 @@ class CustomAdsContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      text: companyName,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                      color: const Color(0xff444444),
-                    ),
+                    Text(companyName,
+                        style:
+                            TextStyle(color: Theme.of(context).indicatorColor)),
                     const SizedBox(height: 4),
-                    CustomText(
-                      text: offers,
-                      color: const Color(0xffA51361),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                    Text(
+                      offers,
+                      style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                   ],
                 ),

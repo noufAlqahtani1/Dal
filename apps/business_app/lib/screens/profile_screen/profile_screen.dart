@@ -1,4 +1,5 @@
 import 'package:business_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
+import 'package:business_app/screens/subscriptions_screen/subscriptions_screen.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,9 @@ class ProfileScreen extends StatelessWidget {
                           firstName: 'First',
                           lasrName: "Last",
                           email: 'example@example.com',
-                          onPressed: () {},
+                          onPressed: () {
+                            //   Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
+                          },
                         ),
                       ),
                       const Divider(height: 40),
@@ -40,7 +43,12 @@ class ProfileScreen extends StatelessWidget {
                             'Post your ads for passing customers for a month at a single business location, with access to basic ad stats.',
                         endDate: 'Ends 12/12/2024',
                         remainDays: 11,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SubscriptionsScreen()));
+                        },
                       ),
                       const Divider(height: 40),
                       BlocBuilder<ProfileBlocBloc, ProfileBlocState>(

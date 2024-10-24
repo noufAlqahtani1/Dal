@@ -15,13 +15,14 @@ class EditProfileScreen extends StatelessWidget {
         final cubit = context.read<EditProfileCubit>();
         final formKey = GlobalKey<FormState>();
         return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(
             backgroundColor: const Color(0xffA51361),
             foregroundColor: const Color(0xffF7F7F7),
             automaticallyImplyLeading: true,
             centerTitle: true,
-            title: const CustomText(
-                text: 'Edit Profile', color: Color(0xffF7F7F7), fontSize: 20),
+            title: Text('Edit Profile',
+                style: Theme.of(context).textTheme.bodyMedium),
           ),
           body: BlocBuilder<EditProfileCubit, EditProfileState>(
             builder: (context, state) {
@@ -58,11 +59,11 @@ class EditProfileScreen extends StatelessWidget {
                                     fit: BoxFit.fill,
                                   ),
                                 )
-                              : const Center(
-                                  child: CustomText(
-                                      text: 'Edit',
-                                      color: Color(0xffA51361),
-                                      fontSize: 14),
+                              : Center(
+                                  child: Text('Edit',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium),
                                 ),
                         ),
                       ),
@@ -70,12 +71,8 @@ class EditProfileScreen extends StatelessWidget {
                     const SizedBox(
                       height: 50,
                     ),
-                    const CustomText(
-                      text: 'First Name',
-                      color: Color(0xff444444),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    Text('First Name',
+                        style: Theme.of(context).textTheme.labelLarge),
                     const SizedBox(
                       height: 8,
                     ),
@@ -88,12 +85,8 @@ class EditProfileScreen extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-                    const CustomText(
-                      text: 'Last Name',
-                      color: Color(0xff444444),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    Text('Last Name',
+                        style: Theme.of(context).textTheme.labelLarge),
                     const SizedBox(
                       height: 8,
                     ),
@@ -111,12 +104,8 @@ class EditProfileScreen extends StatelessWidget {
                       onPressed: () {
                         if (formKey.currentState?.validate() == true) {}
                       },
-                      child: const CustomText(
-                        text: 'Save',
-                        color: Color(0xffF7F7F7),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      child: Text('Save',
+                          style: Theme.of(context).textTheme.bodyMedium),
                     )
                   ],
                 ),

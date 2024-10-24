@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../custom_text/custom_text.dart';
-
 class CustomBusinessIconButton extends StatelessWidget {
   const CustomBusinessIconButton(
       {super.key, required this.image, required this.title});
@@ -18,7 +16,7 @@ class CustomBusinessIconButton extends StatelessWidget {
           height: 85,
           width: 87,
           decoration: BoxDecoration(
-              color: const Color(0xffA51361),
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -38,12 +36,8 @@ class CustomBusinessIconButton extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        CustomText(
-          text: title,
-          color: const Color(0xffA51361),
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-        )
+        Text(title,
+            style: TextStyle(color: Theme.of(context).hintColor, fontSize: 12))
       ],
     );
   }

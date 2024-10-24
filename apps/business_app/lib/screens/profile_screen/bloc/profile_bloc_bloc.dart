@@ -32,7 +32,10 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
     });
 
     //change theme mode
-    on<ChangeModeEvent>((event, emit) {
+    on<ChangeModeEvent>((
+      event,
+      emit,
+    ) {
       DarkModeOn = !DarkModeOn;
 
       emit(ChangedModeState());

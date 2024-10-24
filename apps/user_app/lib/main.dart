@@ -6,7 +6,7 @@ import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dar
 void main() {
   runApp(DevicePreview(
     enabled: true,
-    builder: (context) => MainApp(), 
+    builder: (context) => MainApp(),
   ));
 }
 

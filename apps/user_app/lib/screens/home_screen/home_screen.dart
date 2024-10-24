@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: const Color(0xffA51361),
         foregroundColor: const Color(0xffF7F7F7),
@@ -27,12 +28,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              const CustomText(
-                text: "Hello!",
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Color(0xfff7f7f7),
-              )
+              Text("Hello!", style: Theme.of(context).textTheme.headlineSmall)
             ],
           ),
         ),
@@ -54,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4)),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -63,23 +59,17 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Positioned(
                             top: 0,
-                            child: CustomText(
-                              text: 'Never miss out',
-                              fontSize: 24,
-                              color: Color(0xfff7f7f7),
-                              fontWeight: FontWeight.bold,
-                            ),
+                            child: Text('Never miss out',
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall),
                           ),
                           Positioned(
                             bottom: 20,
                             child: SizedBox(
                               width: 150,
-                              child: CustomText(
-                                text:
-                                    'Catch the latest deals and offers happening near you!',
-                                fontSize: 14,
-                                color: Color(0xfff7f7f7),
-                              ),
+                              child: Text(
+                                  'Catch the latest deals and offers happening near you!',
+                                  style: Theme.of(context).textTheme.bodySmall),
                             ),
                           )
                         ],
@@ -137,12 +127,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: const CustomText(
-              text: 'Top',
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff444444),
-            ),
+            child: Text('Top', style: Theme.of(context).textTheme.bodyMedium),
           ),
           const SizedBox(
             height: 16,
@@ -168,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },
@@ -188,7 +173,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },
@@ -208,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },
@@ -222,12 +207,8 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: const CustomText(
-              text: 'Around you',
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff444444),
-            ),
+            child: Text('Around you',
+                style: Theme.of(context).textTheme.bodyMedium),
           ),
           const SizedBox(
             height: 16,
@@ -253,7 +234,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },
@@ -273,7 +254,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },
@@ -293,7 +274,7 @@ class HomeScreen extends StatelessWidget {
                                 companyName: 'Half Million',
                                 iconImage: 'assets/svg/coffee.svg',
                                 description:
-                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍  تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
+                                    'الأكواب الجديدة صارت متوفرة بكل فروعنا 😍 تصميم جديد بلون وردي معك في\n#شهر_التوعية_بسرطان_الثدي 🩷',
                                 remainingDay: '4d');
                           });
                     },

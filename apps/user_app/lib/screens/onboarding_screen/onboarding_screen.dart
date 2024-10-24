@@ -10,7 +10,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF7F7F7),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -25,23 +25,16 @@ class OnboardingScreen extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const Column(
+                Column(
                   children: [
-                    CustomText(
-                        textAlign: TextAlign.center,
-                        fontWeight: FontWeight.bold,
-                        text: "Know Whats Ahead Of You!",
-                        color: Color(0xff444444),
-                        fontSize: 36),
+                    Text("Know Whats Ahead Of You!",
+                        style: Theme.of(context).textTheme.headlineLarge),
                     SizedBox(
                       height: 9,
                     ),
-                    CustomText(
-                        textAlign: TextAlign.center,
-                        text:
-                            "Login and get to know all about the activities around you ",
-                        color: Color(0xff444444),
-                        fontSize: 16),
+                    Text(
+                        "Login and get to know all about the activities around you ",
+                        style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
                 const SizedBox(
@@ -57,10 +50,8 @@ class OnboardingScreen extends StatelessWidget {
                                 builder: (context) => const LoginScreen()));
                       },
                       backgroundColor: const Color(0xffA51361),
-                      child: const CustomText(
-                          text: "Login",
-                          color: Color(0xffF7F7F7),
-                          fontSize: 14),
+                      child: Text("Login",
+                          style: Theme.of(context).textTheme.titleMedium),
                     ),
                     const SizedBox(
                       height: 25,
@@ -73,10 +64,8 @@ class OnboardingScreen extends StatelessWidget {
                                   builder: (context) =>
                                       const CreateAccountScreen()));
                         },
-                        child: const CustomText(
-                            text: "Or create an account",
-                            color: Color(0xff444444),
-                            fontSize: 16))
+                        child: Text("Or create an account",
+                            style: Theme.of(context).textTheme.bodyMedium))
                   ],
                 ),
               ],

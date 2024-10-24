@@ -1,6 +1,4 @@
 import 'package:business_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
-import 'package:business_app/screens/profile_screen/profile_screen.dart';
-import 'package:business_app/screens/stats_screen/stats_screen.dart';
 import 'package:components/component/theme/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
