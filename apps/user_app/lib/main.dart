@@ -1,3 +1,4 @@
+import 'package:components/component/theme/theme.dart';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      home: const BottomNavBarScreen(),
+      theme: AppThemes.darkTheme,
+      darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.system,
+      home: BottomNavBarScreen(),
     );
   }
 }

@@ -5,15 +5,16 @@ class CustomText extends StatelessWidget {
       required this.text,
       required this.color,
       this.fontWeight,
-      required this.fontSize});
+      required this.fontSize, this.textAlign});
   final String text;
   final Color color;
   final FontWeight? fontWeight;
   final double fontSize;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return Text(textAlign: textAlign, 
       text,
       style: TextStyle(color: color, fontWeight: fontWeight, fontSize: fontSize),
     );

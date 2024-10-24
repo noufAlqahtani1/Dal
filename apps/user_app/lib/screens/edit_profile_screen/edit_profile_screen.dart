@@ -1,3 +1,4 @@
+import 'package:components/component/custom_text_field/custom_text_form_field.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,9 +80,9 @@ class EditProfileScreen extends StatelessWidget {
                       height: 8,
                     ),
                     CustomTextFormField(
-                      fillColor: Color(0xffEAEAEA),
+                      fillColor: const Color(0xffEAEAEA),
                       hintText: '',
-                      hintStyle: TextStyle(color: Color(0xff848484)),
+                      hintStyle: const TextStyle(color: Color(0xff848484)),
                       controller: cubit.firstNameController,
                     ),
                     const SizedBox(
@@ -97,9 +98,9 @@ class EditProfileScreen extends StatelessWidget {
                       height: 8,
                     ),
                     CustomTextFormField(
-                      fillColor: Color(0xffEAEAEA),
+                      fillColor: const Color(0xffEAEAEA),
                       hintText: '',
-                      hintStyle: TextStyle(color: Color(0xff848484)),
+                      hintStyle: const TextStyle(color: Color(0xff848484)),
                       controller: cubit.lastNameController,
                     ),
                     const SizedBox(
