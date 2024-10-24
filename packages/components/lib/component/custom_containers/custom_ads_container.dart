@@ -5,11 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomAdsContainer extends StatelessWidget {
   const CustomAdsContainer(
       {super.key,
-      required this.ComapanyLogo,
+      required this.companyLogo,
       required this.remainingDay,
       required this.companyName,
-      required this.offers, this.onTap});
-  final String ComapanyLogo;
+      required this.offers,
+      this.onTap});
+  final String companyLogo;
   final String remainingDay;
   final String companyName;
   final String offers;
@@ -32,7 +33,10 @@ class CustomAdsContainer extends StatelessWidget {
         ]),
         child: Stack(
           children: [
-            Image.asset(ComapanyLogo),
+            Image.network(
+              companyLogo,
+              fit: BoxFit.fill,
+            ),
             Positioned(
               top: 0,
               right: 0,
@@ -71,7 +75,8 @@ class CustomAdsContainer extends StatelessWidget {
               child: Container(
                 width: 160,
                 height: 70,
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                 decoration: const BoxDecoration(
                   color: Color(0xffF7F7F7),
                   borderRadius: BorderRadius.only(
