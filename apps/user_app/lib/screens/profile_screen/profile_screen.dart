@@ -2,6 +2,7 @@ import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_app/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:user_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -15,7 +16,9 @@ class ProfileScreen extends StatelessWidget {
         final bloc = context.read<ProfileBlocBloc>();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          appBar: AppBar(), //put cutom bar here
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+          ), //put cutom bar here
           body: SingleChildScrollView(
             child: Wrap(
               children: [
@@ -31,7 +34,11 @@ class ProfileScreen extends StatelessWidget {
                           firstName: 'First',
                           lasrName: "Last",
                           email: 'example@example.com',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const EditProfileScreen()));
+                          },
                         ),
                       ),
                       const Divider(height: 40),
