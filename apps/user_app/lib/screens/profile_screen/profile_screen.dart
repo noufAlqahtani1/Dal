@@ -83,6 +83,14 @@ class ProfileScreen extends StatelessWidget {
                         builder: (context, state) {
                           return LanguageSection(
                             changeLang: (int? value) {
+                              switch (value) {
+                                case 0:
+                                  context.setLocale(Locale('en'));
+                                  break;
+                                case 1:
+                                  context.setLocale(Locale('ar'));
+                                  break;
+                              }
                               bloc.add(ChangeLangEvent(value: value!));
                             },
                             value: bloc.langValue,
