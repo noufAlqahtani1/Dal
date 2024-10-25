@@ -4,7 +4,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final PreferredSizeWidget? bottom;
   CustomAppBar({required this.title, this.bottom});
-
+//
   @override
   Widget build(BuildContext context) {
     return AppBar(
