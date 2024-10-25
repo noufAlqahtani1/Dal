@@ -206,7 +206,7 @@ class LoginScreen extends StatelessWidget {
                           controller: cubit.loginController,
                           hintStyle: const TextStyle(color: Color(0x80000000)),
                           labelText: "Email".tr(),
-                          hintText: "Enter your email".tr(),
+                          hintText: "Email hint text".tr(),
                           fillColor: const Color(0xffEAEAEA),
                         ),
                         const SizedBox(

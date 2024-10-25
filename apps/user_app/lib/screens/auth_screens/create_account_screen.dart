@@ -201,7 +201,7 @@ class CreateAccountScreen extends StatelessWidget {
                           },
                           controller: cubit.emailController,
                           hintStyle: const TextStyle(color: Color(0x80000000)),
-                          hintText: "Enter your email".tr(),
+                          hintText: "Email hint text".tr(),
                           fillColor: const Color(0xffEAEAEA),
                         ),
                         const SizedBox(
