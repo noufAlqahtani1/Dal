@@ -1,3 +1,4 @@
+import 'package:components/component/custom_app_bar/custom_app_bar.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,10 @@ class ProfileScreen extends StatelessWidget {
         final bloc = context.read<ProfileBlocBloc>();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          appBar: AppBar(
+          appBar: CustomAppBar(
+            title: 'Profile'.tr(),
             automaticallyImplyLeading: false,
-          ), //put cutom bar here
+          ),
           body: SingleChildScrollView(
             child: Wrap(
               children: [
@@ -29,15 +31,23 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: ProfileInfoSection(
-                          imgurl: '',
-                          firstName: 'First',
-                          lasrName: "Last",
-                          email: 'example@example.com',
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    const EditProfileScreen()));
+                        child: BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
+                          builder: (context, state) {
+                            bloc.add(GetInfoEvent());
+                            if (state is GetInfoState) {
+                              return ProfileInfoSection(
+                                imgurl: '',
+                                firstName: state.firstName,
+                                lastName: state.lastName,
+                                email: state.email,
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          const EditProfileScreen()));
+                                },
+                              );
+                            }
+                            return const Text("There is an error");
                           },
                         ),
                       ),

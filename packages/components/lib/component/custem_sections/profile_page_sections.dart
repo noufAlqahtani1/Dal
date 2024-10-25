@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class ProfileInfoSection extends StatelessWidget {
   final String imgurl;
   final String firstName;
-  final String lasrName;
+  final String lastName;
   final String email;
   final Function() onPressed;
   const ProfileInfoSection(
       {super.key,
       required this.firstName,
-      required this.lasrName,
+      required this.lastName,
       required this.email,
       required this.onPressed,
       required this.imgurl});
@@ -33,7 +33,7 @@ class ProfileInfoSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '$firstName $lasrName',
+                    '$firstName $lastName',
                     style: Theme.of(context).textTheme.headlineSmall,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -66,7 +66,11 @@ class FilterSection extends StatelessWidget {
   final String text;
   final String subText;
   const FilterSection(
-      {super.key, required this.selectFilter, required this.categories, required this.text, required this.subText});
+      {super.key,
+      required this.selectFilter,
+      required this.categories,
+      required this.text,
+      required this.subText});
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +117,10 @@ class AppearanceSection extends StatelessWidget {
   const AppearanceSection({
     super.key,
     required this.onChanged,
-    required this.isOn, required this.text, required this.darkText, required this.lightText,
+    required this.isOn,
+    required this.text,
+    required this.darkText,
+    required this.lightText,
   });
   final Function(bool)? onChanged;
   final bool isOn;
@@ -154,11 +161,15 @@ class AppearanceSection extends StatelessWidget {
 
 class LanguageSection extends StatelessWidget {
   const LanguageSection(
-      {super.key, required this.changeLang, required this.value, required this.text, required this.label});
+      {super.key,
+      required this.changeLang,
+      required this.value,
+      required this.text,
+      required this.label});
   final Function(int?) changeLang;
   final int value;
-  final String text; 
-  final String label; 
+  final String text;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +185,7 @@ class LanguageSection extends StatelessWidget {
           child: CustomDrobDownButton(
             value: value,
             items: [
-               DropdownMenuEntry(
+              DropdownMenuEntry(
                 value: 0,
                 label: label,
               ),
@@ -200,7 +211,11 @@ class PlanSection extends StatelessWidget {
       required this.planDesc,
       required this.endDate,
       required this.remainDays,
-      required this.onPressed, required this.text, required this.daytext, required this.remainingDay, required this.subscription});
+      required this.onPressed,
+      required this.text,
+      required this.daytext,
+      required this.remainingDay,
+      required this.subscription});
   final String plan;
   final String planDesc;
   final String endDate;
