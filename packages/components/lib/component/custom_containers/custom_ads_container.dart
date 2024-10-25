@@ -39,7 +39,7 @@ class CustomAdsContainer extends StatelessWidget {
               child: Image.asset(ComapanyLogo,fit: BoxFit.fill,)),
             ),
           
-            //Image.asset(ComapanyLogo,fit: BoxFit.cover),
+////
             Positioned(
               top: 0,
               right: 0,
