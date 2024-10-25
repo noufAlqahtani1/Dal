@@ -1,8 +1,8 @@
 {
     "Onboarding title": "لا يطوفك العرض !",
-    "Onbording subtitle": "سجل الان واعرف ما هي الإعلانات القريبة منك!",
+    "Onbording subtitle": "سجل واعرف ايش الإعلانات القريبة منك!",
     "Login": "تسجيل الدخول",
-    "Or create an account": "او إنشاء حساب",
+    "Or create an account": " إنشاء حساب",
     "Email": "الايميل",
     "Email hint text": "ادخل الايميل",
     "Create An Account": "إنشاء حساب",
@@ -35,9 +35,11 @@
     "Dark Mode": "مظهر داكن",
     "Light Mode": "مظهر فاتح",
     "Language": "اللغه",
-    "English": "إنجليزي",
-    "Arabic": "عربي",
+    "English": "English",
+    "Arabic": "العربية",
     "Log out": "تسجيل الخروج",
-    "Edit Profile": "إعدادات الحساب",
+    "Edit Profile": "تعديل الحساب",
+    "First Name": "الاسم الاول",
+    "Last Name": "الاسم الاخير",
     "Save": "حفظ"
 }

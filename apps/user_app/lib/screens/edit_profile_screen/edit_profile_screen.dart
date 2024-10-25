@@ -73,7 +73,8 @@ class EditProfileScreen extends StatelessWidget {
                       height: 50,
                     ),
                     Text('First Name',
-                        style: Theme.of(context).textTheme.labelLarge),
+                            style: Theme.of(context).textTheme.labelLarge)
+                        .tr(),
                     const SizedBox(
                       height: 8,
                     ),
@@ -87,7 +88,8 @@ class EditProfileScreen extends StatelessWidget {
                       height: 24,
                     ),
                     Text('Last Name',
-                        style: Theme.of(context).textTheme.labelLarge),
+                            style: Theme.of(context).textTheme.labelLarge)
+                        .tr(),
                     const SizedBox(
                       height: 8,
                     ),
