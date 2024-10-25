@@ -14,7 +14,6 @@ final class ErrorState extends AddAdsState {
   ErrorState({required this.msg});
 }
 
-
 final class CategoryState extends AddAdsState {
   final int categoryValue;
   CategoryState({required this.categoryValue});
@@ -24,6 +23,7 @@ final class LocationState extends AddAdsState {
   final int locationValue;
   LocationState({required this.locationValue});
 }
+
 final class AdsImageState extends AddAdsState {
   final File? image;
   AdsImageState({required this.image});
@@ -34,4 +34,3 @@ final class SelectDateState extends AddAdsState {
   final DateTime? endDate;
   SelectDateState({this.startDate, this.endDate});
 }
-

@@ -200,13 +200,16 @@ class PlanSection extends StatelessWidget {
       required this.planDesc,
       required this.endDate,
       required this.remainDays,
-      required this.onPressed, required this.text});
+      required this.onPressed, required this.text, required this.daytext, required this.remainingDay, required this.subscription});
   final String plan;
   final String planDesc;
   final String endDate;
   final int remainDays;
   final void Function()? onPressed;
   final String text;
+  final String daytext;
+  final String remainingDay;
+  final String subscription;
 
   @override
   Widget build(BuildContext context) {
@@ -257,13 +260,13 @@ class PlanSection extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            '${remainDays.toString()} Days',
+                            '${remainDays.toString()} $daytext',
                             style: TextStyle(
                                 color: Theme.of(context).dividerColor,
                                 fontSize: 14),
                           ),
                           Text(
-                            'Remain',
+                            remainingDay,
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                         ],
@@ -284,7 +287,7 @@ class PlanSection extends StatelessWidget {
           child: CustomElevatedButton(
             onPressed: onPressed,
             backgroundColor: Theme.of(context).primaryColor,
-            child: Text('New Subscription Plan',
+            child: Text(subscription,
                 style: TextStyle(fontSize: 14, color: AppColors().buttonLable)),
           ),
         )
