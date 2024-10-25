@@ -33,7 +33,13 @@ class CustomAdsContainer extends StatelessWidget {
         ]),
         child: Stack(
           children: [
-            Image.network(companyLogo,fit: BoxFit.fill,height: 160,),
+            Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(companyLogo,fit: BoxFit.fill,)),
+            ),
+          
+////
             Positioned(
               top: 0,
               right: 0,
