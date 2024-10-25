@@ -12,13 +12,14 @@ class CustomBottomSheet extends StatelessWidget {
       required this.iconImage,
       required this.description,
       required this.remainingDay,
-      required this.offerType});
+      required this.offerType, this.onPressed});
   final String image;
   final String companyName;
   final String offerType;
   final String iconImage;
   final String description;
   final String remainingDay;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ class CustomBottomSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: onPressed,
                         style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff8CBFAE)),
                         child: Row(
