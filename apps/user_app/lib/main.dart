@@ -13,7 +13,7 @@ void main() async {
   await setup();
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) => EasyLocalization(
           supportedLocales: const [Locale('en'), Locale('ar')],
           path: 'assets/translations',
@@ -30,6 +30,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
