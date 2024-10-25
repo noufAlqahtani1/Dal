@@ -1,4 +1,5 @@
 import 'package:components/components.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -175,8 +176,10 @@ class VerifyScreen extends StatelessWidget {
                       children: [
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Text("Check your email",
-                              style: Theme.of(context).textTheme.headlineLarge),
+                          child: Text("Verify title",
+                                  style:
+                                      Theme.of(context).textTheme.headlineLarge)
+                              .tr(),
                         ),
                         const SizedBox(
                           height: 20,
@@ -185,8 +188,7 @@ class VerifyScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                               text: TextSpan(
-                                  text:
-                                      "We’ve send you a confirmation code at ",
+                                  text: "Verify subtitle".tr(),
                                   style: const TextStyle(
                                       color: Color(0xff444444), fontSize: 16),
                                   children: [
@@ -201,8 +203,9 @@ class VerifyScreen extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Text("Confirmation code: ",
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          child: Text("Confirmation code",
+                                  style: Theme.of(context).textTheme.bodyMedium)
+                              .tr(),
                         ),
                         const SizedBox(
                           height: 10,
@@ -224,14 +227,18 @@ class VerifyScreen extends StatelessWidget {
                             },
                             backgroundColor: const Color(0xffA51361),
                             child: Text("Verify",
-                                style: Theme.of(context).textTheme.bodyMedium)),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium)
+                                .tr()),
                         const SizedBox(
                           height: 20,
                         ),
                         TextButton(
                             onPressed: () {},
                             child: Text("Resend OTP",
-                                style: Theme.of(context).textTheme.bodyMedium))
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium)
+                                .tr())
                       ],
                     ),
                   ),

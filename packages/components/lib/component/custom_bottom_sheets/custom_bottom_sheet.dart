@@ -12,8 +12,7 @@ class CustomBottomSheet extends StatelessWidget {
       required this.iconImage,
       required this.description,
       required this.remainingDay,
-      required this.offerType,
-      this.onPressed});
+      required this.offerType, this.onPressed});
   final String image;
   final String companyName;
   final String offerType;
@@ -34,7 +33,7 @@ class CustomBottomSheet extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Image.network(
+              child: Image.asset(
                 image,
                 fit: BoxFit.fill,
               ),
@@ -92,7 +91,7 @@ class CustomBottomSheet extends StatelessWidget {
                   fontSize: 14,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

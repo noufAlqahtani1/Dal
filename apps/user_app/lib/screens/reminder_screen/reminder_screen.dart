@@ -1,5 +1,6 @@
 import 'package:components/component/custom_containers/custom_ads_container.dart';
 import 'package:components/component/custom_text/custom_text.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:user_app/data_layer/data_layer.dart';
 import 'package:user_app/setup/setup.dart';
@@ -14,8 +15,8 @@ class ReminderScreen extends StatelessWidget {
         backgroundColor: const Color(0xffA51361),
         foregroundColor: const Color(0xffF7F7F7),
         centerTitle: true,
-        title: const CustomText(
-          text: "My Reminder",
+        title: CustomText(
+          text: "My Reminders".tr(),
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Color(0xfff7f7f7),

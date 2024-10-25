@@ -1,5 +1,6 @@
 import 'package:components/component/custom_text_field/custom_text_form_field.dart';
 import 'package:components/components.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -183,7 +184,8 @@ class LoginScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text("Login",
-                              style: Theme.of(context).textTheme.bodyMedium),
+                                  style: Theme.of(context).textTheme.bodyMedium)
+                              .tr(),
                         ),
                         const SizedBox(
                           height: 48,
@@ -203,8 +205,8 @@ class LoginScreen extends StatelessWidget {
                           },
                           controller: cubit.loginController,
                           hintStyle: const TextStyle(color: Color(0x80000000)),
-                          labelText: "Email",
-                          hintText: "Enter your email",
+                          labelText: "Email".tr(),
+                          hintText: "Email hint text".tr(),
                           fillColor: const Color(0xffEAEAEA),
                         ),
                         const SizedBox(
@@ -218,7 +220,9 @@ class LoginScreen extends StatelessWidget {
                             },
                             backgroundColor: const Color(0xffA51361),
                             child: Text("Login",
-                                style: Theme.of(context).textTheme.bodyMedium)),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium)
+                                .tr()),
                         const SizedBox(
                           height: 20,
                         ),
@@ -231,7 +235,8 @@ class LoginScreen extends StatelessWidget {
                                         const CreateAccountScreen()));
                           },
                           child: Text("Create An Account",
-                              style: Theme.of(context).textTheme.bodyMedium),
+                                  style: Theme.of(context).textTheme.bodyMedium)
+                              .tr(),
                         )
                       ],
                     ),

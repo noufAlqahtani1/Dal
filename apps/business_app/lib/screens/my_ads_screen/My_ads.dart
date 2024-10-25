@@ -1,7 +1,6 @@
 
 
 import 'package:components/component/custom_app_bar/custom_app_bar.dart';
-import 'package:components/component/custom_text/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'current_ads.dart';
 import 'custom_tabbar.dart';

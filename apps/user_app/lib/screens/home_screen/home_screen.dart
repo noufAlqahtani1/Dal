@@ -1,4 +1,5 @@
 import 'package:components/components.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -38,8 +39,8 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const CustomText(
-                    text: "Hello!",
+                  CustomText(
+                    text: "Hello!".tr(),
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Color(0xfff7f7f7),
@@ -118,12 +119,12 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       CustomIconButton(
                         icon: 'assets/svg/coffee.svg',
-                        title: 'Cafes',
+                        title: 'Cafes'.tr(),
                         onPressed: () {},
                       ),
                       CustomIconButton(
                         icon: 'assets/svg/Bakery.svg',
-                        title: 'Bakery',
+                        title: 'Bakery'.tr(),
                         onPressed: () {
                           showModalBottomSheet(
                               isDismissible: true,
@@ -231,22 +232,22 @@ class HomeScreen extends StatelessWidget {
                       ),
                       CustomIconButton(
                         icon: 'assets/svg/Breakfast.svg',
-                        title: 'Breakfast',
+                        title: 'Breakfast'.tr(),
                         onPressed: () {},
                       ),
                       CustomIconButton(
                         icon: 'assets/svg/Ice_creams.svg',
-                        title: 'Ice creams',
+                        title: 'Ice creams'.tr(),
                         onPressed: () {},
                       ),
                       CustomIconButton(
                         icon: 'assets/svg/Dinning.svg',
-                        title: 'Dinning',
+                        title: 'Dinning'.tr(),
                         onPressed: () {},
                       ),
                       CustomIconButton(
                         icon: 'assets/svg/Drinks.svg',
-                        title: 'Drinks',
+                        title: 'Drinks'.tr(),
                         onPressed: () {},
                       ),
                     ],
@@ -256,10 +257,10 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: CustomText(
-                  text: 'Top',
+                  text: 'Top'.tr(),
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff444444),
@@ -346,10 +347,10 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: CustomText(
-                  text: 'Around you',
+                  text: 'Around you'.tr(),
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff444444),

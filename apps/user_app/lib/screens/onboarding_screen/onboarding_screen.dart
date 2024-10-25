@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:user_app/screens/auth_screens/create_account_screen.dart';
 import 'package:user_app/screens/auth_screens/login_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -27,13 +28,13 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text("Know Whats Ahead Of You!",
-                        style: Theme.of(context).textTheme.headlineLarge),
+                    Text("Onboarding title",
+                            style: Theme.of(context).textTheme.headlineLarge)
+                        .tr(),
                     SizedBox(
                       height: 9,
                     ),
-                    Text(
-                        "Login and get to know all about the activities around you ",
+                    Text("Onbording subtitle".tr(),
                         style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
@@ -51,20 +52,22 @@ class OnboardingScreen extends StatelessWidget {
                       },
                       backgroundColor: const Color(0xffA51361),
                       child: Text("Login",
-                          style: Theme.of(context).textTheme.titleMedium),
+                              style: Theme.of(context).textTheme.titleMedium)
+                          .tr(),
                     ),
                     const SizedBox(
                       height: 25,
                     ),
                     TextButton(
                         onPressed: () {
+                          print(EasyLocalization.of(context)!.currentLocale);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       const CreateAccountScreen()));
                         },
-                        child: Text("Or create an account",
+                        child: Text("Or create an account".tr(),
                             style: Theme.of(context).textTheme.bodyMedium))
                   ],
                 ),

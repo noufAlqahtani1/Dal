@@ -10,19 +10,16 @@ class CustomDrobDownButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).canvasColor,
+        color: const Color(0xffEAEAEA),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: DropdownButton<int>(
+        dropdownColor: const Color(0xffEAEAEA),
         value: value,
-        hint: Text(
-          'Select option',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        style: Theme.of(context).textTheme.bodyMedium,
+        hint: const Text('Select option'),
         items: items,
         onChanged: onChanged,
         isExpanded: true,

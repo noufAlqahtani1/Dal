@@ -46,7 +46,7 @@ class CustomAdsContainer extends StatelessWidget {
             Positioned.fill(
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
+                  child: Image.network(
                     companyLogo,
                     fit: BoxFit.fill,
                   )),
@@ -74,8 +74,12 @@ class CustomAdsContainer extends StatelessWidget {
                       width: 24,
                     ),
                     const SizedBox(width: 3),
-                    Text(remainingDay,
-                        style: TextStyle(color: AppColors().grey2)),
+                    CustomText(
+                      text: remainingDay,
+                      color: const Color(0xffB8B8B8),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ],
                 ),
               ),
@@ -99,13 +103,18 @@ class CustomAdsContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(companyName,
-                        style:
-                            TextStyle(color: Theme.of(context).indicatorColor)),
+                    CustomText(
+                      text: companyName,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                      color: const Color(0xff444444),
+                    ),
                     const SizedBox(height: 4),
-                    Text(
-                      offers,
-                      style: TextStyle(color: Theme.of(context).primaryColor),
+                    CustomText(
+                      text: offers,
+                      color: const Color(0xffA51361),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
                     ),
                   ],
                 ),

@@ -1,5 +1,6 @@
 import 'package:components/component/custom_text_field/custom_text_form_field.dart';
 import 'package:components/components.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -179,7 +180,8 @@ class CreateAccountScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text("Sign Up",
-                              style: Theme.of(context).textTheme.bodyLarge),
+                                  style: Theme.of(context).textTheme.bodyLarge)
+                              .tr(),
                         ),
                         const SizedBox(
                           height: 48,
@@ -199,7 +201,7 @@ class CreateAccountScreen extends StatelessWidget {
                           },
                           controller: cubit.emailController,
                           hintStyle: const TextStyle(color: Color(0x80000000)),
-                          hintText: "Enter your email",
+                          hintText: "Email hint text".tr(),
                           fillColor: const Color(0xffEAEAEA),
                         ),
                         const SizedBox(
@@ -213,7 +215,9 @@ class CreateAccountScreen extends StatelessWidget {
                             },
                             backgroundColor: const Color(0xffA51361),
                             child: Text("Sign Up",
-                                style: Theme.of(context).textTheme.bodyMedium)),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium)
+                                .tr()),
                         const SizedBox(
                           height: 20,
                         ),
@@ -221,7 +225,9 @@ class CreateAccountScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Already Have An Account?",
-                                style: Theme.of(context).textTheme.bodyMedium),
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium)
+                                .tr(),
                             TextButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -230,9 +236,10 @@ class CreateAccountScreen extends StatelessWidget {
                                           builder: (context) => LoginScreen()));
                                 },
                                 child: Text("Login",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium)),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium)
+                                    .tr()),
                           ],
                         )
                       ],
