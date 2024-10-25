@@ -1,11 +1,12 @@
-
+///////
+///
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 
 
 class CurrentAdsTap extends StatelessWidget {
   const CurrentAdsTap({super.key});
-    
+  
   @override
   Widget build(BuildContext context) {
         final screenWidth = MediaQuery.of(context).size.width;
