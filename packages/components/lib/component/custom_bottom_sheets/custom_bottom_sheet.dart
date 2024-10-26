@@ -1,6 +1,9 @@
+import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../custom_text/custom_text.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet(
@@ -9,16 +12,21 @@ class CustomBottomSheet extends StatelessWidget {
       required this.companyName,
       required this.iconImage,
       required this.description,
-      required this.remainingDay});
+      required this.remainingDay,
+      required this.offerType,
+      this.onPressed});
   final String image;
   final String companyName;
+  final String offerType;
   final String iconImage;
   final String description;
   final String remainingDay;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).canvasColor,
       height: 650,
       child: Column(
         children: [
@@ -43,8 +51,24 @@ class CustomBottomSheet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(companyName,
-                        style: Theme.of(context).textTheme.bodyMedium),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          text: offerType,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: const Color(0xffA51361),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          companyName,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                     Container(
                       width: 35,
                       height: 35,
@@ -61,8 +85,10 @@ class CustomBottomSheet extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Text(description,
-                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -70,7 +96,7 @@ class CustomBottomSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: onPressed,
                         style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff8CBFAE)),
                         child: Row(
@@ -79,15 +105,17 @@ class CustomBottomSheet extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text('Remind me ',
-                                style: Theme.of(context).textTheme.titleMedium),
+                            Text(
+                              'Remind me ',
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
                           ],
                         )),
                     Row(
                       children: [
                         SvgPicture.asset('assets/svg/clock.svg'),
                         Text(remainingDay,
-                            style: Theme.of(context).textTheme.titleMedium)
+                            style: TextStyle(color: AppColors().grey2))
                       ],
                     ),
                   ],
