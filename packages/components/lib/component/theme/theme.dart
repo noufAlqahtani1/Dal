@@ -1,15 +1,16 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
     primaryColor: AppColors.pink,
-    hintColor: AppColors.pink,
+    hintColor: AppColors.yellow,
     scaffoldBackgroundColor: AppColors.white1,
     dividerColor: AppColors.pink,
     cardColor: AppColors.white2,
     canvasColor: AppColors.grey,
-    indicatorColor: AppColors.black1,
+    indicatorColor: AppColors.black2,
     textTheme: TextTheme(
       headlineLarge: TextStyle(
           color: AppColors.black2, fontSize: 36, fontWeight: FontWeight.w500),
@@ -20,26 +21,25 @@ class AppThemes {
       labelLarge: TextStyle(
           color: AppColors.black2, fontSize: 16, fontWeight: FontWeight.w700),
       labelSmall: TextStyle(
-          color: AppColors.black2, fontSize: 14, fontWeight: FontWeight.w700),
+          color: AppColors.white1, fontSize: 14, fontWeight: FontWeight.w500),
       bodyLarge: TextStyle(
           color: AppColors.black2, fontSize: 16, fontWeight: FontWeight.w500),
       bodyMedium: TextStyle(
           color: AppColors.black2, fontSize: 14, fontWeight: FontWeight.w500),
       bodySmall: TextStyle(
           color: AppColors.black2, fontSize: 12, fontWeight: FontWeight.w500),
-      titleMedium: TextStyle(fontSize: 14, color: AppColors().buttonLable),
     ),
     brightness: Brightness.light,
   );
 
   static final darkTheme = ThemeData(
     primaryColor: AppColors.pink,
-    hintColor: AppColors.white1,
+    hintColor: AppColors.yellow,
     dividerColor: AppColors.yellow,
     scaffoldBackgroundColor: AppColors.black1,
     cardColor: AppColors.black2,
     canvasColor: AppColors.black2,
-    indicatorColor: AppColors.black1,
+    indicatorColor: AppColors.white1,
     textTheme: TextTheme(
       headlineLarge: TextStyle(
           color: AppColors.white2, fontSize: 36, fontWeight: FontWeight.w500),
@@ -57,7 +57,6 @@ class AppThemes {
           color: AppColors.white2, fontSize: 14, fontWeight: FontWeight.w500),
       bodySmall: TextStyle(
           color: AppColors.white2, fontSize: 12, fontWeight: FontWeight.w500),
-      titleMedium: TextStyle(fontSize: 14, color: AppColors().buttonLable),
     ),
     brightness: Brightness.light,
   );
