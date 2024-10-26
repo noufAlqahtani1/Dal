@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                         child: ProfileInfoSection(
                           imgurl: '',
                           firstName: 'First',
-                          lasrName: "Last",
+                          lastName: "Last",
                           email: 'example@example.com',
                           onPressed: () {
                             //   Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
