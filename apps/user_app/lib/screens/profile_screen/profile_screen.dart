@@ -1,6 +1,9 @@
+import 'package:components/component/custom_app_bar/custom_app_bar.dart';
 import 'package:components/components.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_app/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:user_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
         final bloc = context.read<ProfileBlocBloc>();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          appBar: AppBar(), //put cutom bar here
+          appBar: CustomAppBar(title: 'Profile'),
           body: SingleChildScrollView(
             child: Wrap(
               children: [
@@ -30,7 +33,11 @@ class ProfileScreen extends StatelessWidget {
                           firstName: 'First',
                           lasrName: "Last",
                           email: 'example@example.com',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const EditProfileScreen()));
+                          },
                         ),
                       ),
                       const Divider(height: 40),
@@ -41,6 +48,8 @@ class ProfileScreen extends StatelessWidget {
                               bloc.add(UpdateFilterEvent(category: String));
                             },
                             categories: bloc.categories,
+                            text: 'My filters'.tr(),
+                            subText: 'Press to add or remove filter'.tr(),
                           );
                         },
                       ),
@@ -52,6 +61,9 @@ class ProfileScreen extends StatelessWidget {
                               bloc.add(ChangeModeEvent());
                             },
                             isOn: bloc.DarkModeOn,
+                            text: 'Appearance'.tr(),
+                            darkText: 'Dark Mode'.tr(),
+                            lightText: 'Light Mode'.tr(),
                           );
                         },
                       ),
@@ -63,6 +75,8 @@ class ProfileScreen extends StatelessWidget {
                               bloc.add(ChangeLangEvent(value: value!));
                             },
                             value: bloc.langValue,
+                            text: 'Language'.tr(),
+                            label: 'English'.tr(),
                           );
                         },
                       ),
@@ -70,6 +84,7 @@ class ProfileScreen extends StatelessWidget {
                         onPressed: () {
                           //
                         },
+                        text: 'Log out'.tr(),
                       ),
                     ],
                   ),
