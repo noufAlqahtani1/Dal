@@ -1,3 +1,4 @@
+import 'package:components/component/background/background.dart';
 import 'package:components/component/custom_text_field/custom_text_form_field.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -53,118 +54,7 @@ class CreateAccountScreen extends StatelessWidget {
               key: cubit.formKey,
               child: Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Transform.translate(
-                      offset: const Offset(-191, 0),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(19.74 / 360),
-                        child: Container(
-                          height: 326,
-                          width: 346.53,
-                          decoration: BoxDecoration(
-                              color: const Color(0x80F6EFDE),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Transform.translate(
-                      offset: const Offset(-40, 110),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-32.12 / 360),
-                        child: Container(
-                          height: 249.17,
-                          width: 247.82,
-                          decoration: BoxDecoration(
-                              color: const Color(0x20D9D9D9),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Transform.translate(
-                      offset: const Offset(30, 40),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-62.61 / 360),
-                        child: Container(
-                          height: 95.17,
-                          width: 106.34,
-                          decoration: BoxDecoration(
-                              color: const Color(0x20D9D9D9),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Transform.translate(
-                      offset: const Offset(85, -160),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-39.05 / 360),
-                        child: Container(
-                          height: 114.87,
-                          width: 114.99,
-                          decoration: BoxDecoration(
-                              color: const Color(0x80FCECF4),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Transform.translate(
-                      offset: const Offset(-118, 0),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-39.05 / 360),
-                        child: Container(
-                          height: 190.68,
-                          width: 169.29,
-                          decoration: BoxDecoration(
-                              color: const Color(0x20D9D9D9),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Transform.translate(
-                      offset: const Offset(-150, 120),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-17.06 / 360),
-                        child: Container(
-                          height: 190.68,
-                          width: 189.89,
-                          decoration: BoxDecoration(
-                              color: const Color(0x80F6EFDE),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Transform.translate(
-                      offset: const Offset(120, 80),
-                      child: RotationTransition(
-                        turns: const AlwaysStoppedAnimation(-45.46 / 360),
-                        child: Container(
-                          height: 190.68,
-                          width: 195.79,
-                          decoration: BoxDecoration(
-                              color: const Color(0x20D9D9D9),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                    ),
-                  ),
+                  Background(),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
@@ -176,13 +66,12 @@ class CreateAccountScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("Sign Up",
-                                  style: Theme.of(context).textTheme.bodyLarge)
-                              .tr(),
-                        ),
+                        Text("Sign Up",
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall)
+                            .tr(),
                         const SizedBox(
                           height: 48,
                         ),
@@ -200,9 +89,16 @@ class CreateAccountScreen extends StatelessWidget {
                             return null;
                           },
                           controller: cubit.emailController,
-                          hintStyle: const TextStyle(color: Color(0x80000000)),
+                          hintStyle:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.color
+                                        ?.withOpacity(0.5),
+                                  ),
                           hintText: "Email hint text".tr(),
-                          fillColor: const Color(0xffEAEAEA),
+                          fillColor: Theme.of(context).canvasColor,
                         ),
                         const SizedBox(
                           height: 45,
@@ -213,10 +109,10 @@ class CreateAccountScreen extends StatelessWidget {
                                 cubit.signUp();
                               }
                             },
-                            backgroundColor: const Color(0xffA51361),
+                            backgroundColor: Theme.of(context).primaryColor,
                             child: Text("Sign Up",
                                     style:
-                                        Theme.of(context).textTheme.bodyMedium)
+                                        Theme.of(context).textTheme.labelSmall)
                                 .tr()),
                         const SizedBox(
                           height: 20,
@@ -236,9 +132,9 @@ class CreateAccountScreen extends StatelessWidget {
                                           builder: (context) => LoginScreen()));
                                 },
                                 child: Text("Login",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium)
+                                        style: TextStyle(
+                                            color: AppColors().green,
+                                            fontSize: 16))
                                     .tr()),
                           ],
                         )

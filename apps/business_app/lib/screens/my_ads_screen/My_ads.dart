@@ -16,7 +16,7 @@ class MyAdsScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
       appBar: CustomAppBar(title: "My Ads",
-      bottom: MyAdsTabBar(),),
+      bottom: MyAdsTabBar(), automaticallyImplyLeading: false,),
         body: const TabBarView(
           children: [
             CurrentAdsTap(),

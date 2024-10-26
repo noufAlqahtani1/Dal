@@ -1,3 +1,4 @@
+import 'package:components/component/custom_app_bar/custom_app_bar.dart';
 import 'package:components/component/custom_containers/custom_ads_container.dart';
 import 'package:components/component/custom_text/custom_text.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,16 +12,8 @@ class ReminderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffA51361),
-        foregroundColor: const Color(0xffF7F7F7),
-        centerTitle: true,
-        title: CustomText(
-          text: "My Reminders".tr(),
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Color(0xfff7f7f7),
-        ),
+      appBar: CustomAppBar(
+        title: "My Reminders".tr(), automaticallyImplyLeading: false,
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

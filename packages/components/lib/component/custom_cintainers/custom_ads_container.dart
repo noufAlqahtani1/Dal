@@ -5,11 +5,11 @@ import 'package:flutter_svg/svg.dart';
 class CustomAdsContainer extends StatelessWidget {
   const CustomAdsContainer(
       {super.key,
-      required this.ComapanyLogo,
+      required this.companyLogo,
       required this.remainingDay,
       required this.companyName,
       required this.offers});
-  final String ComapanyLogo;
+  final String companyLogo;
   final String remainingDay;
   final String companyName;
   final String offers;
@@ -29,7 +29,9 @@ class CustomAdsContainer extends StatelessWidget {
       ]),
       child: Stack(
         children: [
-          Image.asset(ComapanyLogo),
+          Image.network(
+            companyLogo,
+          ),
           Positioned(
             top: 0,
             right: 0,
@@ -51,11 +53,13 @@ class CustomAdsContainer extends StatelessWidget {
                     width: 24,
                   ),
                   const SizedBox(width: 3),
-                  CustomText(
-                    text: remainingDay,
-                    color: const Color(0xffB8B8B8),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                  Text(
+                    remainingDay,
+                    style: TextStyle(
+                      color: const Color(0xffB8B8B8),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
@@ -79,19 +83,13 @@ class CustomAdsContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(
-                    text: companyName,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xff444444),
+                  Text(
+                    companyName,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  const SizedBox(height: 4),
-                  CustomText(
-                    text: offers,
-                    color: const Color(0xffA51361),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+                  SizedBox(height: 4),
+                  Text(offers,
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ],
               ),
             ),

@@ -17,10 +17,7 @@ class ProfileScreen extends StatelessWidget {
         final bloc = context.read<ProfileBlocBloc>();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          appBar: CustomAppBar(
-            title: 'Profile'.tr(),
-            automaticallyImplyLeading: false,
-          ),
+          appBar: CustomAppBar(title: 'Profile', automaticallyImplyLeading: false,),
           body: SingleChildScrollView(
             child: Wrap(
               children: [
@@ -31,19 +28,15 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
-                          builder: (context, state) {
-                            return ProfileInfoSection(
-                              imgurl: '',
-                              firstName: bloc.firstName,
-                              lastName: bloc.lastName,
-                              email: bloc.email,
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        const EditProfileScreen()));
-                              },
-                            );
+                        child: ProfileInfoSection(
+                          imgurl: '',
+                          firstName: 'First',
+                          lastName: "Last",
+                          email: 'example@example.com',
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const EditProfileScreen()));
                           },
                         ),
                       ),

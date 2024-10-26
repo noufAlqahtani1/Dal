@@ -1,8 +1,6 @@
+import 'package:components/components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../custom_text/custom_text.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet(
@@ -12,7 +10,8 @@ class CustomBottomSheet extends StatelessWidget {
       required this.iconImage,
       required this.description,
       required this.remainingDay,
-      required this.offerType, this.onPressed});
+      required this.offerType,
+      this.onPressed});
   final String image;
   final String companyName;
   final String offerType;
@@ -24,7 +23,8 @@ class CustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 650,
+      color: Theme.of(context).canvasColor,
+      height: MediaQuery.of(context).size.height / 1.3,
       child: Column(
         children: [
           Container(
@@ -33,7 +33,7 @@ class CustomBottomSheet extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Image.asset(
+              child: Image.network(
                 image,
                 fit: BoxFit.fill,
               ),
@@ -51,20 +51,17 @@ class CustomBottomSheet extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(
-                          text: offerType,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800,
-                          color: const Color(0xffA51361),
+                        Text(
+                          offerType,
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor),
                         ),
                         const SizedBox(
                           height: 8,
                         ),
-                        CustomText(
-                          text: companyName,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: const Color(0xff444444),
+                        Text(
+                          companyName,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     ),
@@ -84,11 +81,9 @@ class CustomBottomSheet extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                CustomText(
-                  text: description,
-                  color: const Color(0xff444444),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(
                   height: 30,
@@ -106,19 +101,17 @@ class CustomBottomSheet extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            const CustomText(
-                                text: 'Remind me ',
-                                color: Color(0xffF7F7F7),
-                                fontSize: 14),
+                            Text(
+                              'Remind me ',
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
                           ],
                         )),
                     Row(
                       children: [
                         SvgPicture.asset('assets/svg/clock.svg'),
-                        CustomText(
-                            text: remainingDay,
-                            color: const Color(0xffB8B8B8),
-                            fontSize: 14)
+                        Text(remainingDay,
+                            style: TextStyle(color: AppColors().grey2))
                       ],
                     ),
                   ],

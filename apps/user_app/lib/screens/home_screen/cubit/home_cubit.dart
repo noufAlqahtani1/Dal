@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(LoadingState());
 
     try {
-      allAds = await supabase.from("ad").select('*');
+      allAds = await supabase.from("ad").select('*,business(logo_img)');
       emit(SuccessState());
     } on PostgrestException catch (e) {
       emit(ErrorState(msg: e.message));

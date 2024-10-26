@@ -20,30 +20,31 @@ class HomeScreen extends StatelessWidget {
         final cubit = context.read<HomeCubit>();
         cubit.getAllAds();
         return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(
-            backgroundColor: const Color(0xffA51361),
-            foregroundColor: const Color(0xffF7F7F7),
+            backgroundColor: Theme.of(context).primaryColor,
             leadingWidth: 200,
             leading: Padding(
               padding: const EdgeInsets.only(left: 20, bottom: 10),
               child: Row(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                    child: Image.asset(
-                      'assets/png/Frame 65.png',
-                      fit: BoxFit.fill,
-                    ),
+                  const SizedBox(
+                    width: 20,
                   ),
+                  Container(
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/png/profile.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )),
                   const SizedBox(
                     width: 10,
                   ),
-                  CustomText(
-                    text: "Hello!".tr(),
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xfff7f7f7),
+                  Text(
+                    "Hello!".tr(),
+                    style: Theme.of(context).textTheme.labelLarge,
                   )
                 ],
               ),
@@ -52,7 +53,9 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //go to notifications?
+                    },
                     icon: SvgPicture.asset('assets/svg/notification.svg')),
               )
             ],
@@ -69,32 +72,31 @@ class HomeScreen extends StatelessWidget {
                       color: const Color(0xffF6B00E),
                       borderRadius: BorderRadius.circular(4)),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Expanded(
+                      Expanded(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Stack(
+                            alignment: Alignment.bottomLeft,
                             clipBehavior: Clip.none,
                             children: [
                               Positioned(
                                 top: 0,
-                                child: CustomText(
-                                  text: 'Never miss out',
-                                  fontSize: 24,
-                                  color: Color(0xfff7f7f7),
-                                  fontWeight: FontWeight.bold,
+                                child: Text(
+                                  'Never miss out',
+                                  style: Theme.of(context).textTheme.labelLarge,
                                 ),
                               ),
                               Positioned(
                                 bottom: 20,
                                 child: SizedBox(
                                   width: 150,
-                                  child: CustomText(
-                                    text:
-                                        'Catch the latest deals and offers happening near you!',
-                                    fontSize: 14,
-                                    color: Color(0xfff7f7f7),
+                                  child: Text(
+                                    'Catch the latest deals and offers happening near you!',
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
                                   ),
                                 ),
                               )
@@ -162,6 +164,8 @@ class HomeScreen extends StatelessWidget {
                                                       context: context,
                                                       builder: (context) =>
                                                           AlertDialog(
+                                                            contentPadding:
+                                                                EdgeInsets.zero,
                                                             content:
                                                                 CustomBottomSheet(
                                                               image:
@@ -179,12 +183,12 @@ class HomeScreen extends StatelessWidget {
                                                             ),
                                                           ));
                                                 },
-                                                child: Icon(
+                                                child: const Icon(
                                                     color: Colors.blueAccent,
                                                     size: 35,
                                                     Icons.bakery_dining),
                                               )),
-                                          Marker(
+                                          const Marker(
                                               width: 100,
                                               height: 100,
                                               point: LatLng(24.825841754565865,
@@ -193,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                                                   color: Colors.blueAccent,
                                                   size: 35,
                                                   Icons.bakery_dining)),
-                                          Marker(
+                                          const Marker(
                                               width: 100,
                                               height: 100,
                                               point: LatLng(24.829035569055947,
@@ -202,7 +206,7 @@ class HomeScreen extends StatelessWidget {
                                                   color: Colors.blueAccent,
                                                   size: 35,
                                                   Icons.bakery_dining)),
-                                          Marker(
+                                          const Marker(
                                               width: 100,
                                               height: 100,
                                               point: LatLng(24.819142266372218,
@@ -215,12 +219,12 @@ class HomeScreen extends StatelessWidget {
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(24),
+                                      padding: const EdgeInsets.all(24),
                                       child: IconButton(
                                           onPressed: () {
                                             Navigator.pop(context);
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                               size: 40,
                                               color: Colors.red,
                                               Icons.close_rounded)),
@@ -258,12 +262,10 @@ class HomeScreen extends StatelessWidget {
                 height: 24,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: CustomText(
-                  text: 'Top'.tr(),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff444444),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  'Top'.tr(),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               const SizedBox(
@@ -348,12 +350,10 @@ class HomeScreen extends StatelessWidget {
                 height: 12,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: CustomText(
-                  text: 'Around you'.tr(),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff444444),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  'Around you'.tr(),
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               const SizedBox(
@@ -392,7 +392,7 @@ class HomeScreen extends StatelessWidget {
                             children: cubit.allAds!
                                 .map(
                                   (e) => CustomAdsContainer(
-                                    companyLogo: e['bannerimg'] ??
+                                    companyLogo: e['business']['logo_img'] ??
                                         "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
                                     remainingDay: '4d',
                                     companyName: e['title'] ?? "----",

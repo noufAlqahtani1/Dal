@@ -1,9 +1,11 @@
 import 'package:components/component/theme/theme.dart';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:user_app/screens/auth_screens/create_account_screen.dart';
 import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
+import 'package:user_app/screens/home_screen/home_screen.dart';
 import 'package:user_app/services/supabase/supabase_configration.dart';
 import 'package:user_app/setup/setup.dart';
 
@@ -34,10 +36,10 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      theme: AppThemes.lightTheme,
+      theme: AppThemes.darkTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
-      home: CreateAccountScreen(),
+      home: BottomNavBarScreen(),
     );
   }
 }
