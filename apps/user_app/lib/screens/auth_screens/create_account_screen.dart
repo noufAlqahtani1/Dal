@@ -132,8 +132,9 @@ class CreateAccountScreen extends StatelessWidget {
                                           builder: (context) => LoginScreen()));
                                 },
                                 child: Text("Login",
-                                        style:
-                                            TextStyle(color: AppColors().green))
+                                        style: TextStyle(
+                                            color: AppColors().green,
+                                            fontSize: 16))
                                     .tr()),
                           ],
                         )

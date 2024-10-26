@@ -54,11 +54,10 @@ class CustomBottomSheet extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(
-                          text: offerType,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800,
-                          color: const Color(0xffA51361),
+                        Text(
+                          offerType,
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor),
                         ),
                         const SizedBox(
                           height: 8,

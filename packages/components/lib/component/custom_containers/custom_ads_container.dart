@@ -74,11 +74,9 @@ class CustomAdsContainer extends StatelessWidget {
                       width: 24,
                     ),
                     const SizedBox(width: 3),
-                    CustomText(
-                      text: remainingDay,
-                      color: const Color(0xffB8B8B8),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                    Text(
+                      remainingDay,
+                      style: TextStyle(color: AppColors().grey2),
                     ),
                   ],
                 ),
