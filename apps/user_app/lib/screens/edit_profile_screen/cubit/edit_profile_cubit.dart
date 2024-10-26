@@ -30,10 +30,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   Future<void> changeName(String firstName, String lastName) async {
     try {
       emit(LoadingState());
-      await supabase.from('users').update({
-        'first_name': firstName,
-        'last_name': lastName
-      }).eq('id', supabase.auth.currentUser!.id);
+      await supabase
+          .from('users')
+          .update({'first_name': firstName, 'last_name': lastName}).eq(
+              'id', supabase.auth.currentUser!.id);
       emit(SuccessState());
     } on AuthException catch (e) {
       emit(ErrorState(msg: e.message));
@@ -44,5 +44,12 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     } catch (e) {
       emit(ErrorState(msg: e.toString()));
     }
+  }
+
+  @override
+  Future<void> close() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    return super.close();
   }
 }

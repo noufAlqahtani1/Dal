@@ -33,21 +33,17 @@ class ProfileScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         child: BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                           builder: (context, state) {
-                            bloc.add(GetInfoEvent());
-                            if (state is GetInfoState) {
-                              return ProfileInfoSection(
-                                imgurl: '',
-                                firstName: state.firstName,
-                                lastName: state.lastName,
-                                email: state.email,
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const EditProfileScreen()));
-                                },
-                              );
-                            }
-                            return const Text("There is an error");
+                            return ProfileInfoSection(
+                              imgurl: '',
+                              firstName: bloc.firstName,
+                              lastName: bloc.lastName,
+                              email: bloc.email,
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const EditProfileScreen()));
+                              },
+                            );
                           },
                         ),
                       ),
@@ -85,10 +81,10 @@ class ProfileScreen extends StatelessWidget {
                             changeLang: (int? value) {
                               switch (value) {
                                 case 0:
-                                  context.setLocale(Locale('en'));
+                                  context.setLocale(const Locale('en'));
                                   break;
                                 case 1:
-                                  context.setLocale(Locale('ar'));
+                                  context.setLocale(const Locale('ar'));
                                   break;
                               }
                               bloc.add(ChangeLangEvent(value: value!));
