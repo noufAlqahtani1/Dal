@@ -1,8 +1,6 @@
+import 'package:components/components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../custom_text/custom_text.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet(
@@ -12,19 +10,29 @@ class CustomBottomSheet extends StatelessWidget {
       required this.iconImage,
       required this.description,
       required this.remainingDay,
-      required this.offerType, this.onPressed});
+      required this.offerType,
+      this.onPressed,
+      required this.viewLocation,
+      this.locationOnPressed});
   final String image;
   final String companyName;
   final String offerType;
   final String iconImage;
   final String description;
   final String remainingDay;
+  final String viewLocation;
   final void Function()? onPressed;
+  final void Function()? locationOnPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 650,
+      height: MediaQuery.of(context).size.height / 1.3,
+      decoration: BoxDecoration(
+        color: Theme.of(context).canvasColor,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(18), topRight: Radius.circular(18)),
+      ),
       child: Column(
         children: [
           Container(
@@ -33,7 +41,7 @@ class CustomBottomSheet extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Image.asset(
+              child: Image.network(
                 image,
                 fit: BoxFit.fill,
               ),
@@ -48,51 +56,52 @@ class CustomBottomSheet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomText(
-                          text: offerType,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800,
-                          color: const Color(0xffA51361),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        CustomText(
-                          text: companyName,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: const Color(0xff444444),
-                        ),
-                      ],
+                    Text(
+                      offerType,
+                      style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
-                    Container(
-                      width: 35,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: const Color(0xffA51361))),
-                      child: SvgPicture.asset(
-                        iconImage,
-                        colorFilter: const ColorFilter.mode(
-                            Color(0xffA51361), BlendMode.srcIn),
-                        fit: BoxFit.values[6],
-                      ),
-                    )
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextButton(
+                        onPressed: locationOnPressed,
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/svg/discover.svg',
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).primaryColor,
+                                  BlendMode.srcIn),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              viewLocation,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ],
+                        ))
                   ],
                 ),
+                Text(
+                  companyName,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 10),
-                CustomText(
-                  text: description,
-                  color: const Color(0xff444444),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
+              ],
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -106,26 +115,42 @@ class CustomBottomSheet extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            const CustomText(
-                                text: 'Remind me ',
-                                color: Color(0xffF7F7F7),
-                                fontSize: 14),
+                            Text(
+                              'Remind me ',
+                              style: Theme.of(context).textTheme.labelSmall,
+                            ),
                           ],
                         )),
                     Row(
                       children: [
                         SvgPicture.asset('assets/svg/clock.svg'),
-                        CustomText(
-                            text: remainingDay,
-                            color: const Color(0xffB8B8B8),
-                            fontSize: 14)
+                        Text(remainingDay,
+                            style: TextStyle(color: AppColors().grey2)),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          width: 35,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).primaryColor,
+                              border:
+                                  Border.all(color: const Color(0xffA51361))),
+                          child: SvgPicture.asset(
+                            iconImage,
+                            colorFilter: const ColorFilter.mode(
+                                Color(0xff7f7f7f7), BlendMode.srcIn),
+                            fit: BoxFit.values[6],
+                          ),
+                        ),
                       ],
                     ),
                   ],
-                )
+                ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );

@@ -8,7 +8,7 @@ import 'package:user_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-
+//
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
