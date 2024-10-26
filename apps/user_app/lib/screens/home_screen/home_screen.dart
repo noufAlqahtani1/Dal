@@ -69,42 +69,44 @@ class HomeScreen extends StatelessWidget {
                   width: 370,
                   height: 157,
                   decoration: BoxDecoration(
-                      color: const Color(0xffF6B00E),
-                      borderRadius: BorderRadius.circular(4)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    color: const Color(0xffF6B00E),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Stack(
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Stack(
-                            alignment: Alignment.bottomLeft,
-                            clipBehavior: Clip.none,
-                            children: [
-                              Positioned(
-                                top: 0,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'title card'.tr(),
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: SizedBox(
+                                width: 130,
                                 child: Text(
-                                  'Never miss out',
-                                  style: Theme.of(context).textTheme.labelLarge,
+                                  'sub title card'.tr(),
+                                  style: Theme.of(context).textTheme.labelSmall,
                                 ),
                               ),
-                              Positioned(
-                                bottom: 20,
-                                child: SizedBox(
-                                  width: 150,
-                                  child: Text(
-                                    'Catch the latest deals and offers happening near you!',
-                                    style:
-                                        Theme.of(context).textTheme.labelSmall,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Image.asset('assets/png/29-Influencer 1.png')
+                      Positioned(
+                        right: 0,
+                        top: 8,
+                        child: Image.asset(
+                          'assets/png/29-Influencer 1.png',
+                        ),
+                      ),
                     ],
                   ),
                 ),
