@@ -308,8 +308,8 @@ class HomeScreen extends StatelessWidget {
                       if (state is SuccessState) {
                         return FadeTransitionSwitcher(
                           child: Row(
-                            key: ValueKey(cubit.allAds!.length),
-                            children: cubit.allAds!
+                            key: ValueKey(getIt.get<DataLayer>().allAds!.length),
+                            children: getIt.get<DataLayer>().allAds!
                                 .map(
                                   (e) => CustomAdsContainer(
                                     companyLogo: e['bannerimg'] ??
@@ -401,8 +401,8 @@ class HomeScreen extends StatelessWidget {
                       if (state is SuccessState) {
                         return FadeTransitionSwitcher(
                           child: Row(
-                            key: ValueKey(cubit.allAds!.length),
-                            children: cubit.allAds!
+                            key: ValueKey(getIt.get<DataLayer>().allAds!.length),
+                            children: getIt.get<DataLayer>().allAds!
                                 .map(
                                   (e) => CustomAdsContainer(
                                     companyLogo: e['business']['logo_img'] ??

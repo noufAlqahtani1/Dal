@@ -49,51 +49,57 @@ class CustomBottomSheet extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: SizedBox(
+              height: 179,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          offerType,
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        TextButton(
+                            onPressed: locationOnPressed,
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/svg/discover.svg',
+                                  colorFilter: ColorFilter.mode(
+                                      Theme.of(context).primaryColor,
+                                      BlendMode.srcIn),
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  viewLocation,
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            ))
+                      ],
+                    ),
                     Text(
-                      offerType,
-                      style: TextStyle(color: Theme.of(context).primaryColor),
+                      companyName,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
-                    const SizedBox(
-                      height: 8,
+                    const SizedBox(height: 10),
+                    Text(
+                      description,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
-                    TextButton(
-                        onPressed: locationOnPressed,
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/svg/discover.svg',
-                              colorFilter: ColorFilter.mode(
-                                  Theme.of(context).primaryColor,
-                                  BlendMode.srcIn),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              viewLocation,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
-                        ))
                   ],
                 ),
-                Text(
-                  companyName,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  description,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
+              ),
             ),
           ),
           const Spacer(),
