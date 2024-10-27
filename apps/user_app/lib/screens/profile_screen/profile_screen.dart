@@ -34,7 +34,9 @@ class ProfileScreen extends StatelessWidget {
                         child: BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                           builder: (context, state) {
                             return ProfileInfoSection(
-                              imgurl: '',
+                              imgurl: bloc.image == ''
+                                  ? 'https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg'
+                                  : bloc.image,
                               firstName: bloc.firstName,
                               lastName: bloc.lastName,
                               email: bloc.email,
@@ -64,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                       BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                         builder: (context, state) {
                           return AppearanceSection(
-                            onChanged: (bool) {
+                            onChanged: (bool isOn) {
                               bloc.add(ChangeModeEvent());
                             },
                             isOn: bloc.DarkModeOn,
