@@ -1,5 +1,6 @@
 import 'package:business_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
 import 'package:business_app/services/supabase/supabase_configration.dart';
+import 'package:business_app/setup/setup.dart';
 import 'package:components/component/theme/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -9,6 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await SupabaseConfigration.connectSupabase();
+  await setup();
   runApp(
     DevicePreview(
       enabled: true,
