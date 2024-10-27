@@ -27,13 +27,14 @@ class CustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 1.3,
+      height: 650,
       decoration: BoxDecoration(
         color: Theme.of(context).canvasColor,
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(18), topRight: Radius.circular(18)),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           Container(
             height: 389,
@@ -48,63 +49,57 @@ class CustomBottomSheet extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: SizedBox(
-              height: 179,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          offerType,
-                          style:
-                              TextStyle(color: Theme.of(context).primaryColor),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        TextButton(
-                            onPressed: locationOnPressed,
-                            child: Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/svg/discover.svg',
-                                  colorFilter: ColorFilter.mode(
-                                      Theme.of(context).primaryColor,
-                                      BlendMode.srcIn),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  viewLocation,
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                              ],
-                            ))
-                      ],
-                    ),
                     Text(
-                      companyName,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      offerType,
+                      style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      description,
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    const SizedBox(
+                      height: 8,
                     ),
+                    TextButton(
+                        onPressed: locationOnPressed,
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/svg/discover.svg',
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).primaryColor,
+                                  BlendMode.srcIn),
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              viewLocation,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ],
+                        ))
                   ],
                 ),
-              ),
+                Text(
+                  companyName,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
             ),
           ),
           const Spacer(),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
