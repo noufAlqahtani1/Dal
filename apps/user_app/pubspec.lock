@@ -524,6 +524,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
+  impression:
+    dependency: "direct main"
+    description:
+      name: impression
+      sha256: e59ecc7a46961f9665d4633bc46a328ef9bacf392f0bc88bd994d340c8c7a9e5
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   intl:
     dependency: transitive
     description:
@@ -580,6 +588,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  lifecycle:
+    dependency: "direct main"
+    description:
+      name: lifecycle
+      sha256: c3a264df15f1256ca14c11947f38f5060d02ba724bda9604f6feec20b55221c7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0"
   lints:
     dependency: transitive
     description:
@@ -1153,6 +1169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  visibility_detector:
+    dependency: transitive
+    description:
+      name: visibility_detector
+      sha256: dd5cc11e13494f432d15939c3aa8ae76844c42b723398643ce9addb88a5ed420
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0+2"
   vm_service:
     dependency: transitive
     description:

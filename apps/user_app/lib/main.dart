@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:user_app/cubit/theme_cubit.dart';
+import 'package:user_app/data_layer/data_layer.dart';
+
 import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
+
 import 'package:user_app/services/supabase/supabase_configration.dart';
 import 'package:user_app/setup/setup.dart';
+import 'package:lifecycle/lifecycle.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,10 +52,20 @@ class MainApp extends StatelessWidget {
             theme: state.themeData,
             darkTheme: AppThemes.darkTheme,
             themeMode: ThemeMode.system,
-            home: const BottomNavBarScreen(),
+            home: LifecycleWrapper(
+                onLifecycleEvent: (LifecycleEvent event) {
+                  if (event == LifecycleEvent.inactive) {
+                    //when user stop using app
+                    getIt.get<DataLayer>().sendAdsData;
+                  }
+                },
+                child: BottomNavBarScreen()),
           );
         },
       ),
     );
   }
+
+  @override
+  void onLifecycleEvent(LifecycleEvent event) {}
 }
