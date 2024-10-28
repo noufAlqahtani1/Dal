@@ -16,6 +16,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
       const LatLng(24.82307363899628, 46.76960924937112);
   bool buttonClicked = false;
   double areaDistance = 1000;
+  Position? position;
 
   // List of provided markers
   final List<LatLng> markerLocations = const [
