@@ -30,7 +30,7 @@ class AddAdsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     CustomText(
+                    CustomText(
                       text: 'Ad type'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -55,7 +55,7 @@ class AddAdsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                     CustomText(
+                    CustomText(
                       text: 'Category'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -69,14 +69,14 @@ class AddAdsScreen extends StatelessWidget {
                         return CustomDrobDownButton(
                           value: cubit.categoryValue,
                           items: [
-                             DropdownMenuEntry(value: 0, label: "Cafes".tr()),
-                             DropdownMenuEntry(value: 1, label: "Bakery".tr()),
-                             DropdownMenuEntry(
+                            DropdownMenuEntry(value: 0, label: "Cafes".tr()),
+                            DropdownMenuEntry(value: 1, label: "Bakery".tr()),
+                            DropdownMenuEntry(
                                 value: 2, label: "Breakfast".tr()),
-                             DropdownMenuEntry(
+                            DropdownMenuEntry(
                                 value: 3, label: "Ice creams".tr()),
-                             DropdownMenuEntry(value: 4, label: "Dinning".tr()),
-                             DropdownMenuEntry(value: 5, label: "Drinks".tr()),
+                            DropdownMenuEntry(value: 4, label: "Dinning".tr()),
+                            DropdownMenuEntry(value: 5, label: "Drinks".tr()),
                           ].map((entry) {
                             return DropdownMenuItem<int>(
                               value: entry.value,
@@ -95,7 +95,7 @@ class AddAdsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                     CustomText(
+                    CustomText(
                       text: 'Ads Duration'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -180,7 +180,7 @@ class AddAdsScreen extends StatelessWidget {
                                             },
                                             backgroundColor:
                                                 const Color(0xffA51361),
-                                            child:  CustomText(
+                                            child: CustomText(
                                               text: 'Confirm button'.tr(),
                                               color: Color(0xffF7F7F7),
                                               fontSize: 16,
@@ -205,7 +205,7 @@ class AddAdsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                     CustomText(
+                    CustomText(
                       text: 'Description'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -217,9 +217,9 @@ class AddAdsScreen extends StatelessWidget {
                     CustomTextFormField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       fillColor: const Color(0xffEAEAEA),
-                      hintText: '',
                       hintStyle: const TextStyle(color: Color(0xff848484)),
-                      maxLines: 6,
+                      maxLines: 4,
+                      maxLength: 150,
                       controller: cubit.descriptionController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -231,7 +231,7 @@ class AddAdsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                     CustomText(
+                    CustomText(
                       text: 'Location'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -264,7 +264,7 @@ class AddAdsScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                     CustomText(
+                    CustomText(
                       text: 'Ads image'.tr(),
                       color: Color(0xff444444),
                       fontSize: 18,
@@ -312,10 +312,40 @@ class AddAdsScreen extends StatelessWidget {
                     // ---------------- button --------------
                     CustomElevatedButton(
                       backgroundColor: const Color(0xffA51361),
-                      onPressed: () {
-                        if (formKey.currentState?.validate() == true) {}
+                      onPressed: () async {
+                        if (formKey.currentState?.validate() == true) {
+                          final businessInfo = await cubit.supabase
+                              .from('business')
+                              .select()
+                              .eq('id', cubit.supabase.auth.currentUser!.id)
+                              .single();
+
+                          final title = businessInfo['title'];
+                          final businessLogo = businessInfo['logo_img'];
+
+                          final branchInfo = await cubit.supabase
+                              .from('branch')
+                              .select()
+                              .eq('id', cubit.supabase.auth.currentUser!.id)
+                              .single();
+
+                          final latitude = branchInfo['latitude'];
+                          final longitude = branchInfo['longitude'];
+
+                          await cubit.supabase.from('ad').insert({
+                            "business_id": cubit.supabase.auth.currentUser!.id,
+                            "category": cubit.categoryValue,
+                            "title": title,
+                            "description": cubit.descriptionController.text,
+                            "bannerimg": cubit.getUrl,
+                            "startdate": cubit.startDate,
+                            "enddate": cubit.endDate,
+                            "offer_type": cubit.addTypeController.text,
+                            'logo_business': businessLogo
+                          });
+                        }
                       },
-                      child:  CustomText(
+                      child: CustomText(
                         text: 'Post button'.tr(),
                         color: Color(0xffF7F7F7),
                         fontSize: 16,

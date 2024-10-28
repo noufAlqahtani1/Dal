@@ -22,9 +22,7 @@ class DiscoverScreen extends StatelessWidget {
               backgroundColor: const Color(0xffA51361),
               onPressed: () {
                 bloc.buttonClicked = !bloc.buttonClicked;
-                bloc.buttonClicked
-                    ? bloc.distancee = 500000
-                    : bloc.distancee = 1000;
+
                 bloc.add(LoadScreenEvent());
               },
               child: Icon(
@@ -43,7 +41,8 @@ class DiscoverScreen extends StatelessWidget {
                       onTap: (tapPosition, point) {
                         print("${point.latitude},${point.longitude}");
                       },
-                      initialCenter: bloc.initialCenter),
+                      initialCenter: LatLng(
+                          bloc.position!.latitude, bloc.position!.longitude)),
                   children: [
                     TileLayer(
                       urlTemplate:
@@ -53,7 +52,8 @@ class DiscoverScreen extends StatelessWidget {
                     MarkerLayer(markers: bloc.filteredMarkers),
                     MarkerLayer(markers: [
                       Marker(
-                          point: bloc.initialCenter,
+                          point: LatLng(bloc.position!.latitude,
+                              bloc.position!.longitude),
                           child: Container(
                             height: 26,
                             width: 26,

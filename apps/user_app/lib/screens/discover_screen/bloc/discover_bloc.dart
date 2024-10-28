@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -9,11 +11,11 @@ part 'discover_event.dart';
 part 'discover_state.dart';
 
 class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
-  Position? position;
+  late StreamSubscription<Position> positionStream;
   final LatLng initialCenter =
       const LatLng(24.82307363899628, 46.76960924937112);
-  double distancee = 1000;
   bool buttonClicked = false;
+  double areaDistance = 1000;
 
   // List of provided markers
   final List<LatLng> markerLocations = const [
@@ -26,27 +28,31 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
 
   List<Marker> filteredMarkers = [];
   DiscoverBloc() : super(DiscoverInitial()) {
-    on<DiscoverEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<DiscoverEvent>((event, emit) {});
     on<LoadScreenEvent>((event, emit) async {
       emit(LoadingState());
-      final LocationSettings locationSettings = const LocationSettings();
+      const LocationSettings locationSettings = LocationSettings(
+        accuracy: LocationAccuracy.high,
+        distanceFilter: 100,
+      );
+
       position = await Geolocator.getCurrentPosition(
           locationSettings: locationSettings);
+
+      areaDistance = buttonClicked ? 1000 : 500000;
 
       // Create markers from the provided locations and filter them
       filteredMarkers = markerLocations
           .map((location) {
             double distance = Geolocator.distanceBetween(
-              initialCenter.latitude,
-              initialCenter.longitude,
+              position!.latitude,
+              position!.longitude,
               location.latitude,
               location.longitude,
             );
 
             // Only include markers within 300 meters
-            return distance <= distancee
+            return distance <= areaDistance
                 ? Marker(
                     width: 100,
                     height: 100,
