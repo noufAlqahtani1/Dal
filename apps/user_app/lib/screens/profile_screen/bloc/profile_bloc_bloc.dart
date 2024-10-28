@@ -21,7 +21,6 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
   };
   int langValue = 0;
 
-  bool DarkModeOn = false;
   String firstName = '';
   String lastName = '';
   String email = '';
@@ -38,12 +37,6 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
       emit(UpdatedFilterState());
     });
 
-    //change theme mode
-    on<ChangeModeEvent>((event, emit) {
-      DarkModeOn = !DarkModeOn;
-      print("Theme toggled: $DarkModeOn");
-      emit(ChangedModeState());
-    });
 
     //change lang
     on<ChangeLangEvent>((event, emit) {

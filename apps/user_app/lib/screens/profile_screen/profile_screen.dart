@@ -3,12 +3,13 @@ import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_app/cubit/theme_cubit.dart';
 import 'package:user_app/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:user_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-//
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -63,13 +64,13 @@ class ProfileScreen extends StatelessWidget {
                         },
                       ),
                       const Divider(height: 40),
-                      BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
+                      BlocBuilder<ThemeCubit, ThemeState>(
                         builder: (context, state) {
                           return AppearanceSection(
-                            onChanged: (bool isOn) {
-                              bloc.add(ChangeModeEvent());
+                            onChanged: (bool) {
+                              context.read<ThemeCubit>().toggleTheme();
                             },
-                            isOn: bloc.DarkModeOn,
+                            isOn: context.read<ThemeCubit>().DarkModeOn,
                             text: 'Appearance'.tr(),
                             darkText: 'Dark Mode'.tr(),
                             lightText: 'Light Mode'.tr(),
