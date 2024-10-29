@@ -475,7 +475,7 @@ class HomeScreen extends StatelessWidget {
                                           'id']); //add impressions to ad id each time it is viewed
                                     },
                                     child: CustomAdsContainer(
-                                      companyLogo: e['business']['logo_img'] ??
+                                      companyLogo: e['branch']?['business']?['logo_img'] ??
                                           "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
                                       remainingDay: '4d',
                                       companyName: e['title'] ?? "----",

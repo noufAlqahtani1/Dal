@@ -35,9 +35,14 @@ void main() async {
   OneSignal.Notifications.requestPermission(true);
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> with LifecycleAware, LifecycleMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -45,6 +50,7 @@ class MainApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return MaterialApp(
+            navigatorObservers: [defaultLifecycleObserver],
             debugShowCheckedModeBanner: false,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
