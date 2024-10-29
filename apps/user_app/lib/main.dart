@@ -5,14 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:user_app/cubit/theme_cubit.dart';
-import 'package:user_app/screens/auth_screens/create_account_screen.dart';
-import 'package:user_app/screens/auth_screens/login_screen.dart';
 import 'package:user_app/screens/bottom_nav_bar_screen/bottom_nav_bar_screen.dart';
-import 'package:user_app/screens/home_screen/home_screen.dart';
-import 'package:user_app/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:user_app/services/supabase/supabase_configration.dart';
 import 'package:user_app/setup/setup.dart';
-import 'package:adaptive_theme/adaptive_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +24,7 @@ void main() async {
           child: const MainApp()), // Wrap your app
     ),
   );
-    OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
 
   OneSignal.initialize("ebdec5c2-30a4-447d-9577-a1c13b6d553e");
 
@@ -46,15 +41,15 @@ class MainApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              theme: state.themeData,
-              darkTheme: AppThemes.darkTheme,
-              themeMode: ThemeMode.system,
-              home: BottomNavBarScreen(),
-            );
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: state.themeData,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: ThemeMode.system,
+            home: const BottomNavBarScreen(),
+          );
         },
       ),
     );

@@ -95,9 +95,9 @@ class HomeScreen extends StatelessWidget {
                       print("Error: ${e.toString()}");
                     }
                   },
-                  child: Text(
+                  child: const Text(
                     "Send notification test",
-                    style: TextStyle(
+                    style:  TextStyle(
                         color: Colors.red, fontWeight: FontWeight.w900),
                   ))
             ],
@@ -453,7 +453,7 @@ class HomeScreen extends StatelessWidget {
                                 .allAds!
                                 .map(
                                   (e) => CustomAdsContainer(
-                                    companyLogo: e['business']['logo_img'] ??
+                                    companyLogo: e['bannerimg'] ??
                                         "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
                                     remainingDay: '4d',
                                     companyName: e['title'] ?? "----",
