@@ -363,10 +363,13 @@ class HomeScreen extends StatelessWidget {
                                           'id']); //add impressions to ad id each time it is viewed
                                     },
                                     child: CustomAdsContainer(
-                                      companyLogo: e['bannerimg'] ??
+                                      companyLogo: e['branch']?['business']
+                                              ?['logo_img'] ??
                                           "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
                                       remainingDay: '4d',
-                                      companyName: e['title'] ?? "----",
+                                      companyName: e['branch']?['business']
+                                              ?['name'] ??
+                                          "----",
                                       offers:
                                           e['offer_type'] + ' ${'off'.tr()}' ??
                                               "----",
@@ -384,8 +387,10 @@ class HomeScreen extends StatelessWidget {
                                                 },
                                                 child: CustomBottomSheet(
                                                   image: e['bannerimg'],
-                                                  companyName:
-                                                      e['title'] ?? "---",
+                                                  companyName: e['branch']
+                                                              ?['business']
+                                                          ?['name'] ??
+                                                      "---",
                                                   iconImage:
                                                       'assets/svg/coffee.svg',
                                                   description:
@@ -475,10 +480,13 @@ class HomeScreen extends StatelessWidget {
                                           'id']); //add impressions to ad id each time it is viewed
                                     },
                                     child: CustomAdsContainer(
-                                      companyLogo: e['branch']?['business']?['logo_img'] ??
+                                      companyLogo: e['branch']?['business']
+                                              ?['logo_img'] ??
                                           "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
                                       remainingDay: '4d',
-                                      companyName: e['title'] ?? "----",
+                                      companyName: e['branch']?["business"]
+                                              ?["name"] ??
+                                          "----",
                                       offers:
                                           e['offer_type'] + ' ${'off'.tr()}' ??
                                               "----",
@@ -496,8 +504,10 @@ class HomeScreen extends StatelessWidget {
                                                 },
                                                 child: CustomBottomSheet(
                                                   image: e['bannerimg'],
-                                                  companyName:
-                                                      e['title'] ?? "---",
+                                                  companyName: e['branch']
+                                                              ?["business"]
+                                                          ?["name"] ??
+                                                      "---",
                                                   iconImage:
                                                       'assets/svg/coffee.svg',
                                                   description:
