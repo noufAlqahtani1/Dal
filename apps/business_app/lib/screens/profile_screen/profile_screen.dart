@@ -1,5 +1,7 @@
+import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 import 'package:business_app/screens/subscriptions_screen/subscriptions_screen.dart';
+import 'package:business_app/setup/setup.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -26,17 +28,17 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: ProfileInfoSection(
-                          imgurl: '',
-                          firstName: 'First',
-                          lastName: "Last",
-                          email: 'example@example.com',
-                          onPressed: () {
-                            //   Navigator.push(context, MaterialPageRoute(builder: (context) => ,))
-                          },
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: ProfileInfoSection(
+                            imgurl: getIt
+                                .get<DataLayer>()
+                                .currentBusinessInfo[0]['logo_img'],
+                            firstName: businessInfo[0]['name'],
+                            lastName: '',
+                            email: businessInfo[0]['email'],
+                            onPressed: () {  },
+                            child: const SizedBox.shrink(),
+                          )),
                       const Divider(height: 40),
                       PlanSection(
                         plan: 'Basic'.tr(),

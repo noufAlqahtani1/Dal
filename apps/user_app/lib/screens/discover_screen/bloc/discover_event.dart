@@ -5,8 +5,9 @@ sealed class DiscoverEvent {}
 
 final class LoadScreenEvent extends DiscoverEvent {
   final Position? position;
+  final BuildContext context;
 
-  LoadScreenEvent({required this.position});
+  LoadScreenEvent({required this.position, required this.context});
 }
 
 final class ErrorScreenEvent extends DiscoverEvent {

@@ -12,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   getAllAds() async {
-    if (getIt.get<DataLayer>().allAds == null) {
+    if (getIt.get<DataLayer>().allAds.isEmpty) {
       emit(LoadingState());
       try {
         await getIt.get<DataLayer>().getAllAds();

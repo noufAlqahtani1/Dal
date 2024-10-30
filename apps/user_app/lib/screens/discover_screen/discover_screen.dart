@@ -19,7 +19,7 @@ class DiscoverScreen extends StatelessWidget {
           bloc.positionStream =
               Geolocator.getPositionStream(locationSettings: locationSettings)
                   .listen((Position position) {
-            bloc.add(LoadScreenEvent(position: position));
+            bloc.add(LoadScreenEvent(position: position, context: context));
           });
         } catch (e) {
           bloc.add(ErrorScreenEvent(msg: e.toString()));
@@ -29,24 +29,18 @@ class DiscoverScreen extends StatelessWidget {
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             floatingActionButton: BlocBuilder<DiscoverBloc, DiscoverState>(
               builder: (context, state) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 40, bottom: 10),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: FloatingActionButton(
-                      shape: const CircleBorder(),
-                      backgroundColor: const Color(0xffA51361),
-                      onPressed: () {
-                        bloc.buttonClicked = !bloc.buttonClicked;
-                        bloc.add(LoadScreenEvent(position: bloc.positionn));
-                      },
-                      child: Icon(
-                        Icons.radar_rounded,
-                        color:
-                            Color(bloc.buttonClicked ? 0x30F7F7F7 : 0xffF7F7F7),
-                        size: 36,
-                      ),
-                    ),
+                return FloatingActionButton(
+                  shape: const CircleBorder(),
+                  backgroundColor: const Color(0xffA51361),
+                  onPressed: () {
+                    bloc.buttonClicked = !bloc.buttonClicked;
+                    bloc.add(LoadScreenEvent(
+                        position: bloc.positionn, context: context));
+                  },
+                  child: Icon(
+                    Icons.radar_rounded,
+                    color: Color(bloc.buttonClicked ? 0x30F7F7F7 : 0xffF7F7F7),
+                    size: 36,
                   ),
                 );
               },
@@ -97,30 +91,6 @@ class DiscoverScreen extends StatelessWidget {
                                 ),
                               ))
                         ]),
-                        const CircleLayer(circles: [
-                          CircleMarker(
-                              color: Colors.amberAccent,
-                              point:
-                                  LatLng(31.22832604830012, 121.48968954763458),
-                              radius: 30),
-                        ]),
-                        PolylineLayer(
-                          polylines: [
-                            Polyline(
-                              strokeWidth: 3,
-                              points: [
-                                const LatLng(
-                                    31.226891523501784, 121.47566444666158),
-                                const LatLng(
-                                    31.26946183416392, 121.46971902537194),
-                                const LatLng(
-                                    31.250493360622873, 121.45279743668657),
-                              ],
-                              color: const Color(0x80FF0000),
-                              borderColor: Colors.amber,
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                     Column(children: [
