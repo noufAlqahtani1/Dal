@@ -60,6 +60,7 @@ class DiscoverScreen extends StatelessWidget {
                           onTap: (tapPosition, point) {
                             print("${point.latitude},${point.longitude}");
                           },
+                          initialZoom: 14,
                           initialCenter: LatLng(
                               bloc.positionn?.latitude ?? 24.82741851222009,
                               bloc.positionn?.longitude ?? 46.754407525179346)),
