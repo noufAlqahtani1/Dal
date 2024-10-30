@@ -14,12 +14,16 @@ class DiscoverScreen extends StatelessWidget {
       create: (context) => DiscoverBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<DiscoverBloc>();
-        const LocationSettings locationSettings = LocationSettings();
-        bloc.positionStream =
-            Geolocator.getPositionStream(locationSettings: locationSettings)
-                .listen((Position position) {
-          bloc.add(LoadScreenEvent(position: position));
-        });
+        try {
+          const LocationSettings locationSettings = LocationSettings();
+          bloc.positionStream =
+              Geolocator.getPositionStream(locationSettings: locationSettings)
+                  .listen((Position position) {
+            bloc.add(LoadScreenEvent(position: position));
+          });
+        } catch (e) {
+          bloc.add(ErrorScreenEvent(msg: e.toString()));
+        }
 
         return Scaffold(
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

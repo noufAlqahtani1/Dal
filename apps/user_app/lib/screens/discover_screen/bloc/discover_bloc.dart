@@ -30,6 +30,9 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
   StreamSubscription<Position>? positionStream;
 
   DiscoverBloc() : super(DiscoverInitial()) {
+    on<ErrorScreenEvent>((event, emit) async {
+      emit(ErrorState(msg: event.msg));
+    });
     on<LoadScreenEvent>((event, emit) async {
       emit(LoadingState());
       try {

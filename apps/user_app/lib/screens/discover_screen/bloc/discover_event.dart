@@ -8,3 +8,9 @@ final class LoadScreenEvent extends DiscoverEvent {
 
   LoadScreenEvent({required this.position});
 }
+
+final class ErrorScreenEvent extends DiscoverEvent {
+  final String msg;
+
+  ErrorScreenEvent({required this.msg});
+}
