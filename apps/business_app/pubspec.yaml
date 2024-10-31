@@ -23,6 +23,7 @@ dependencies:
   pinput: ^5.0.0
   multi_dropdown: ^3.0.1
   ntp: ^2.0.0
+  moyasar: ^2.0.13
 
 dev_dependencies:
   flutter_test:

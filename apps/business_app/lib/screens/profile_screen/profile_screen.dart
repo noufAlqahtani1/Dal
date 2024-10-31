@@ -15,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileBlocBloc(),
       child: Builder(builder: (context) {
+        final businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
         final bloc = context.read<ProfileBlocBloc>();
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -36,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                             firstName: businessInfo[0]['name'],
                             lastName: '',
                             email: businessInfo[0]['email'],
-                            onPressed: () {  },
+                            onPressed: () {},
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),

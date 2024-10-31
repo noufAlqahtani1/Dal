@@ -426,7 +426,7 @@ class HomeScreen extends StatelessWidget {
                                                       '40% ${'off'.tr()}',
                                                   viewLocation:
                                                       'View Location'.tr(),
-                                                  locationOnPressed: () {},
+                                                  locationOnPressed: () {}, buttonLable: '',
                                                 ),
                                               );
                                             });
@@ -538,7 +538,7 @@ class HomeScreen extends StatelessWidget {
                                                       '40% ${'off'.tr()}',
                                                   viewLocation:
                                                       'View Location'.tr(),
-                                                  locationOnPressed: () {},
+                                                  locationOnPressed: () {}, buttonLable: '',
                                                 ),
                                               );
                                             });

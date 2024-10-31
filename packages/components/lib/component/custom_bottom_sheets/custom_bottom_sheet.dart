@@ -13,7 +13,7 @@ class CustomBottomSheet extends StatelessWidget {
       required this.offerType,
       this.onPressed,
       required this.viewLocation,
-      this.locationOnPressed});
+      this.locationOnPressed, required String buttonLable});
   final String image;
   final String companyName;
   final String offerType;

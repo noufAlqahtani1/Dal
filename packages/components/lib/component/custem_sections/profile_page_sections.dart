@@ -6,6 +6,7 @@ class ProfileInfoSection extends StatelessWidget {
   final String firstName;
   final String lastName;
   final String email;
+  final Widget child;
   final Function() onPressed;
   const ProfileInfoSection(
       {super.key,
@@ -13,7 +14,7 @@ class ProfileInfoSection extends StatelessWidget {
       required this.lastName,
       required this.email,
       required this.onPressed,
-      required this.imgurl});
+      required this.imgurl, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +55,7 @@ class ProfileInfoSection extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Expanded(
-              child: IconButton(
-                icon: Icon(Icons.edit, color: Theme.of(context).indicatorColor),
-                iconSize: 18,
-                onPressed: onPressed,
-              ),
-            )
+            Expanded(child: child)
           ],
         )
       ],

@@ -351,10 +351,7 @@ class AddAdsScreen extends StatelessWidget {
                         backgroundColor: const Color(0xffA51361),
                         onPressed: () {
                           if (formKey.currentState?.validate() == true) {
-                            cubit.branchLocationController;
-                            cubit.addTypeController;
-                            cubit.descriptionController;
-                            cubit.addAds();
+                            //cubit.addAds();
                           }
                         },
                         child: CustomText(

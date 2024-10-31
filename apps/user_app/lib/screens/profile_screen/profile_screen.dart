@@ -45,7 +45,23 @@ class ProfileScreen extends StatelessWidget {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
                                         const EditProfileScreen()));
-                              },
+                              }, child: IconButton(
+                                  icon: Icon(Icons.edit,
+                                      color: Theme.of(context).indicatorColor),
+                                  iconSize: 18,
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EditProfileScreen()))
+                                        .then((value) async {
+                                      print(value);
+                                      if (value != null) {
+                                        bloc.add(await GetInfoEvent());
+                                        print('then');
+                                      }
+                                    });
+                                  }),
                             );
                           },
                         ),

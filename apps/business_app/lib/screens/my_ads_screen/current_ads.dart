@@ -105,11 +105,11 @@ class CustemAlertDialog extends StatelessWidget {
       required this.title,
       required this.msg,
       required this.onPressed,
-      required this.buttonLable});
+       this.buttonLable});
   final String title;
   final String msg;
   final Function() onPressed;
-  final String buttonLable;
+  final String? buttonLable;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -135,7 +135,7 @@ class CustemAlertDialog extends StatelessWidget {
                   onPressed: onPressed,
                   backgroundColor: Theme.of(context).primaryColor,
                   child: Text(
-                    buttonLable,
+                    buttonLable ?? 'Remind Me',
                     style: TextStyle(color: Color(0xffF7F7F7), fontSize: 14),
                   ),
                 ),
