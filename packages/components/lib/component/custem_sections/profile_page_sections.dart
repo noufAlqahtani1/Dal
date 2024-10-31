@@ -13,7 +13,7 @@ class ProfileInfoSection extends StatelessWidget {
       required this.lastName,
       required this.email,
       required this.imgurl,
-      required this.child});
+      required this.child, required Null Function() onPressed});
 
   @override
   Widget build(BuildContext context) {

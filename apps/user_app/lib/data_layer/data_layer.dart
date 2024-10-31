@@ -27,7 +27,8 @@ class DataLayer {
   List<Map<String, dynamic>>? adS;
 
   DataLayer() {
-    box.write("islogin", true);
+    box.erase();
+    //box.write("islogin", true);
     loadData();
   }
 

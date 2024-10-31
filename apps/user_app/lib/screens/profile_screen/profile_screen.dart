@@ -42,6 +42,7 @@ class ProfileScreen extends StatelessWidget {
                               firstName: bloc.firstName,
                               lastName: bloc.lastName,
                               email: bloc.email,
+                              onPressed: () {  },
                               child: IconButton(
                                   icon: Icon(Icons.edit,
                                       color: Theme.of(context).indicatorColor),

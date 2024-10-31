@@ -30,7 +30,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
     on<LoadScreenEvent>((event, emit) async {
       emit(LoadingState());
       try {
-        print(event.position!.latitude);
         positionn = event.position;
         areaDistance = buttonClicked ? 1000 : 500000;
         filteredMarkers = getIt
@@ -97,14 +96,24 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                         viewLocation: "Open in map"),
                                   ));
                         },
-                        child: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Image.network(
-                              colorBlendMode: BlendMode.clear,
-                              location.branch!.business!.logoImg!,
+                        child: Badge(
+                          label: Text(
+                            "${location.offerType}",
+                            style: TextStyle(
+                                fontSize: 10, color: Colors.white),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(width: 3, color: Colors.white)),
+                            height: 50,
+                            width: 50,
+                            child: ClipRRect(
+                              child: Image.network(
+                                fit: BoxFit.fill,
+                                location.branch!.business!.logoImg!,
+                              ),
                             ),
                           ),
                         ),

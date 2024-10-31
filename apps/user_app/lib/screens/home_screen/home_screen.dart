@@ -341,7 +341,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  'Top'.tr(),
+                  'Around you'.tr(),
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
@@ -378,9 +378,7 @@ class HomeScreen extends StatelessWidget {
                         return FadeTransitionSwitcher(
                           child: Row(
                             key: ValueKey(getIt.get<DataLayer>().allAds.length),
-                            children: getIt
-                                .get<DataLayer>()
-                                .allAds
+                            children: cubit.nearbyBranches
                                 .map(
                                   (e) => ImpressionDetector(
                                     impressedCallback: () {
@@ -469,7 +467,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  'Around you'.tr(),
+                  'Top'.tr(),
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
