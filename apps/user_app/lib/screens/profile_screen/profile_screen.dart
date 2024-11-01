@@ -36,17 +36,11 @@ class ProfileScreen extends StatelessWidget {
                         child: BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                           builder: (context, state) {
                             return ProfileInfoSection(
-                              imgurl: bloc.image == ''
-                                  ? 'https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg'
-                                  : bloc.image,
+                              imgurl: bloc.image,
                               firstName: bloc.firstName,
                               lastName: bloc.lastName,
                               email: bloc.email,
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        const EditProfileScreen()));
-                              }, child: IconButton(
+                              child: IconButton(
                                   icon: Icon(Icons.edit,
                                       color: Theme.of(context).indicatorColor),
                                   iconSize: 18,
@@ -55,11 +49,9 @@ class ProfileScreen extends StatelessWidget {
                                         .push(MaterialPageRoute(
                                             builder: (context) =>
                                                 const EditProfileScreen()))
-                                        .then((value) async {
-                                      print(value);
+                                        .then((value) {
                                       if (value != null) {
-                                        bloc.add(await GetInfoEvent());
-                                        print('then');
+                                        bloc.add(GetInfoEvent());
                                       }
                                     });
                                   }),
