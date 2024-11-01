@@ -1,9 +1,9 @@
+import 'package:components/component/customSnackbar/CustomSnackbar.dart';
 import 'package:components/component/custom_containers/reminders_ads_container.dart';
 import 'package:components/component/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_event.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_state.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminedr_bloc.dart';

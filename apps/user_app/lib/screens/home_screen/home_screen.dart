@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:user_app/data_layer/data_layer.dart';
-import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/home_screen/cubit/home_cubit.dart';
 import 'package:user_app/setup/setup.dart';
 import 'package:dio/dio.dart';
