@@ -3,6 +3,7 @@ import 'package:components/component/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_event.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_state.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminedr_bloc.dart';
@@ -157,13 +158,27 @@ class ReminderScreen extends StatelessWidget {
                                             children: [
                                               ElevatedButton(
                                                   onPressed: () {
-                                                  blockContext
+                                                    try{
+                                                      blockContext
                                                         .read<ReminderBloc>()
                                                         .add(RemoveReminder(item));
                                                     Navigator.pop(context);
                                                     blockContext
                                                         .read<ReminderBloc>()
                                                         .add(LoadReminders());
+  CustomSnackbar.show(
+      context,
+      message: 'Reminder removed successfully!',
+      isSuccess: true,
+    );
+                                                    } catch(error) {
+    CustomSnackbar.show(
+      context,
+      message: 'Failed to remove reminder!',
+      isSuccess: false,
+    );
+  }
+                                                  
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
@@ -172,7 +187,7 @@ class ReminderScreen extends StatelessWidget {
                                                   child: Row(
                                                     children: [
                                                     SvgPicture.asset(
-                                                              'assets/svg/no_notification.svg'),
+                                                              'assets/svg/no_notfaction.svg'),
                                                       const SizedBox(
                                                         width: 10,
                                                       ),
