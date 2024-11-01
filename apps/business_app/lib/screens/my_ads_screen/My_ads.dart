@@ -19,6 +19,7 @@ class MyAdsScreen extends StatelessWidget {
           length: 2,
           child: Scaffold(
             appBar: CustomAppBar(
+              height: 100,
               title: "My Ads",
               bottom: MyAdsTabBar(),
               automaticallyImplyLeading: false,
