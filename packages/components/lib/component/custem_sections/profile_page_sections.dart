@@ -14,7 +14,8 @@ class ProfileInfoSection extends StatelessWidget {
       required this.lastName,
       required this.email,
       required this.onPressed,
-      required this.imgurl, required this.child});
+      required this.imgurl,
+      required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -269,8 +270,9 @@ class PlanSection extends StatelessWidget {
                         height: 80,
                         child: CircularProgressIndicator(
                           strokeWidth: 6,
-                          value: remainDays.toDouble(),
+                          value: remainDays.toDouble() / 30,
                           color: Theme.of(context).hintColor,
+                          backgroundColor: Theme.of(context).canvasColor,
                         ),
                       ),
                       Column(

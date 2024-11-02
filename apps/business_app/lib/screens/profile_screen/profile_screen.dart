@@ -1,5 +1,7 @@
 import 'package:business_app/cubit/theme_cubit.dart';
 import 'package:business_app/data_layer/data_layer.dart';
+import 'package:business_app/screens/auth_screens/login_screen.dart';
+import 'package:business_app/screens/onbording_screen/onbording_screen.dart';
 import 'package:business_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 import 'package:business_app/screens/subscriptions_screen/subscriptions_screen.dart';
 import 'package:business_app/setup/setup.dart';
@@ -17,8 +19,49 @@ class ProfileScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileBlocBloc(),
       child: Builder(builder: (context) {
-        final businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
         final bloc = context.read<ProfileBlocBloc>();
+        String getPlanType(Map currentPlan) {
+          final String planType;
+          if (bloc.plan['subscription_type'] == 'Basic') {
+            return 'Basic'.tr();
+          } else if (bloc.plan['subscription_type'] == 'Premium') {
+            return 'Basic'.tr();
+          } else if (bloc.plan['subscription_type'] == 'Enterprise') {
+            return 'Basic'.tr();
+          } else {
+            planType = 'No Subscriptio';
+          }
+
+          return planType;
+        }
+
+        String getPlanDesc(Map currentPlan) {
+          final String planDesc;
+          if (bloc.plan['subscription_type'] == 'Basic') {
+            planDesc = 'Basic description'.tr();
+          } else if (bloc.plan['subscription_type'] == 'Premium') {
+            planDesc = 'Premium description'.tr();
+          } else if (bloc.plan['subscription_type'] == 'Enterprise') {
+            planDesc = 'Enterprise description'.tr();
+          } else {
+            planDesc = 'No Data';
+          }
+
+          return planDesc;
+        }
+
+        int getRemainingDays(DateTime planEndDate) {
+          DateTime currentDate = DateTime.now();
+          Duration difference = planEndDate.difference(currentDate);
+
+          int days = difference.inDays;
+
+          if (days < 0) {
+            days = 0;
+          }
+          return days;
+        }
+
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: CustomAppBar(
@@ -40,9 +83,9 @@ class ProfileScreen extends StatelessWidget {
                             imgurl: getIt
                                 .get<DataLayer>()
                                 .currentBusinessInfo[0]['logo_img'],
-                            firstName: businessInfo[0]['name'],
+                            firstName: bloc.businessInfo[0]['name'],
                             lastName: '',
-                            email: businessInfo[0]['email'],
+                            email: bloc.businessInfo[0]['email'],
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -53,22 +96,44 @@ class ProfileScreen extends StatelessWidget {
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),
-                      PlanSection(
-                        plan: 'Basic'.tr(),
-                        planDesc: 'Basic description'.tr(),
-                        endDate: "${'End ads'.tr()} 11/11/2030",
-                        remainDays: 11,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SubscriptionsScreen()));
+                      BlocConsumer<ProfileBlocBloc, ProfileBlocState>(
+                        listener: (context, state) {
+                          if (state is SuccessState) {
+                            print('suceess');
+                          }
                         },
-                        text: 'subscription one month'.tr(),
-                        daytext: 'Day'.tr(),
-                        remainingDay: 'Remain'.tr(),
-                        subscription: 'New Subscription button'.tr(),
+                        builder: (context, state) {
+                          return PlanSection(
+                            plan: getPlanType(bloc.plan),
+                            planDesc: getPlanDesc(bloc.plan),
+                            endDate: bloc.planEndDate == ''
+                                ? ''
+                                : "${'End ads'.tr()} ${DateTime.parse(bloc.planEndDate).day}/${DateTime.parse(bloc.planEndDate).month}/${DateTime.parse(bloc.planEndDate).year}",
+                            remainDays: bloc.planEndDate == ''
+                                ? 0
+                                : getRemainingDays(
+                                    DateTime.parse(bloc.planEndDate)),
+                            onPressed: bloc.planEndDate == '' ||
+                                    DateTime.parse(bloc.planEndDate)
+                                        .isBefore(bloc.currentDate)
+                                ? () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SubscriptionsScreen(),
+                                      ),
+                                    ).then((_) {
+                                      bloc.add(RefreshScreenEvent());
+                                    });
+                                  }
+                                : null,
+                            text: 'planTitle'.tr(),
+                            daytext: 'Day'.tr(),
+                            remainingDay: 'Remain'.tr(),
+                            subscription: 'New Subscription button'.tr(),
+                          );
+                        },
                       ),
                       const Divider(height: 40),
                       BlocBuilder<ThemeCubit, ThemeState>(
@@ -107,7 +172,11 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       LogoutButton(
                         onPressed: () {
-                          //
+                          getIt.get<DataLayer>().logout();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OnboardingScreen()));
                         },
                         text: 'Log out'.tr(),
                       ),

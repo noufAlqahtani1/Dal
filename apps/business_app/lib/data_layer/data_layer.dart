@@ -50,12 +50,19 @@ class DataLayer {
       allbusinessAds.addAll(ads);
     });
 
-    subscription_business = currentBusinessInfo[0][
-        'subscription_business']; //save subscription_business into a seperate list
+    subscription_business = currentBusinessInfo[0]['subscription_business'] ??
+        []; //save subscription_business into a seperate list
 
-    latestSubscription =
-        subscription_business.last; //get last sub subscription plan
+    subscription_business != []
+        ? latestSubscription =
+            subscription_business.last //save last sub subscription plan
+        : null;
 
+    print(latestSubscription);
     box.write("BusinessID", businessId); // save on login or refresh
+  }
+
+  logout() {
+    box.erase();
   }
 }
