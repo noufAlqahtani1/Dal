@@ -1,19 +1,17 @@
-import 'package:components/component/customSnackbar/CustomSnackbar.dart';
 import 'package:components/component/custom_containers/reminders_ads_container.dart';
 import 'package:components/component/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_event.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_state.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminedr_bloc.dart';
 
-
 class ReminderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return 
-    BlocProvider(
+    return BlocProvider(
       create: (blockContext) => ReminderBloc(),
       child: Builder(builder: (blockContext) {
         blockContext.read<ReminderBloc>().add(LoadReminders());
@@ -129,7 +127,7 @@ class ReminderScreen extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            item['title']??"",
+                                            item['title'] ?? "",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge,
@@ -158,36 +156,39 @@ class ReminderScreen extends StatelessWidget {
                                             children: [
                                               ElevatedButton(
                                                   onPressed: () {
-                                                    try{
+                                                    try {
                                                       blockContext
-                                                        .read<ReminderBloc>()
-                                                        .add(RemoveReminder(item));
-                                                    Navigator.pop(context);
-                                                    blockContext
-                                                        .read<ReminderBloc>()
-                                                        .add(LoadReminders());
-  CustomSnackbar.show(
-      context,
-      message: 'Reminder removed successfully!',
-      isSuccess: true,
-    );
-                                                    } catch(error) {
-    CustomSnackbar.show(
-      context,
-      message: 'Failed to remove reminder!',
-      isSuccess: false,
-    );
-  }
-                                                  
+                                                          .read<ReminderBloc>()
+                                                          .add(RemoveReminder(
+                                                              item));
+                                                      Navigator.pop(context);
+                                                      blockContext
+                                                          .read<ReminderBloc>()
+                                                          .add(LoadReminders());
+                                                      CustomSnackbar.show(
+                                                        context,
+                                                        message:
+                                                            'Reminder removed successfully!',
+                                                        isSuccess: true,
+                                                      );
+                                                    } catch (error) {
+                                                      CustomSnackbar.show(
+                                                        context,
+                                                        message:
+                                                            'Failed to remove reminder!',
+                                                        isSuccess: false,
+                                                      );
+                                                    }
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                          backgroundColor:  const Color(
+                                                          backgroundColor:
+                                                              const Color(
                                                                   0xffA51361)),
                                                   child: Row(
                                                     children: [
-                                                    SvgPicture.asset(
-                                                              'assets/svg/no_notfaction.svg'),
+                                                      SvgPicture.asset(
+                                                          'assets/svg/no_notfaction.svg'),
                                                       const SizedBox(
                                                         width: 10,
                                                       ),

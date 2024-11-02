@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:user_app/data_layer/data_layer.dart';
+import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/home_screen/cubit/home_cubit.dart';
 import 'package:user_app/setup/setup.dart';
 import 'package:dio/dio.dart';
@@ -416,28 +417,33 @@ class HomeScreen extends StatelessWidget {
                                                   description:
                                                       e.description ?? "---",
                                                   remainingDay: '4d',
-                                                onPressed: () {
-  try {
-    getIt.get<DataLayer>().myReminders.add(e.toJson());
-    CustomSnackbar.show(
-      context,
-      message: 'Reminder added successfully!',
-      isSuccess: true,
-    );
-  } catch (error) {
-    CustomSnackbar.show(
-      context,
-      message: 'Failed to add reminder!',
-      isSuccess: false,
-    );
-  }
-},
-
+                                                  onPressed: () {
+                                                    try {
+                                                      getIt
+                                                          .get<DataLayer>()
+                                                          .myReminders
+                                                          .add(e.toJson());
+                                                      CustomSnackbar.show(
+                                                        context,
+                                                        message:
+                                                            'Reminder added successfully!',
+                                                        isSuccess: true,
+                                                      );
+                                                    } catch (error) {
+                                                      CustomSnackbar.show(
+                                                        context,
+                                                        message:
+                                                            'Failed to add reminder!',
+                                                        isSuccess: false,
+                                                      );
+                                                    }
+                                                  },
                                                   offerType:
                                                       '40% ${'off'.tr()}',
                                                   viewLocation:
                                                       'View Location'.tr(),
-                                                  locationOnPressed: () {}, buttonLable: '',
+                                                  locationOnPressed: () {},
+                                                  buttonLable: '',
                                                 ),
                                               );
                                             });
@@ -549,7 +555,8 @@ class HomeScreen extends StatelessWidget {
                                                       '40% ${'off'.tr()}',
                                                   viewLocation:
                                                       'View Location'.tr(),
-                                                  locationOnPressed: () {}, buttonLable: '',
+                                                  locationOnPressed: () {},
+                                                  buttonLable: '',
                                                 ),
                                               );
                                             });
