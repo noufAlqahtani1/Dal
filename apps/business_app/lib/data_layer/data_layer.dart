@@ -2,7 +2,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DataLayer {
+  DataLayer() {
+    loadData();
+  }
+
   final supabase = Supabase.instance.client;
+  final box = GetStorage();
 
 //initially save categories here
   Map<int, String> categories = {
@@ -12,12 +17,21 @@ class DataLayer {
     3: 'Clothes',
     4: 'Hotels',
   };
-  final box = GetStorage();
+
   String? businessId;
   List currentBusinessInfo = [];
   List businessBranches = [];
   List allbusinessAds = [];
+  Map latestSubscription = {};
   List subscription_business = [];
+
+  loadData() {
+    if (box.hasData("BusinessID")) {
+      businessId = box.read('BusinessID');
+      getBusinessInfo();
+    }
+  }
+
 //call this func to refresh
   getBusinessInfo() async {
     currentBusinessInfo = await supabase
@@ -29,21 +43,27 @@ class DataLayer {
 
     businessBranches =
         currentBusinessInfo[0]['branch']; //save branches into a seperate list
-    allbusinessAds = [];
 
+    allbusinessAds = []; //clear ads
 
     businessBranches.forEach((branch) {
-      List ads = branch['ad']; // Get the list of ads for the current branch
+      List ads = branch['ad']; // Get the list of ads for for Each branch
       allbusinessAds.addAll(ads);
     });
 
-    subscription_business = currentBusinessInfo[0][
-        'subscription_business']; //save subscription_business into a seperate list
+    subscription_business = currentBusinessInfo[0]['subscription_business'] ??
+        []; //save subscription_business into a seperate list
 
-        final latestSubscription = (subscription_business as List)
-    .isNotEmpty ? (subscription_business as List)
-    .reduce((a, b) => a['created_at'].isAfter(b['created_at']) ? a : b) : null;
-    print(subscription_business);
-    //  box.write("currentUser", currentBusinessInfo);
+    subscription_business != []
+        ? latestSubscription =
+            subscription_business.last //save last sub subscription plan
+        : null;
+
+    print(latestSubscription);
+    box.write("BusinessID", businessId); // save on login or refresh
+  }
+
+  logout() {
+    box.erase();
   }
 }

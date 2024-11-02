@@ -25,9 +25,11 @@ class AddAdsScreen extends StatelessWidget {
         print("-------------branches $branches");
         return Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(0xffA51361),
-              foregroundColor: const Color(0xffF7F7F7),
-              title: const Text('Add Ads app bar').tr(),
+              iconTheme: IconThemeData(color: AppColors().white1),
+              backgroundColor: AppColors().pink,
+              title: Text('Add Ads app bar',
+                      style: TextStyle(color: AppColors().white1))
+                  .tr(),
             ),
             body: Form(
               key: formKey,
@@ -38,11 +40,9 @@ class AddAdsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(
-                        text: 'Ad type'.tr(),
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Ad type'.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
@@ -51,9 +51,9 @@ class AddAdsScreen extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         maxLines: 1,
                         maxLength: 50,
-                        fillColor: const Color(0xffEAEAEA),
+                        fillColor: Theme.of(context).canvasColor,
                         hintText: 'Ad type hint text'.tr(),
-                        hintStyle: const TextStyle(color: Color(0xff848484)),
+                        hintStyle: TextStyle(color: AppColors().grey2),
                         controller: cubit.addTypeController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -65,11 +65,9 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomText(
-                        text: 'Ad Category'.tr(),
-                        color: const Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Ad Category'.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
@@ -104,11 +102,9 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomText(
-                        text: 'Ad Duration'.tr(),
-                        color: const Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Ad Duration'.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       BlocBuilder<AddAdsCubit, AddAdsState>(
                         builder: (context, state) {
@@ -121,7 +117,7 @@ class AddAdsScreen extends StatelessWidget {
                             children: [
                               CustomText(
                                 text: dateText,
-                                color: const Color(0xff848484),
+                                color: AppColors().grey2,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -138,45 +134,35 @@ class AddAdsScreen extends StatelessWidget {
                                             RangeDatePicker(
                                               maxDate: DateTime(2030),
                                               minDate: DateTime(2020),
-                                              slidersColor:
-                                                  const Color(0xffA51361),
-                                              leadingDateTextStyle:
-                                                  const TextStyle(
-                                                      color: Color(0xffA51361),
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                              currentDateTextStyle:
-                                                  const TextStyle(
-                                                      color: Color(0xffA51361),
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                              selectedCellsTextStyle:
-                                                  const TextStyle(
-                                                      color: Color(0xffA51361),
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.w500),
+                                              slidersColor: AppColors().pink,
+                                              leadingDateTextStyle: TextStyle(
+                                                  color: AppColors().pink,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600),
+                                              currentDateTextStyle: TextStyle(
+                                                  color: AppColors().pink,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500),
+                                              selectedCellsTextStyle: TextStyle(
+                                                  color: AppColors().pink,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500),
                                               currentDateDecoration:
                                                   BoxDecoration(
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: const Color(
-                                                              0xffA51361))),
+                                                        color: AppColors().pink,
+                                                      )),
                                               singleSelectedCellDecoration:
                                                   BoxDecoration(
-                                                      color: const Color(
-                                                          0xffA51361),
+                                                      color: AppColors().pink,
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
-                                                          color: const Color(
-                                                              0xffA51361))),
+                                                        color: AppColors().pink,
+                                                      )),
                                               selectedCellsDecoration:
-                                                  const BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 211, 182, 198),
-                                              ),
+                                                  BoxDecoration(
+                                                      color: AppColors().grey),
                                               onRangeSelected: (value) {
                                                 startDate = value.start;
                                                 endDate = value.end;
@@ -188,11 +174,10 @@ class AddAdsScreen extends StatelessWidget {
                                                     startDate!, endDate!);
                                                 Navigator.pop(context);
                                               },
-                                              backgroundColor:
-                                                  const Color(0xffA51361),
+                                              backgroundColor: AppColors().pink,
                                               child: CustomText(
                                                 text: 'Confirm button'.tr(),
-                                                color: Color(0xffF7F7F7),
+                                                color: AppColors().white1,
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -203,7 +188,7 @@ class AddAdsScreen extends StatelessWidget {
                                 },
                                 child: CustomText(
                                   text: 'Change date'.tr(),
-                                  color: Color(0xffA51361),
+                                  color: AppColors().pink,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -215,19 +200,17 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      CustomText(
-                        text: 'Description'.tr(),
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Description'.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       CustomTextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        fillColor: const Color(0xffEAEAEA),
-                        hintStyle: const TextStyle(color: Color(0xff848484)),
+                        fillColor: Theme.of(context).canvasColor,
+                        hintStyle: TextStyle(color: AppColors().grey2),
                         maxLines: 4,
                         maxLength: 150,
                         controller: cubit.descriptionController,
@@ -241,11 +224,9 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomText(
-                        text: 'Location'.tr(),
-                        color: Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      Text(
+                        'Location'.tr(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 8,
@@ -279,17 +260,18 @@ class AddAdsScreen extends StatelessWidget {
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide: BorderSide.none),
-                            backgroundColor: Color(0xffEAEAEA)),
-                        dropdownDecoration: const DropdownDecoration(
-                            backgroundColor: Color(0xffEAEAEA)),
-                        dropdownItemDecoration: const DropdownItemDecoration(
-                          backgroundColor: Color(0xffEAEAEA),
-                          selectedBackgroundColor: Color(0xffEAEAEA),
+                            backgroundColor: Theme.of(context).canvasColor),
+                        dropdownDecoration: DropdownDecoration(
+                            backgroundColor: Theme.of(context).canvasColor),
+                        dropdownItemDecoration: DropdownItemDecoration(
+                          textColor: AppColors().grey2,
+                          backgroundColor: Theme.of(context).canvasColor,
+                          selectedBackgroundColor: AppColors().white1,
                           selectedIcon: Icon(Icons.check_box_outlined,
-                              color: Color(0xffA51361)),
+                              color: AppColors().pink),
                         ),
-                        chipDecoration: const ChipDecoration(
-                            wrap: false, backgroundColor: Color(0xff8CBFAE)),
+                        chipDecoration: ChipDecoration(
+                            wrap: false, backgroundColor: AppColors().green),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please select a branch';
@@ -300,12 +282,8 @@ class AddAdsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      CustomText(
-                        text: 'Ad image'.tr(),
-                        color: const Color(0xff444444),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      Text('Ad image'.tr(),
+                          style: Theme.of(context).textTheme.bodyLarge),
                       const SizedBox(
                         height: 8,
                       ),
@@ -322,13 +300,15 @@ class AddAdsScreen extends StatelessWidget {
                                 height: 172,
                                 width: 172,
                                 decoration: BoxDecoration(
+                                    color: Theme.of(context).canvasColor,
                                     borderRadius: BorderRadius.circular(8),
                                     boxShadow: [
                                       BoxShadow(
                                           blurStyle: BlurStyle.outer,
                                           blurRadius: 4,
                                           offset: const Offset(0, 1),
-                                          color: const Color(0xff000000)
+                                          color: AppColors()
+                                              .black1
                                               .withOpacity(0.25))
                                     ]),
                                 child: (state is AdsImageState &&
@@ -348,17 +328,15 @@ class AddAdsScreen extends StatelessWidget {
                       ),
                       // ---------------- button --------------
                       CustomElevatedButton(
-                        backgroundColor: const Color(0xffA51361),
+                        backgroundColor: AppColors().pink,
                         onPressed: () {
                           if (formKey.currentState?.validate() == true) {
                             //cubit.addAds();
                           }
                         },
-                        child: CustomText(
-                          text: 'Post button'.tr(),
-                          color: Color(0xffF7F7F7),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                        child: Text(
+                          'Post button'.tr(),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                       )
                     ],

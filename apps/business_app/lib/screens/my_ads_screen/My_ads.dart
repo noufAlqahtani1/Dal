@@ -3,6 +3,7 @@ import 'package:business_app/screens/my_ads_screen/cubit/my_ads_cubit.dart';
 import 'package:components/component/custom_app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'current_ads.dart';
 import 'custom_tabbar.dart';
 import 'past_ads.dart';
@@ -19,6 +20,7 @@ class MyAdsScreen extends StatelessWidget {
           length: 2,
           child: Scaffold(
             appBar: CustomAppBar(
+              height: 100,
               title: "My Ads",
               bottom: MyAdsTabBar(),
               automaticallyImplyLeading: false,
@@ -26,11 +28,13 @@ class MyAdsScreen extends StatelessWidget {
             body: BlocConsumer<MyAdsCubit, MyAdsState>(
               listener: (BuildContext context, MyAdsState state) {
                 if (state is LoadingAdsState) {
-                  showDialog(
-                      context: context,
-                      builder: (context) => const AlertDialog(
-                            content: Center(child: CircularProgressIndicator()),
-                          ));
+                    showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => AlertDialog(
+                      backgroundColor: Colors.transparent,
+                      content: Lottie.asset(
+                          height: 70, 'assets/json/loading.json')));
                 }
                 if (state is SuccessDeleteState) {
                   print('------SuccessState');

@@ -42,7 +42,6 @@ class ProfileScreen extends StatelessWidget {
                               firstName: bloc.firstName,
                               lastName: bloc.lastName,
                               email: bloc.email,
-                              onPressed: () {  },
                               child: IconButton(
                                   icon: Icon(Icons.edit,
                                       color: Theme.of(context).indicatorColor),
@@ -66,8 +65,8 @@ class ProfileScreen extends StatelessWidget {
                       BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                         builder: (context, state) {
                           return FilterSection(
-                            selectFilter: (String) {
-                              bloc.add(UpdateFilterEvent(category: String));
+                            selectFilter: (string) {
+                              bloc.add(UpdateFilterEvent(category: string));
                             },
                             categories: bloc.categories,
                             text: 'My filters'.tr(),

@@ -67,7 +67,7 @@ class _MainAppState extends State<MainApp> with LifecycleAware, LifecycleMixin {
                 },
                 child: isLogin.isLoggedIn()
                     ? const BottomNavBarScreen()
-                    : const BottomNavBarScreen()),
+                    : const OnboardingScreen()),
           );
         },
       ),

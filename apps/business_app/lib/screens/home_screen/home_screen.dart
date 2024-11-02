@@ -1,7 +1,3 @@
-import 'package:business_app/add_ads_screen/add_ads_screen.dart';
-import 'package:business_app/screens/my_ads_screen/My_ads.dart';
-import 'package:business_app/screens/stats_screen/stats_screen.dart';
-import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -97,54 +93,55 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
+            Text('will fix this screen'),
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomBusinessIconButton(
-                      image: 'assets/svg/add_ads.svg',
-                      title: 'home card label one'.tr(),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AddAdsScreen()));
-                      },
-                    ),
-                    CustomBusinessIconButton(
-                      image: 'assets/svg/view_stats.svg',
-                      title: 'home card label two'.tr(),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const StatsScreen()));
-                      },
-                    ),
-                    CustomBusinessIconButton(
-                      image: 'assets/svg/add_ads.svg',
-                      title: 'home card label three'.tr(),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const MyAdsScreen()));
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CustomBusinessIconButton(
-                        image: 'assets/svg/add_ads.svg',
-                        title: 'home card label four'.tr()),
-                    CustomBusinessIconButton(
-                        image: 'assets/svg/view_stats.svg',
-                        title: 'home card label five'.tr()),
-                    CustomBusinessIconButton(
-                        image: 'assets/svg/add_ads.svg',
-                        title: 'home card label six'.tr()),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     CustomBusinessIconButton(
+                //       image: 'assets/svg/add_ads.svg',
+                //       title: 'home card label one'.tr(),
+                //       onPressed: () {
+                //         Navigator.of(context).push(MaterialPageRoute(
+                //             builder: (context) => const AddAdsScreen()));
+                //       },
+                //     ),
+                //     CustomBusinessIconButton(
+                //       image: 'assets/svg/view_stats.svg',
+                //       title: 'home card label two'.tr(),
+                //       onPressed: () {
+                //         Navigator.of(context).push(MaterialPageRoute(
+                //             builder: (context) => const StatsScreen()));
+                //       },
+                //     ),
+                //     CustomBusinessIconButton(
+                //       image: 'assets/svg/add_ads.svg',
+                //       title: 'home card label three'.tr(),
+                //       onPressed: () {
+                //         Navigator.of(context).push(MaterialPageRoute(
+                //             builder: (context) => const MyAdsScreen()));
+                //       },
+                //     ),
+                //   ],
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     CustomBusinessIconButton(
+                //         image: 'assets/svg/add_ads.svg',
+                //         title: 'home card label four'.tr()),
+                //     CustomBusinessIconButton(
+                //         image: 'assets/svg/view_stats.svg',
+                //         title: 'home card label five'.tr()),
+                //     CustomBusinessIconButton(
+                //         image: 'assets/svg/add_ads.svg',
+                //         title: 'home card label six'.tr()),
+                //   ],
+                // ),
               ],
             )
           ],

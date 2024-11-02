@@ -19,3 +19,7 @@ export 'package:components/component/theme/theme.dart';
 export 'package:components/component/shimmer_custom/shimmer_container.dart';
 export 'package:components/component/custom_cards/stats_card.dart';
 export 'package:components/component/custom_containers/reminders_ads_container.dart';
+export 'package:components/component/custom_dialog/custom_confirm_dialog.dart';
+export 'package:components/component/custom_dialog/custom_erroe_msg.dart';
+
+export 'package:components/component/custom_background/custom_background.dart';

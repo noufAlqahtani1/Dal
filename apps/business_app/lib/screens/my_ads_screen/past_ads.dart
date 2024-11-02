@@ -1,6 +1,5 @@
 import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/screens/my_ads_screen/cubit/my_ads_cubit.dart';
-import 'package:business_app/screens/my_ads_screen/current_ads.dart';
 import 'package:business_app/setup/setup.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';

@@ -13,7 +13,8 @@ class CustomBottomSheet extends StatelessWidget {
       required this.offerType,
       this.onPressed,
       required this.viewLocation,
-      this.locationOnPressed, required String buttonLable});
+      this.locationOnPressed,
+      this.buttonLable});
   final String image;
   final String companyName;
   final String offerType;
@@ -21,6 +22,7 @@ class CustomBottomSheet extends StatelessWidget {
   final String description;
   final String remainingDay;
   final String viewLocation;
+  final String? buttonLable;
   final void Function()? onPressed;
   final void Function()? locationOnPressed;
 
@@ -114,12 +116,16 @@ class CustomBottomSheet extends StatelessWidget {
                             backgroundColor: const Color(0xff8CBFAE)),
                         child: Row(
                           children: [
-                            SvgPicture.asset('assets/svg/notification.svg'),
-                            const SizedBox(
-                              width: 10,
-                            ),
+                            buttonLable == null
+                                ? Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    child: SvgPicture.asset(
+                                        'assets/svg/notification.svg'),
+                                  )
+                                : SizedBox(),
                             Text(
-                              'Remind me ',
+                              buttonLable ?? 'Remind me',
                               style: Theme.of(context).textTheme.labelSmall,
                             ),
                           ],
