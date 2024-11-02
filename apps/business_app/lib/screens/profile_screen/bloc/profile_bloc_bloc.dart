@@ -31,7 +31,7 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
     on<RefreshScreenEvent>((event, emit)  async{
       print('refresh event');
     await  getIt.get<DataLayer>().getBusinessInfo();
-      businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
+      businessInfo =  getIt.get<DataLayer>().currentBusinessInfo;
       plan = getIt.get<DataLayer>().latestSubscription;
       emit(SuccessState());
     });

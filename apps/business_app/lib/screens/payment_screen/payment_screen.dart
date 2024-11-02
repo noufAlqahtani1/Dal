@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:moyasar/moyasar.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({super.key, required this.totalPrice, required this.planType, required this.startDate, required this.endDate, required this.PaymentFunc});
+  const PaymentScreen(
+      {super.key,
+      required this.totalPrice,
+      required this.planType,
+      required this.startDate,
+      required this.endDate,
+      required this.PaymentFunc});
   final double totalPrice;
-  final String  planType;
- final DateTime startDate;
+  final String planType;
+  final DateTime startDate;
   final DateTime endDate;
   final Function PaymentFunc;
   paymentConfig() {
@@ -29,12 +35,11 @@ class PaymentScreen extends StatelessWidget {
         child: CreditCard(
           config: paymentConfig(),
           onPaymentResult: (PaymentResponse data) async {
-            print("---------------- ${data.id}");
-            print("---------------- ${data.amount}");
-            print("---------------- ${data.status.name}");
+            // print("---------------- ${data.id}");
+            // print("---------------- ${data.amount}");
+            // print("---------------- ${data.status.name}");
             if (data.status.name == "paid") {
-              
-               await getIt
+              await getIt
                   .get<DataLayer>()
                   .supabase
                   .from("subscription_business")

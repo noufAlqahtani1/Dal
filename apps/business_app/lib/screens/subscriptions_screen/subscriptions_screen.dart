@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class SubscriptionsScreen extends StatelessWidget {
   const SubscriptionsScreen({super.key});
@@ -34,9 +35,11 @@ class SubscriptionsScreen extends StatelessWidget {
                   Navigator.pop(context);
                   showDialog(
                       context: context,
-                      builder: (context) => const AlertDialog(
-                            content: CircularProgressIndicator(),
-                          ));
+                      barrierDismissible: false,
+                      builder: (context) => AlertDialog(
+                          backgroundColor: Colors.transparent,
+                          content: Lottie.asset(
+                              height: 70, 'assets/json/loading.json')));
                 }
                 if (state is SubscriptionConfirmedState) {
                   Navigator.pop(context);
@@ -147,6 +150,12 @@ class SubscriptionsScreen extends StatelessWidget {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return Container(
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).canvasColor,
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20),
+                                          )),
                                       height: 700,
                                       child: Column(
                                         children: [
@@ -193,7 +202,7 @@ class SubscriptionsScreen extends StatelessWidget {
                               backgroundColor: Theme.of(context).primaryColor,
                               child: Text(
                                 'choose Plan button'.tr(),
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: Theme.of(context).textTheme.labelMedium,
                               ),
                             ),
                             !getIt.get<DataLayer>().currentBusinessInfo[0]
@@ -233,7 +242,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                           child: Text('free Trial button'.tr(),
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .bodyMedium),
+                                                  .labelMedium),
                                         ),
                                       );
                                     },

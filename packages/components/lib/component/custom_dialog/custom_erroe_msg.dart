@@ -1,30 +1,24 @@
 import 'package:components/component/custom_buttons/custom_elevated_button.dart';
+import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustemAlertDialog extends StatelessWidget {
-  const CustemAlertDialog(
-      {super.key,
-      required this.title,
-      required this.msg,
-      required this.onPressed,
-      this.buttonLable});
-  final String title;
+class CustemErrorDialog extends StatelessWidget {
+  const CustemErrorDialog({super.key, required this.msg, this.buttonLable});
   final String msg;
-  final Function() onPressed;
   final String? buttonLable;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Theme.of(context).canvasColor,
-      content: SizedBox(
-        height: 350,
+      content: Container(
+        height: 400,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SvgPicture.asset("assets/svg/confirm.svg"),
+            SvgPicture.asset("assets/svg/error.svg"),
             Text(
-              title,
+              'Something went wrong',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
@@ -36,22 +30,12 @@ class CustemAlertDialog extends StatelessWidget {
             Column(
               children: [
                 CustomElevatedButton(
-                  onPressed: onPressed,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Text(
-                    buttonLable ?? 'Remind Me',
-                    style: TextStyle(color: Color(0xffF7F7F7), fontSize: 14),
-                  ),
-                ),
-                TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor, fontSize: 14),
-                  ),
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: Text(buttonLable ?? 'Okay',
+                      style: Theme.of(context).textTheme.labelMedium),
                 ),
               ],
             )

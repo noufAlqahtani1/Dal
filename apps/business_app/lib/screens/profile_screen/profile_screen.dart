@@ -1,7 +1,6 @@
 import 'package:business_app/cubit/theme_cubit.dart';
 import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/screens/auth_screens/login_screen.dart';
-import 'package:business_app/screens/onbording_screen/onbording_screen.dart';
 import 'package:business_app/screens/profile_screen/bloc/profile_bloc_bloc.dart';
 import 'package:business_app/screens/subscriptions_screen/subscriptions_screen.dart';
 import 'package:business_app/setup/setup.dart';
@@ -173,10 +172,12 @@ class ProfileScreen extends StatelessWidget {
                       LogoutButton(
                         onPressed: () {
                           getIt.get<DataLayer>().logout();
-                          Navigator.pushReplacement(
+                          Navigator.pushAndRemoveUntil(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => OnboardingScreen()));
+                              MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const LoginScreen()),
+                              ModalRoute.withName('/'));
                         },
                         text: 'Log out'.tr(),
                       ),
