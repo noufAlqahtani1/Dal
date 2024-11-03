@@ -34,18 +34,22 @@ class DiscoverScreen extends StatelessWidget {
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
             floatingActionButton: BlocBuilder<DiscoverBloc, DiscoverState>(
               builder: (context, state) {
-                return FloatingActionButton(
-                  shape: const CircleBorder(),
-                  backgroundColor: AppColors().pink,
-                  onPressed: () {
-                    bloc.buttonClicked = !bloc.buttonClicked;
-                    bloc.add(LoadScreenEvent(
-                        position: bloc.positionn, context: context));
-                  },
-                  child: Icon(
-                    Icons.radar_rounded,
-                    color: Color(bloc.buttonClicked ? 0x30F7F7F7 : 0xffF7F7F7),
-                    size: 36,
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 100),
+                  child: FloatingActionButton(
+                    shape: const CircleBorder(),
+                    backgroundColor: AppColors().pink,
+                    onPressed: () {
+                      bloc.buttonClicked = !bloc.buttonClicked;
+                      bloc.add(LoadScreenEvent(
+                          position: bloc.positionn, context: context));
+                    },
+                    child: Icon(
+                      Icons.radar_rounded,
+                      color:
+                          Color(bloc.buttonClicked ? 0x30F7F7F7 : 0xffF7F7F7),
+                      size: 36,
+                    ),
                   ),
                 );
               },
@@ -56,8 +60,7 @@ class DiscoverScreen extends StatelessWidget {
                   return Stack(children: [
                     FlutterMap(
                       options: MapOptions(
-                          onTap: (tapPosition, point) {
-                          },
+                          onTap: (tapPosition, point) {},
                           initialZoom: 14,
                           initialCenter: LatLng(
                               bloc.positionn?.latitude ?? 24.82741851222009,
@@ -69,7 +72,29 @@ class DiscoverScreen extends StatelessWidget {
                           userAgentPackageName: 'com.example.app',
                         ),
                         MarkerLayer(markers: bloc.filteredMarkers),
-                       
+                        MarkerLayer(markers: [
+                      Marker(
+                          point: LatLng(bloc.positionn!.latitude,
+                              bloc.positionn!.longitude),
+                          child: Container(
+                            height: 26,
+                            width: 26,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: const Color(0xffA51361), width: 3)),
+                            child: Center(
+                              child: Container(
+                                width: 14,
+                                height: 14,
+                                decoration: const BoxDecoration(
+                                    color: Color(0xff8E1254),
+                                    shape: BoxShape.circle),
+                              ),
+                            ),
+                          ))
+                    ]),
                       ],
                     ),
                     Column(children: [

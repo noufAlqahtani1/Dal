@@ -19,48 +19,6 @@ class ProfileScreen extends StatelessWidget {
       create: (context) => ProfileBlocBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<ProfileBlocBloc>();
-        String getPlanType(Map currentPlan) {
-          final String planType;
-          if (bloc.plan['subscription_type'] == 'Basic') {
-            return 'Basic'.tr();
-          } else if (bloc.plan['subscription_type'] == 'Premium') {
-            return 'Standard'.tr();
-          } else if (bloc.plan['subscription_type'] == 'Enterprise') {
-            return 'Premium'.tr();
-          } else {
-            planType = 'No Subscription';
-          }
-
-          return planType;
-        }
-
-        String getPlanDesc(Map currentPlan) {
-          final String planDesc;
-          if (bloc.plan['subscription_type'] == 'Basic') {
-            planDesc = 'Basic description'.tr();
-          } else if (bloc.plan['subscription_type'] == 'Premium') {
-            planDesc = 'Premium description'.tr();
-          } else if (bloc.plan['subscription_type'] == 'Enterprise') {
-            planDesc = 'Enterprise description'.tr();
-          } else {
-            planDesc = 'No Data';
-          }
-
-          return planDesc;
-        }
-
-        int getRemainingDays(DateTime planEndDate) {
-          DateTime currentDate = DateTime.now();
-          Duration difference = planEndDate.difference(currentDate);
-
-          int days = difference.inDays;
-
-          if (days < 0) {
-            days = 0;
-          }
-          return days;
-        }
-
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: CustomAppBar(
@@ -95,14 +53,14 @@ class ProfileScreen extends StatelessWidget {
                         },
                         builder: (context, state) {
                           return PlanSection(
-                            plan: getPlanType(bloc.plan),
-                            planDesc: getPlanDesc(bloc.plan),
+                            plan: bloc.getPlanType(bloc.plan),
+                            planDesc: bloc.getPlanDesc(bloc.plan),
                             endDate: bloc.planEndDate == ''
                                 ? ''
                                 : "${'End ads'.tr()} ${DateTime.parse(bloc.planEndDate).day}/${DateTime.parse(bloc.planEndDate).month}/${DateTime.parse(bloc.planEndDate).year}",
                             remainDays: bloc.planEndDate == ''
                                 ? 0
-                                : getRemainingDays(
+                                : bloc.getRemainingDays(
                                     DateTime.parse(bloc.planEndDate)),
                             onPressed: bloc.planEndDate == '' ||
                                     DateTime.parse(bloc.planEndDate)
@@ -146,10 +104,10 @@ class ProfileScreen extends StatelessWidget {
                           return LanguageSection(
                             changeLang: (int? value) {
                               switch (value) {
-                                case 0:
+                                case 1:
                                   context.setLocale(const Locale('en'));
                                   break;
-                                case 1:
+                                case 2:
                                   context.setLocale(const Locale('ar'));
                                   break;
                               }
@@ -157,7 +115,9 @@ class ProfileScreen extends StatelessWidget {
                             },
                             value: bloc.langValue,
                             text: 'Language'.tr(),
-                            label: 'English'.tr(),
+                            hintlabel: 'Select a language'.tr(),
+                            label1: 'English'.tr(),
+                            label2: 'Arabic'.tr(),
                           );
                         },
                       ),

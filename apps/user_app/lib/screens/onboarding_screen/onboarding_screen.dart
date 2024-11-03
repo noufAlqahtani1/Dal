@@ -47,7 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Text("Onboarding title",
                             style: Theme.of(context).textTheme.headlineLarge)
                         .tr(),
-                    SizedBox(
+                    const SizedBox(
                       height: 9,
                     ),
                     Text("Onbording subtitle".tr(),

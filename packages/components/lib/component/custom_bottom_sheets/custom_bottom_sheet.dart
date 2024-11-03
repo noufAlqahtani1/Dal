@@ -1,5 +1,6 @@
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet(
@@ -15,7 +16,7 @@ class CustomBottomSheet extends StatelessWidget {
       this.locationOnPressed,
       required this.button,
       this.views,
-      this.clicks});
+      this.clicks, required String buttonLable});
   final String image;
   final String companyName;
   final String offerType;
@@ -75,12 +76,12 @@ class CustomBottomSheet extends StatelessWidget {
                         onPressed: locationOnPressed,
                         child: Row(
                           children: [
-                            // SvgPicture.asset(
-                            //   'assets/svg/discover.svg',
-                            //   colorFilter: ColorFilter.mode(
-                            //       Theme.of(context).primaryColor,
-                            //       BlendMode.srcIn),
-                            // ),
+                            SvgPicture.asset(
+                              'assets/svg/discover.svg',
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).primaryColor,
+                                  BlendMode.srcIn),
+                            ),
                             const SizedBox(
                               width: 8,
                             ),
@@ -117,7 +118,7 @@ class CustomBottomSheet extends StatelessWidget {
                     views == null
                         ? Row(
                             children: [
-                              // SvgPicture.asset('assets/svg/clock.svg'),
+                               SvgPicture.asset('assets/svg/clock.svg'),
                               Text(remainingDay,
                                   style: TextStyle(color: AppColors().grey2)),
                               const SizedBox(
@@ -130,7 +131,7 @@ class CustomBottomSheet extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     color: Theme.of(context).primaryColor,
                                     border: Border.all(
-                                        color:AppColors().pink)),
+                                        color:AppColors().pink)),child: SvgPicture.asset(iconImage!),
 
                               ),
                             ],
@@ -142,7 +143,7 @@ class CustomBottomSheet extends StatelessWidget {
                                 children: [
                                   Icon(Icons.remove_red_eye_outlined,
                                       color: AppColors().white1),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 8,
                                   ),
                                   Text(views.toString())
@@ -152,7 +153,7 @@ class CustomBottomSheet extends StatelessWidget {
                                 children: [
                                   Icon(Icons.ads_click,
                                       color: AppColors().white1),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 8,
                                   ),
                                   Text(clicks.toString())

@@ -130,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -217,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                         'Around you'.tr(),
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Tooltip(
                         message: 'View Offers Available Within 1 Km',
                         child: Icon(
@@ -264,7 +264,7 @@ class HomeScreen extends StatelessWidget {
                                       .isEmpty
                                   ? [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 24, vertical: 40),
                                         child: Container(
                                             decoration: BoxDecoration(
@@ -315,59 +315,42 @@ class HomeScreen extends StatelessWidget {
                                                   isScrollControlled: true,
                                                   context: context,
                                                   builder: (context) {
-                                                    return BlocProvider(
-                                                      create: (context) =>
-                                                          HomeCubit(),
-                                                      child: BlocBuilder<
-                                                          HomeCubit, HomeState>(
-                                                        builder:
-                                                            (context, state) {
-                                                          return ImpressionDetector(
-                                                            impressedCallback:
-                                                                () {
-                                                              getIt
-                                                                  .get<
-                                                                      DataLayer>()
-                                                                  .recordClicks(
-                                                                      e.id!); //add clicks to ad id each time it is viewed
-                                                            },
-                                                            child: BlocBuilder<
-                                                                HomeCubit,
-                                                                HomeState>(
-                                                              builder: (context,
-                                                                  state) {
-                                                                return CustomBottomSheet(
-                                                                    image: e
-                                                                        .bannerimg!,
-                                                                    companyName: e
-                                                                            .branch!
-                                                                            .business!
-                                                                            .name ??
-                                                                        "---",
-                                                                    iconImage:
-                                                                        'assets/svg/$currentLogo.svg',
-                                                                    description:
-                                                                        e.description ??
-                                                                            "---",
-                                                                    remainingDay:
-                                                                        "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
-                                                                    offerType: e
-                                                                        .offerType!,
-                                                                    viewLocation:
-                                                                        'View Location'
-                                                                            .tr(),
-                                                                    locationOnPressed:
-                                                                        () {
-                                                                      //
-                                                                    },
-                                                                    button: cubit
-                                                                        .returnButton(
-                                                                            e));
-                                                              },
-                                                            ),
-                                                          );
-                                                        },
-                                                      ),
+                                                    return ImpressionDetector(
+                                                      impressedCallback:
+                                                          () {
+                                                        getIt
+                                                            .get<
+                                                                DataLayer>()
+                                                            .recordClicks(
+                                                                e.id!); //add clicks to ad id each time it is viewed
+                                                      },
+                                                      child: CustomBottomSheet(
+                                                          image: e
+                                                              .bannerimg!,
+                                                          companyName: e
+                                                                  .branch!
+                                                                  .business!
+                                                                  .name ??
+                                                              "---",
+                                                          iconImage:
+                                                              'assets/svg/$currentLogo.svg',
+                                                          description:
+                                                              e.description ??
+                                                                  "---",
+                                                          remainingDay:
+                                                              "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
+                                                          offerType: e
+                                                              .offerType!,
+                                                          viewLocation:
+                                                              'View Location'
+                                                                  .tr(),
+                                                          locationOnPressed:
+                                                              () {
+                                                            //
+                                                          },
+                                                          button: cubit
+                                                              .returnButton(
+                                                                  e), buttonLable: 'Remind me',),
                                                     );
                                                   });
                                             },
@@ -476,7 +459,7 @@ class HomeScreen extends StatelessWidget {
                                                         //
                                                       },
                                                       button: cubit
-                                                          .returnButton(e)),
+                                                          .returnButton(e), buttonLable: '',),
                                                 );
                                               });
                                         },
