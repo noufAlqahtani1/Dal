@@ -38,7 +38,7 @@ class DiscoverScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 100),
                   child: FloatingActionButton(
                     shape: const CircleBorder(),
-                    backgroundColor: AppColors().pink,
+                    backgroundColor: AppColors().black2,
                     onPressed: () {
                       bloc.buttonClicked = !bloc.buttonClicked;
                       bloc.add(LoadScreenEvent(
@@ -73,28 +73,29 @@ class DiscoverScreen extends StatelessWidget {
                         ),
                         MarkerLayer(markers: bloc.filteredMarkers),
                         MarkerLayer(markers: [
-                      Marker(
-                          point: LatLng(bloc.positionn!.latitude,
-                              bloc.positionn!.longitude),
-                          child: Container(
-                            height: 26,
-                            width: 26,
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: const Color(0xffA51361), width: 3)),
-                            child: Center(
+                          Marker(
+                              point: LatLng(bloc.positionn!.latitude,
+                                  bloc.positionn!.longitude),
                               child: Container(
-                                width: 14,
-                                height: 14,
-                                decoration: const BoxDecoration(
-                                    color: Color(0xff8E1254),
-                                    shape: BoxShape.circle),
-                              ),
-                            ),
-                          ))
-                    ]),
+                                height: 26,
+                                width: 26,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: const Color(0xffA51361),
+                                        width: 3)),
+                                child: Center(
+                                  child: Container(
+                                    width: 14,
+                                    height: 14,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xff8E1254),
+                                        shape: BoxShape.circle),
+                                  ),
+                                ),
+                              ))
+                        ]),
                       ],
                     ),
                     Column(children: [
@@ -123,7 +124,7 @@ class DiscoverScreen extends StatelessWidget {
                                   color: AppColors().grey2,
                                 ),
                                 filled: true,
-                                fillColor: AppColors().white1,
+                                fillColor: Theme.of(context).canvasColor,
                                 suffixIcon: IconButton(
                                   onPressed: () {},
                                   icon: Icon(
