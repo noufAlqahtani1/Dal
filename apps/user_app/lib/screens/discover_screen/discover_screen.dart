@@ -65,36 +65,10 @@ class DiscoverScreen extends StatelessWidget {
                       children: [
                         TileLayer(
                           urlTemplate:
-                              'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                           userAgentPackageName: 'com.example.app',
                         ),
                         MarkerLayer(markers: bloc.filteredMarkers),
-                        MarkerLayer(markers: [
-                          Marker(
-                              point: LatLng(
-                                  bloc.positionn?.latitude ?? 24.82741851222009,
-                                  bloc.positionn?.longitude ??
-                                      46.754407525179346),
-                              child: Container(
-                                height: 26,
-                                width: 26,
-                                decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        color: const Color(0xffA51361),
-                                        width: 3)),
-                                child: Center(
-                                  child: Container(
-                                    width: 14,
-                                    height: 14,
-                                    decoration: const BoxDecoration(
-                                        color: Color(0xff8E1254),
-                                        shape: BoxShape.circle),
-                                  ),
-                                ),
-                              ))
-                        ]),
                       ],
                     ),
                     Column(children: [

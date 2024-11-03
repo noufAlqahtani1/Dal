@@ -98,7 +98,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     CustomSubscriptionsCard(
-                                      duration: 'subscription one month'.tr(),
+                                      duration: 'Basic subscription'.tr(),
                                       price: 100,
                                       plan: 'Basic'.tr(),
                                       selected: bloc.selectedPlan[0]!,
@@ -108,7 +108,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                       currency: 'SAR'.tr(),
                                     ),
                                     CustomSubscriptionsCard(
-                                        duration: 'subscription two month'.tr(),
+                                        duration: 'Premium Subscription'.tr(),
                                         price: 250,
                                         plan: 'Standard'.tr(),
                                         selected: bloc.selectedPlan[1]!,
@@ -118,7 +118,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                         currency: 'SAR'.tr()),
                                     CustomSubscriptionsCard(
                                         duration:
-                                            'subscription three month'.tr(),
+                                            'Enterprise subscription'.tr(),
                                         price: 500,
                                         plan: 'Enterprise'.tr(),
                                         selected: bloc.selectedPlan[2]!,

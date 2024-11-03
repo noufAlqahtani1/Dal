@@ -24,11 +24,11 @@ class ProfileScreen extends StatelessWidget {
           if (bloc.plan['subscription_type'] == 'Basic') {
             return 'Basic'.tr();
           } else if (bloc.plan['subscription_type'] == 'Premium') {
-            return 'Basic'.tr();
+            return 'Standard'.tr();
           } else if (bloc.plan['subscription_type'] == 'Enterprise') {
-            return 'Basic'.tr();
+            return 'Premium'.tr();
           } else {
-            planType = 'No Subscriptio';
+            planType = 'No Subscription';
           }
 
           return planType;

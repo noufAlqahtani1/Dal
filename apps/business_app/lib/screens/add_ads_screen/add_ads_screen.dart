@@ -23,6 +23,11 @@ class AddAdsScreen extends StatelessWidget {
         DateTime? startDate;
         DateTime? endDate;
         final branches = getIt.get<DataLayer>().businessBranches;
+        final List availableBranches = getIt
+            .get<DataLayer>()
+            .businessBranches
+            .where((e) => e['selected'] == false)
+            .toList();
 
         int getBranchType(Map plan) {
           final int numOfAdsPerBranch;
@@ -253,7 +258,8 @@ class AddAdsScreen extends StatelessWidget {
                         maxSelections: getBranchType(plan),
                         searchEnabled: true,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        items: branches.map((branch) {
+                        items: availableBranches.map((branch) {
+                          if (branch['selected'] == false) {}
                           return DropdownItem(
                               label: branch['address'].toString(),
                               value: branches.indexOf(branch));
@@ -344,6 +350,11 @@ class AddAdsScreen extends StatelessWidget {
                         onPressed: () {
                           if (formKey.currentState?.validate() == true) {
                             cubit.addAds();
+                            
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                backgroundColor: Theme.of(context).primaryColor,
+                                content: const Text(
+                                    'Successefully Added your ad!')));
                           }
                         },
                         child: Text(

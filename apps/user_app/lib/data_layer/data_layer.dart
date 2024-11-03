@@ -23,10 +23,10 @@ class DataLayer {
   List<Map<String, dynamic>> adData = [];
   String? userId;
   Map<String, dynamic> categories = {
-    'Fashion': true,
-    'Grocery': true,
-    'Gym & Sports': true,
+    'Supermarkets': true,
     'Dining': true,
+    'Gym': true,
+    'Fashion': true,
     'Hotels': true,
   };
 
@@ -40,6 +40,7 @@ class DataLayer {
     //box.erase();
     //box.write("islogin", true);
     loadData();
+    print(categories);
   }
 
 //call this func to refresh

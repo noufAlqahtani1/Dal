@@ -41,10 +41,6 @@ class CustomAdsContainer extends StatelessWidget {
               height: 230,
               opacity: AlwaysStoppedAnimation(opacity),
             ),
-
-            ///
-
-////
             Positioned(
               top: 0,
               right: 0,
@@ -63,7 +59,7 @@ class CustomAdsContainer extends StatelessWidget {
                   children: [
                     SvgPicture.asset(
                       'assets/svg/clock.svg',
-                      width: 24,
+                      width: 23,
                     ),
                     const SizedBox(width: 3),
                     Text(

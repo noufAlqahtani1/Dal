@@ -8,7 +8,6 @@ import 'package:user_app/screens/customSnackbar/customSnackbar.dart';
 import 'package:user_app/screens/home_screen/category_screen.dart';
 import 'package:user_app/screens/home_screen/cubit/home_cubit.dart';
 import 'package:user_app/setup/setup.dart';
-import 'package:dio/dio.dart';
 import 'package:impression/impression.dart';
 
 //
@@ -61,40 +60,6 @@ class HomeScreen extends StatelessWidget {
                     },
                     icon: SvgPicture.asset('assets/svg/notification.svg')),
               ),
-              TextButton(
-                  onPressed: () async {
-                    final dio = Dio();
-                    try {
-                      await dio.post(
-                        "https://api.onesignal.com/api/v1/notifications",
-                        data: {
-                          "app_id": "ebdec5c2-30a4-447d-9577-a1c13b6d553e",
-                          "contents": {
-                            "en": "Check out Burger's king offer nearby!",
-                            "ar": "لا يطوفك عرض Burger king!"
-                          },
-                          "include_external_user_ids": [
-                            getIt.get<DataLayer>().supabase.auth.currentUser!.id
-                          ], // Correct field name
-                        },
-                        options: Options(headers: {
-                          "Authorization":
-                              "Bearer ZGU5ZmExOTEtNmFiZC00ZTUxLTgyMGYtNjc4MDJlYjUyNmM4",
-                          'Content-Type':
-                              'application/json', // Ensure correct casing
-                        }),
-                      );
-                    } on DioException catch (e) {
-                      if (e.response != null) {}
-                    } catch (e) {
-                      null;
-                    }
-                  },
-                  child: const Text(
-                    "Send notification test",
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.w900),
-                  ))
             ],
           ),
           body: RefreshIndicator(
@@ -345,7 +310,7 @@ class HomeScreen extends StatelessWidget {
                                                     locationOnPressed: () {},
                                                     button: ElevatedButton(
                                                         onPressed: () {},
-                                                        child: Text(
+                                                        child: const Text(
                                                             "EMPTY-- change this")),
                                                   ),
                                                 );
@@ -442,29 +407,29 @@ class HomeScreen extends StatelessWidget {
                                                         .recordClicks(e
                                                             .id!); //add clicks to ad id each time it is viewed
                                                   },
-                                                  // child: CustomBottomSheet(
-                                                  //   image: e.bannerimg!,
-                                                  //   companyName: e.branch!
-                                                  //           .business!.name ??
-                                                  //       "---",
-                                                  //   iconImage:
-                                                  //       'assets/svg/$currentLogo.svg',
-                                                  //   description:
-                                                  //       e.description ?? "---",
-                                                  //   remainingDay:
-                                                  //       "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
-                                                  //   onPressed: () {
-                                                  //     getIt
-                                                  //         .get<DataLayer>()
-                                                  //         .myReminders
-                                                  //         .add(e.toJson());
-                                                  //   },
-                                                  //   offerType:
-                                                  //       '40% ${'off'.tr()}',
-                                                  //   viewLocation:
-                                                  //       'View Location'.tr(),
-                                                  //   locationOnPressed: () {}, button: ElevatedButton(onPressed: (){}, child: Te),
-                                                  // ),
+                                                  child: CustomBottomSheet(
+                                                    image: e.bannerimg!,
+                                                    companyName: e.branch!
+                                                            .business!.name ??
+                                                        "---",
+                                                    iconImage:
+                                                        'assets/svg/$currentLogo.svg',
+                                                    description:
+                                                        e.description ?? "---",
+                                                    remainingDay:
+                                                        "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
+                                                    onPressed: () {
+                                                      getIt
+                                                          .get<DataLayer>()
+                                                          .myReminders
+                                                          .add(e.toJson());
+                                                    },
+                                                    offerType:
+                                                        '40% ${'off'.tr()}',
+                                                    viewLocation:
+                                                        'View Location'.tr(),
+                                                    locationOnPressed: () {}, button: ElevatedButton(onPressed: (){}, child: const Text("NEED CHANGING")),
+                                                  ),
                                                 );
                                               });
                                         },

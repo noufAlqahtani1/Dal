@@ -98,12 +98,18 @@ class AddAdsCubit extends Cubit<AddAdsState> {
             "startdate": startDateFormat,
             "enddate": endDateFormat,
             "offer_type": addTypeController.text,
-            'clicks': null,
+            'clicks': 0,
           });
+          print(branchId);
+          await supabase
+              .from("branch")
+              .update({"selected": true}).eq("id", branchId);
         }
       } else {}
     } on AuthException catch (e) {
-      emit(ErrorState(msg: e.message));
+      if (!isClosed) {
+        emit(ErrorState(msg: e.message));
+      }
     } on PostgrestException catch (e) {
       emit(ErrorState(msg: e.message));
     } catch (e) {
