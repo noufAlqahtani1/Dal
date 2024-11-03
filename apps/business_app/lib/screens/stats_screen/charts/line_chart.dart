@@ -170,7 +170,7 @@ class LineChartSample extends StatelessWidget {
             FlSpot(10, viewsByMonth[11]),
             FlSpot(11, viewsByMonth[12]),
           ],
-          isCurved: true,
+          isCurved: false,
           gradient: LinearGradient(
             colors: gradientColors,
           ),

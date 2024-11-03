@@ -11,10 +11,10 @@ class DataLayer {
 
 //initially save categories here
   Map<int, String> categories = {
-    0: 'Markets',
+    0: 'Supermarkets',
     1: 'Dining',
     2: 'Gym',
-    3: 'Clothes',
+    3: 'Fashion',
     4: 'Hotels',
   };
 
@@ -39,7 +39,6 @@ class DataLayer {
         .select(
             '*, branch(*,ad(*)), subscription_business(*)') // Select all from business, branch, and ad
         .eq('id', businessId!); // change with incomming businessId
-
 
     businessBranches =
         currentBusinessInfo[0]['branch']; //save branches into a seperate list

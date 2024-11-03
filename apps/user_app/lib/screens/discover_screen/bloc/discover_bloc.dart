@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +50,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                       child: InkWell(
                         onTap: () {
                           String categoryIcon = location.category!.toString();
-                          print(categoryIcon);
                           showDialog(
                               context: event.context,
                               builder: (context) => AlertDialog(
@@ -61,8 +58,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                         locationOnPressed: () async {
                                           final availableMaps =
                                               await MapLauncher.installedMaps;
-                                          print(
-                                              availableMaps); // Output the available maps for debugging purposes
 
                                           if (availableMaps.isNotEmpty) {
                                             await availableMaps.first
@@ -79,8 +74,8 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                                 "no maps installed on this device.");
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              SnackBar(
-                                                  content: Text(
+                                              const SnackBar(
+                                                  content:  Text(
                                                       'No maps are installed on this device.')),
                                             );
                                           }
@@ -91,7 +86,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                         iconImage:
                                             "assets/svg/$categoryIcon.svg",
                                         description: location.description!,
-                                        remainingDay: "function??",
+                                        remainingDay: getIt.get<DataLayer>().getRemainingTime(location.enddate!),
                                         offerType: location.offerType!,
                                         viewLocation: "Open in map"),
                                   ));
@@ -99,7 +94,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                         child: Badge(
                           label: Text(
                             "${location.offerType}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 10, color: Colors.white),
                           ),
                           child: Container(

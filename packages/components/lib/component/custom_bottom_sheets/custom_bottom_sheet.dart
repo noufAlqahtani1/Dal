@@ -148,8 +148,6 @@ class CustomBottomSheet extends StatelessWidget {
                                   Border.all(color: const Color(0xffA51361))),
                           child: SvgPicture.asset(
                             iconImage,
-                            colorFilter: const ColorFilter.mode(
-                                Color(0xff7f7f7f7), BlendMode.srcIn),
                             fit: BoxFit.values[6],
                           ),
                         ),
