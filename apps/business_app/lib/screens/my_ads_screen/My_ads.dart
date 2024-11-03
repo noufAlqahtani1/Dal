@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/screens/add_ads_screen/add_ads_screen.dart';
 import 'package:business_app/screens/my_ads_screen/cubit/my_ads_cubit.dart';
@@ -26,10 +28,10 @@ class MyAdsScreen extends StatelessWidget {
         return DefaultTabController(
           length: 2,
           child: Scaffold(
-            appBar: CustomAppBar(
+            appBar: const CustomAppBar(
               height: 100,
               title: "My Ads",
-              bottom: MyAdsTabBar(),
+              bottom:  MyAdsTabBar(),
               automaticallyImplyLeading: false,
             ),
             body: BlocConsumer<MyAdsCubit, MyAdsState>(
@@ -84,11 +86,11 @@ class MyAdsScreen extends StatelessWidget {
                       );
                     },
                     backgroundColor: AppColors().pink,
+                    shape: const CircleBorder(),
                     child: Icon(
                       Icons.add,
                       color: AppColors().white1,
                     ),
-                    shape: const CircleBorder(),
                   ),
           ),
         );

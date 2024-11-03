@@ -130,7 +130,7 @@ class ProfileScreen extends StatelessWidget {
                       BlocBuilder<ThemeCubit, ThemeState>(
                         builder: (context, state) {
                           return AppearanceSection(
-                            onChanged: (bool) {
+                            onChanged: (_) {
                               context.read<ThemeCubit>().toggleTheme();
                             },
                             isOn: context.read<ThemeCubit>().DarkModeOn,

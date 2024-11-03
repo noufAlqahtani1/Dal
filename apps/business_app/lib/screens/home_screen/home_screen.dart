@@ -6,6 +6,7 @@ import 'package:business_app/setup/setup.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/svg.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -82,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w600)),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               Align(

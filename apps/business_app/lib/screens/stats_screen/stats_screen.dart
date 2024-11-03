@@ -155,7 +155,7 @@ class StatsScreen extends StatelessWidget {
                           getTopBranches: getTopBranches(),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                           child: PiesChart(
                             topBranches: getTopBranches(),
                             totalClicks:

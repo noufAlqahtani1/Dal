@@ -30,16 +30,14 @@ class PaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-      child: Container(
-        child: CreditCard(
-          config: paymentConfig(),
-          onPaymentResult: (PaymentResponse data) async {
-
-            if (data.status.name == "paid") {
-              paymentFunc();
-            }
-          },
-        ),
+      child: CreditCard(
+        config: paymentConfig(),
+        onPaymentResult: (PaymentResponse data) async {
+      
+          if (data.status.name == "paid") {
+            paymentFunc();
+          }
+        },
       ),
     );
   }

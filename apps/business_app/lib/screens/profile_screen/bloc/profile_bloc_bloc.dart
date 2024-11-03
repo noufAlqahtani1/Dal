@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/setup/setup.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'profile_bloc_event.dart';

@@ -42,11 +42,6 @@ class BottomSheetForMap extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
               child: Image.network(
-                loadingBuilder: (context, child, loadingProgress) => Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
-                ),
                 errorBuilder: (context, error, stackTrace) =>
                     const Icon(Icons.error),
                 image,

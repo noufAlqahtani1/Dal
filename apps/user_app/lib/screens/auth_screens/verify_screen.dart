@@ -50,7 +50,7 @@ class VerifyScreen extends StatelessWidget {
               key: cubit.formKey,
               child: Stack(
                 children: [
-                  CustomBackground(),
+                  const CustomBackground(),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Padding(

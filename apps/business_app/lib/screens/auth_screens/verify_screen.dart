@@ -51,12 +51,12 @@ class VerifyScreen extends StatelessWidget {
               key: cubit.formKey,
               child: Stack(
                 children: [
-                  CustomBackground(),
+                  const CustomBackground(),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 60),
-                      child: Container(
+                      child: SizedBox(
                           height: 100,
                           child: SvgPicture.asset("assets/svg/Dal_logo.svg")),
                     ),

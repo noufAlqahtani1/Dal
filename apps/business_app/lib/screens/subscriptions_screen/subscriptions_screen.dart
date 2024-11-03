@@ -31,7 +31,7 @@ class SubscriptionsScreen extends StatelessWidget {
                 title: 'Subscription Plan', automaticallyImplyLeading: true),
             body: BlocListener<SubscriptionBloc, SubscriptionState>(
               listener: (BuildContext context, state) {
-                if (state is loadingState) {
+                if (state is LoadingState) {
                   Navigator.pop(context);
                   showDialog(
                       context: context,
@@ -189,7 +189,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                             startDate: currentDate,
                                             endDate: datePlus30Days,
                                             paymentFunc: () {
-                                              bloc.add(confirmSubscription(
+                                              bloc.add(ConfirmSubscription(
                                                   isFreeTrial: false,
                                                   start: currentDate,
                                                   end: datePlus30Days));
@@ -228,7 +228,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                                             msg:
                                                                 'By confirming, your free ${bloc.planType} subscription will begin on ${currentDate.day}/${currentDate.month}/${currentDate.year} and last until ${datePlus30Days.day}/${datePlus30Days.month}/${datePlus30Days.year}.',
                                                             onPressed: () {
-                                                              bloc.add(confirmSubscription(
+                                                              bloc.add(ConfirmSubscription(
                                                                   isFreeTrial:
                                                                       true,
                                                                   start:

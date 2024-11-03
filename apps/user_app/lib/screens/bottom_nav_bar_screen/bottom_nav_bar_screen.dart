@@ -21,7 +21,7 @@ class BottomNavBarScreen extends StatelessWidget {
         List navBarPages =  [
           const HomeScreen(),
           const DiscoverScreen(),
-          ReminderScreen(),
+          const ReminderScreen(),
           const ProfileScreen(),
         ];
         return BlocBuilder<NavBarBloc, NavBarState>(

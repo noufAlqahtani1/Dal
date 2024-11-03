@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/setup/setup.dart';
 import 'package:easy_localization/easy_localization.dart';
+// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 
 part 'subscriptions_screen_bloc_event.dart';
@@ -47,8 +48,8 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
       emit(TabedCardState());
     });
 
-    on<confirmSubscription>((event, emit) async {
-      emit(loadingState());
+    on<ConfirmSubscription>((event, emit) async {
+      emit(LoadingState());
       try {
         await getIt
             .get<DataLayer>()
