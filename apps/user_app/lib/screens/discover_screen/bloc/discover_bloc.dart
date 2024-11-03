@@ -41,8 +41,9 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                 location.branch!.longitude!,
               );
 
-              return distance <= areaDistance
-                  ? Marker(
+              if (distance <= areaDistance) {
+                
+                return Marker(
                       width: 50,
                       height: 50,
                       point: LatLng(location.branch!.latitude!,
@@ -75,7 +76,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               const SnackBar(
-                                                  content:  Text(
+                                                  content: Text(
                                                       'No maps are installed on this device.')),
                                             );
                                           }
@@ -86,7 +87,10 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                                         iconImage:
                                             "assets/svg/$categoryIcon.svg",
                                         description: location.description!,
-                                        remainingDay: getIt.get<DataLayer>().getRemainingTime(location.enddate!),
+                                        remainingDay: getIt
+                                            .get<DataLayer>()
+                                            .getRemainingTime(
+                                                location.enddate!),
                                         offerType: location.offerType!,
                                         viewLocation: "Open in map"),
                                   ));
@@ -112,8 +116,10 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                             ),
                           ),
                         ),
-                      ))
-                  : null;
+                      ));
+              } else {
+                return null;
+              }
             })
             .whereType<Marker>()
             .toList();

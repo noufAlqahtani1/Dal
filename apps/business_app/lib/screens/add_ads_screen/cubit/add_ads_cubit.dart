@@ -5,7 +5,6 @@ import 'package:business_app/data_layer/data_layer.dart';
 import 'package:business_app/setup/setup.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -36,17 +35,16 @@ class AddAdsCubit extends Cubit<AddAdsState> {
       image = File(imageFile!.path);
       emit(AdsImageState(image: image));
     } else {
-      print('No image selected');
     }
   }
 
   Future<void> uploadImage(XFile imageFile) async {
     try {
-      final uploadResult = await supabase.storage
+       await supabase.storage
           .from('offer images')
           .upload(imageFile.name, image!);
 
-      print('Image uploaded successfully: $uploadResult');
+      // ignore: await_only_futures
       getUrl = await supabase.storage
           .from('offer images')
           .getPublicUrl(imageFile.name);
@@ -64,8 +62,7 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   selectAdsRangeDate(DateTime start, DateTime end) {
     startDate = start;
     endDate = end;
-    print(startDate);
-    print(endDate);
+
     emit(SelectDateState(startDate: startDate, endDate: endDate));
   }
 
@@ -84,7 +81,6 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
       // categories labels
       final categoryLabel = getIt.get<DataLayer>().categories[categoryValue];
-      print(categoryLabel);
 
       // upload image to storage
       await uploadImage(imageFile!);
@@ -110,10 +106,8 @@ class AddAdsCubit extends Cubit<AddAdsState> {
             "offer_type": addTypeController.text,
             'clicks': null,
           });
-          print("Ad successfully inserted for branch: $branchId");
         }
       } else {
-        print("There is no branches :( ");
       }
     } on AuthException catch (e) {
       emit(ErrorState(msg: e.message));

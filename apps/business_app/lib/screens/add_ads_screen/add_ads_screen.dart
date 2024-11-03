@@ -22,7 +22,6 @@ class AddAdsScreen extends StatelessWidget {
         DateTime? startDate;
         DateTime? endDate;
         final branches = getIt.get<DataLayer>().businessBranches;
-        print("-------------branches $branches");
         return Scaffold(
             appBar: AppBar(
               iconTheme: IconThemeData(color: AppColors().white1),
@@ -251,7 +250,6 @@ class AddAdsScreen extends StatelessWidget {
                             if (location < branches.length) {
                               var branch = branches[location];
                               cubit.selectedBranch.add(branch['address']);
-                              print(cubit.selectedBranch);
                             }
                           }
                         },

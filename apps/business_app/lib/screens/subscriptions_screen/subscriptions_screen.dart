@@ -3,11 +3,11 @@ import 'package:business_app/screens/payment_screen/payment_screen.dart';
 import 'package:business_app/screens/subscriptions_screen/bloc/subscriptions_screen_bloc_bloc.dart';
 import 'package:business_app/setup/setup.dart';
 import 'package:components/component/custom_app_bar/custom_app_bar.dart';
-import 'package:components/component/custom_cards/subscriptions_card.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
@@ -23,7 +23,7 @@ class SubscriptionsScreen extends StatelessWidget {
           final bloc = context.read<SubscriptionBloc>();
           DateTime currentDate = DateTime.now();
 
-          DateTime datePlus30Days = currentDate.add(Duration(days: 30));
+          DateTime datePlus30Days = currentDate.add(const Duration(days: 30));
 
           return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -46,13 +46,13 @@ class SubscriptionsScreen extends StatelessWidget {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       backgroundColor: Theme.of(context).primaryColor,
-                      content: Text('success')));
+                      content: const Text('success')));
                 }
                 if (state is SubscriptionErrorState) {
                   Navigator.pop(context);
 
                   ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('error')));
+                      .showSnackBar(const SnackBar(content: Text('error')));
                 }
               },
               child: Center(
@@ -152,7 +152,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                     return Container(
                                       decoration: BoxDecoration(
                                           color: Theme.of(context).canvasColor,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(20),
                                             topRight: Radius.circular(20),
                                           )),
@@ -186,7 +186,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                             planType: bloc.planType,
                                             startDate: currentDate,
                                             endDate: datePlus30Days,
-                                            PaymentFunc: () {
+                                            paymentFunc: () {
                                               bloc.add(confirmSubscription(
                                                   isFreeTrial: true,
                                                   start: currentDate,

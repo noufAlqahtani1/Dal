@@ -287,7 +287,8 @@ class HomeScreen extends StatelessWidget {
                                         companyLogo: e
                                                 .branch!.business!.logoImg ??
                                             "https://img.freepik.com/free-vector/anime-chibi-boy-wearing-cap-character_18591-82515.jpg",
-                                        remainingDay: '4d',
+                                        remainingDay:
+                                            "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
                                         companyName:
                                             e.branch!.business!.name ?? "----",
                                         offers: '${e.offerType!} ${'off'.tr()}',
@@ -312,7 +313,10 @@ class HomeScreen extends StatelessWidget {
                                                         'assets/svg/coffee.svg',
                                                     description:
                                                         e.description ?? "---",
-                                                    remainingDay: getIt.get<DataLayer>().getRemainingTime(e.enddate!),
+                                                    remainingDay: getIt
+                                                        .get<DataLayer>()
+                                                        .getRemainingTime(
+                                                            e.enddate!),
                                                     onPressed: () {
                                                       try {
                                                         getIt
