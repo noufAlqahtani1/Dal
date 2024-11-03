@@ -7,13 +7,11 @@ class ProfileInfoSection extends StatelessWidget {
   final String lastName;
   final String email;
   final Widget child;
-  final Function() onPressed;
   const ProfileInfoSection(
       {super.key,
       required this.firstName,
       required this.lastName,
       required this.email,
-      required this.onPressed,
       required this.imgurl,
       required this.child});
 

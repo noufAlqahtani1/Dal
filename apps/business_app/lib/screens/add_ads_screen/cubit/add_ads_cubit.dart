@@ -35,18 +35,11 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     if (imageFile != null) {
       image = File(imageFile!.path);
       emit(AdsImageState(image: image));
-    } else {
-      print('No image selected');
-    }
+    } else {}
   }
 
   Future<void> uploadImage(XFile imageFile) async {
     try {
-      final uploadResult = await supabase.storage
-          .from('offer images')
-          .upload(imageFile.name, image!);
-
-      print('Image uploaded successfully: $uploadResult');
       getUrl = await supabase.storage
           .from('offer images')
           .getPublicUrl(imageFile.name);
@@ -64,8 +57,7 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   selectAdsRangeDate(DateTime start, DateTime end) {
     startDate = start;
     endDate = end;
-    print(startDate);
-    print(endDate);
+
     emit(SelectDateState(startDate: startDate, endDate: endDate));
   }
 
@@ -84,7 +76,6 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
       // categories labels
       final categoryLabel = getIt.get<DataLayer>().categories[categoryValue];
-      print(categoryLabel);
 
       // upload image to storage
       await uploadImage(imageFile!);
@@ -110,17 +101,12 @@ class AddAdsCubit extends Cubit<AddAdsState> {
             "offer_type": addTypeController.text,
             'clicks': null,
           });
-          print("Ad successfully inserted for branch: $branchId");
         }
-      } else {
-        print("There is no branches :( ");
-      }
+      } else {}
     } on AuthException catch (e) {
       emit(ErrorState(msg: e.message));
-      print(e.message);
     } on PostgrestException catch (e) {
       emit(ErrorState(msg: e.message));
-      print(e.message);
     } catch (e) {
       emit(ErrorState(msg: e.toString()));
     }

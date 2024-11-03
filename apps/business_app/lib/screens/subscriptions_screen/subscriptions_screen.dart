@@ -23,7 +23,7 @@ class SubscriptionsScreen extends StatelessWidget {
           final bloc = context.read<SubscriptionBloc>();
           DateTime currentDate = DateTime.now();
 
-          DateTime datePlus30Days = currentDate.add(Duration(days: 30));
+          DateTime datePlus30Days = currentDate.add(const Duration(days: 30));
 
           return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -46,13 +46,15 @@ class SubscriptionsScreen extends StatelessWidget {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       backgroundColor: Theme.of(context).primaryColor,
-                      content: Text('success')));
+                      content: const Text('Successefully Activatied Plan')));
                 }
                 if (state is SubscriptionErrorState) {
                   Navigator.pop(context);
-
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('error')));
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const CustemErrorDialog(msg: '');
+                      });
                 }
               },
               child: Center(
@@ -152,7 +154,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                     return Container(
                                       decoration: BoxDecoration(
                                           color: Theme.of(context).canvasColor,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(20),
                                             topRight: Radius.circular(20),
                                           )),
@@ -188,7 +190,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                             endDate: datePlus30Days,
                                             PaymentFunc: () {
                                               bloc.add(confirmSubscription(
-                                                  isFreeTrial: true,
+                                                  isFreeTrial: false,
                                                   start: currentDate,
                                                   end: datePlus30Days));
                                             },

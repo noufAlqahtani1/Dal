@@ -52,7 +52,7 @@ class OnboardingScreen extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const LoginScreen()));
                       },
-                      backgroundColor: const Color(0xffA51361),
+                      backgroundColor: AppColors().pink,
                       child: Text("Login",
                           style: Theme.of(context).textTheme.labelMedium),
                     ),

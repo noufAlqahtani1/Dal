@@ -58,7 +58,6 @@ class DataLayer {
             subscription_business.last //save last sub subscription plan
         : null;
 
-    print(latestSubscription);
     box.write("BusinessID", businessId); // save on login or refresh
   }
 

@@ -174,13 +174,10 @@ class VerifyScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("Verify title",
-                                  style:
-                                      Theme.of(context).textTheme.headlineLarge)
-                              .tr(),
-                        ),
+                        Text("Verify title",
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge)
+                            .tr(),
                         const SizedBox(
                           height: 20,
                         ),

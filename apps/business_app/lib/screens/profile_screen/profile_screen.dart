@@ -85,13 +85,6 @@ class ProfileScreen extends StatelessWidget {
                             firstName: bloc.businessInfo[0]['name'],
                             lastName: '',
                             email: bloc.businessInfo[0]['email'],
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          SubscriptionsScreen()));
-                            },
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),

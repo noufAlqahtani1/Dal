@@ -406,28 +406,28 @@ class HomeScreen extends StatelessWidget {
                                                       .recordClicks(e
                                                           .id!); //add clicks to ad id each time it is viewed
                                                 },
-                                                child: CustomBottomSheet(
-                                                  image: e.bannerimg!,
-                                                  companyName: e.branch!
-                                                          .business!.name ??
-                                                      "---",
-                                                  iconImage:
-                                                      'assets/svg/coffee.svg',
-                                                  description:
-                                                      e.description ?? "---",
-                                                  remainingDay: '4d',
-                                                  onPressed: () {
-                                                    getIt
-                                                        .get<DataLayer>()
-                                                        .myReminders
-                                                        .add(e.toJson());
-                                                  },
-                                                  offerType:
-                                                      '40% ${'off'.tr()}',
-                                                  viewLocation:
-                                                      'View Location'.tr(),
-                                                  locationOnPressed: () {}, buttonLable: '',
-                                                ),
+                                                // child: CustomBottomSheet(
+                                                //   image: e.bannerimg!,
+                                                //   companyName: e.branch!
+                                                //           .business!.name ??
+                                                //       "---",
+                                                //   iconImage:
+                                                //       'assets/svg/coffee.svg',
+                                                //   description:
+                                                //       e.description ?? "---",
+                                                //   remainingDay: '4d',
+                                                //   onPressed: () {
+                                                //     getIt
+                                                //         .get<DataLayer>()
+                                                //         .myReminders
+                                                //         .add(e.toJson());
+                                                //   },
+                                                //   offerType:
+                                                //       '40% ${'off'.tr()}',
+                                                //   viewLocation:
+                                                //       'View Location'.tr(),
+                                                //   locationOnPressed: () {}, buttonLable: '',
+                                                // ),
                                               );
                                             });
                                       },
@@ -518,28 +518,28 @@ class HomeScreen extends StatelessWidget {
                                                       .recordClicks(e
                                                           .id!); //add clicks to ad id each time it is viewed
                                                 },
-                                                child: CustomBottomSheet(
-                                                  image: e.bannerimg!,
-                                                  companyName: e.branch!
-                                                          .business!.name ??
-                                                      "---",
-                                                  iconImage:
-                                                      'assets/svg/coffee.svg',
-                                                  description:
-                                                      e.description ?? "---",
-                                                  remainingDay: '4d',
-                                                  onPressed: () {
-                                                    getIt
-                                                        .get<DataLayer>()
-                                                        .myReminders
-                                                        .add(e.toJson());
-                                                  },
-                                                  offerType:
-                                                      '40% ${'off'.tr()}',
-                                                  viewLocation:
-                                                      'View Location'.tr(),
-                                                  locationOnPressed: () {}, buttonLable: '',
-                                                ),
+                                                // child: CustomBottomSheet(
+                                                //   image: e.bannerimg!,
+                                                //   companyName: e.branch!
+                                                //           .business!.name ??
+                                                //       "---",
+                                                //   iconImage:
+                                                //       'assets/svg/coffee.svg',
+                                                //   description:
+                                                //       e.description ?? "---",
+                                                //   remainingDay: '4d',
+                                                //   onPressed: () {
+                                                //     getIt
+                                                //         .get<DataLayer>()
+                                                //         .myReminders
+                                                //         .add(e.toJson());
+                                                //   },
+                                                //   offerType:
+                                                //       '40% ${'off'.tr()}',
+                                                //   viewLocation:
+                                                //       'View Location'.tr(),
+                                                //   locationOnPressed: () {}, buttonLable: '',
+                                                // ),
                                               );
                                             });
                                       },
