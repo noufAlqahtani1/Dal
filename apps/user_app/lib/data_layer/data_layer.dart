@@ -8,16 +8,16 @@ class DataLayer {
 
   Map? currentUserInfo;
   List<Ads> allAds = [];
-
   List<Ads> nearbyBranches = [];
-
+  List<Ads> liveAds = [];
+  //categories lists
   List<Ads> diningCategory = [];
   List<Ads> superMarketsCategory = [];
   List<Ads> fashionCategory = [];
   List<Ads> hotelsCategory = [];
   List<Ads> gymCategory = [];
 
-  List<Map<String, dynamic>> myReminders = [];
+  List<Ads> myReminders = [];
   Map<String, int> impressions = {};
   Map<String, int> clicks = {};
   List<Map<String, dynamic>> adData = [];
@@ -54,9 +54,14 @@ class DataLayer {
         .from("branch")
         .select("*,business(*)"); // select branches to show them on map
 
-    for (var element in allAds) {
-      allbusinessAds.add(element);
-    }
+    liveAds = allAds.where((ad) {
+      DateTime endDate = DateTime.parse(ad.enddate!);
+      return endDate.isAfter(DateTime.now());
+    }).toList();
+
+    // for (var element in allAds) {
+    //   allbusinessAds.add(element);
+    // }
   }
 
   String getRemainingTime(String dateString) {
@@ -85,7 +90,6 @@ class DataLayer {
   //increment
   recordImpressions(String adID) {
     impressions[adID] = (impressions[adID] ?? 0) + 1;
-    // print(impressions);
   }
 
   recordClicks(String adID) {
@@ -94,14 +98,11 @@ class DataLayer {
 
   sendAdsData() async {
     for (var adId in impressions.keys) {
-      adData.add({
-        "id": adId,
+      await supabase.from("ad").update({
         "views": impressions[adId],
         "clicks": clicks[adId] ?? 0,
-      });
+      }).eq('id', adId);
     }
-
-    await supabase.from("ad").upsert(adData);
 
     //call it whenever records has been sent
     adData = [];

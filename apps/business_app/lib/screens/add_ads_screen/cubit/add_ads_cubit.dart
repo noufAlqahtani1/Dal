@@ -100,7 +100,6 @@ class AddAdsCubit extends Cubit<AddAdsState> {
             "offer_type": addTypeController.text,
             'clicks': 0,
           });
-          print(branchId);
           await supabase
               .from("branch")
               .update({"selected": true}).eq("id", branchId);

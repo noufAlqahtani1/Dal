@@ -1,3 +1,4 @@
+import 'package:components/component/custom_app_bar/custom_app_bar.dart';
 import 'package:components/component/custom_containers/reminders_ads_container.dart';
 import 'package:components/component/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,29 +9,23 @@ import 'package:user_app/screens/reminder_screen/bloc/reminder_event.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminder_state.dart';
 import 'package:user_app/screens/reminder_screen/bloc/reminedr_bloc.dart';
 
-
 class ReminderScreen extends StatelessWidget {
   const ReminderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return 
-    BlocProvider(
+    return BlocProvider(
       create: (blockContext) => ReminderBloc(),
       child: Builder(builder: (blockContext) {
         blockContext.read<ReminderBloc>().add(LoadReminders());
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color(0xffA51361),
-            foregroundColor: const Color(0xffF7F7F7),
-            centerTitle: true,
-            title: Text("My Reminders"),
-          ),
+          appBar: const CustomAppBar(
+              title: 'My Reminders', automaticallyImplyLeading: false),
           body: BlocBuilder<ReminderBloc, ReminderState>(
             builder: (context, state) {
               if (state is ReminderLoading) {
-                return Center(child: Lottie.asset('assets/json/loading.json',
-                      width: 50));
+                return Center(
+                    child: Lottie.asset('assets/json/loading.json', width: 30));
               } else if (state is ReminderLoaded) {
                 return GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,7 +47,7 @@ class ReminderScreen extends StatelessWidget {
                         companyName: item['title'] ?? "----",
                         offers: item['offer_type'],
                         onTap: () {
-                          showModalBottomSheet(
+                          return showModalBottomSheet(
                             isScrollControlled: true,
                             context: context,
                             builder: (context) {
@@ -131,7 +126,7 @@ class ReminderScreen extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            item['title']??"",
+                                            item['title'] ?? "",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge,
@@ -160,9 +155,10 @@ class ReminderScreen extends StatelessWidget {
                                             children: [
                                               ElevatedButton(
                                                   onPressed: () {
-                                                  blockContext
+                                                    blockContext
                                                         .read<ReminderBloc>()
-                                                        .add(RemoveReminder(item));
+                                                        .add(RemoveReminder(
+                                                            item));
                                                     Navigator.pop(context);
                                                     blockContext
                                                         .read<ReminderBloc>()
@@ -170,12 +166,13 @@ class ReminderScreen extends StatelessWidget {
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                          backgroundColor:  const Color(
+                                                          backgroundColor:
+                                                              const Color(
                                                                   0xffA51361)),
                                                   child: Row(
                                                     children: [
-                                                    SvgPicture.asset(
-                                                              'assets/svg/no_notification.svg'),
+                                                      SvgPicture.asset(
+                                                          'assets/svg/no_notification.svg'),
                                                       const SizedBox(
                                                         width: 10,
                                                       ),
@@ -214,6 +211,7 @@ class ReminderScreen extends StatelessWidget {
                                                           const ColorFilter
                                                               .mode(
                                                               Color(
+                                                                  // ignore: use_full_hex_values_for_flutter_colors
                                                                   0xff7f7f7f7),
                                                               BlendMode.srcIn),
                                                       fit: BoxFit.values[6],
@@ -237,9 +235,9 @@ class ReminderScreen extends StatelessWidget {
                   },
                 );
               } else if (state is ReminderNoData) {
-                return Center(child: Text('No data'));
+                return const Center(child: Text('No data'));
               } else {
-                return Center(child: Text('Failed to load data'));
+                return const Center(child: Text('Failed to load data'));
               }
             },
           ),

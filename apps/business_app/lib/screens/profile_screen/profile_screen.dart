@@ -91,7 +91,6 @@ class ProfileScreen extends StatelessWidget {
                       BlocConsumer<ProfileBlocBloc, ProfileBlocState>(
                         listener: (context, state) {
                           if (state is SuccessState) {
-                            print('suceess');
                           }
                         },
                         builder: (context, state) {
