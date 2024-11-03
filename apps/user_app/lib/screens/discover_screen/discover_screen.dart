@@ -22,6 +22,8 @@ class DiscoverScreen extends StatelessWidget {
               Geolocator.getPositionStream(locationSettings: locationSettings)
                   .listen((Position position) {
             bloc.add(LoadScreenEvent(position: position, context: context));
+            bloc.add(
+                SendNotificationEvent(position: position, context: context));
           });
         } catch (e) {
           bloc.add(ErrorScreenEvent(msg: e.toString()));
