@@ -34,17 +34,11 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     if (imageFile != null) {
       image = File(imageFile!.path);
       emit(AdsImageState(image: image));
-    } else {
-    }
+    } else {}
   }
 
   Future<void> uploadImage(XFile imageFile) async {
     try {
-       await supabase.storage
-          .from('offer images')
-          .upload(imageFile.name, image!);
-
-      // ignore: await_only_futures
       getUrl = await supabase.storage
           .from('offer images')
           .getPublicUrl(imageFile.name);
@@ -107,14 +101,11 @@ class AddAdsCubit extends Cubit<AddAdsState> {
             'clicks': null,
           });
         }
-      } else {
-      }
+      } else {}
     } on AuthException catch (e) {
       emit(ErrorState(msg: e.message));
-      print(e.message);
     } on PostgrestException catch (e) {
       emit(ErrorState(msg: e.message));
-      print(e.message);
     } catch (e) {
       emit(ErrorState(msg: e.toString()));
     }

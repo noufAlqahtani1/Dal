@@ -108,35 +108,40 @@ class StatsScreen extends StatelessWidget {
             return Scaffold(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               appBar: const CustomAppBar(
-                  title: 'Statistics', automaticallyImplyLeading: false),
+                  title: 'Statistics', automaticallyImplyLeading: true),
               body: RefreshIndicator(
                 color: Theme.of(context).primaryColor,
                 onRefresh: () => cubit.refreshScreen(),
                 child: SafeArea(
                     child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              StatCards(
-                                  lable: 'Total Ads'.tr(),
-                                  numbers: getTotalAds()),
-                              StatCards(
-                                lable: "Total Views".tr(),
-                                numbers: getTotalViews(cubit.allads),
+                        Wrap(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  StatCards(
+                                      lable: 'Total Ads'.tr(),
+                                      numbers: getTotalAds()),
+                                  StatCards(
+                                    lable: "Total Views".tr(),
+                                    numbers: getTotalViews(cubit.allads),
+                                  ),
+                                  StatCards(
+                                    lable: "Total Clicks".tr(),
+                                    numbers: getTotalClicks(cubit.allads),
+                                  ),
+                                ],
                               ),
-                              StatCards(
-                                lable: "Total Clicks".tr(),
-                                numbers: getTotalClicks(cubit.allads),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                         const Divider(),
                         Padding(

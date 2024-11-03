@@ -17,11 +17,26 @@ class AddAdsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddAdsCubit(),
       child: Builder(builder: (context) {
+        Map plan = getIt.get<DataLayer>().latestSubscription;
         final formKey = GlobalKey<FormState>();
         final cubit = context.read<AddAdsCubit>();
         DateTime? startDate;
         DateTime? endDate;
         final branches = getIt.get<DataLayer>().businessBranches;
+
+        int getBranchType(Map plan) {
+          final int numOfAdsPerBranch;
+          if (plan['subscription_type'] == 'Enterprise') {
+            numOfAdsPerBranch = 100;
+          } else if (plan['subscription_type'] == 'Premium') {
+            numOfAdsPerBranch = 5;
+          } else {
+            //basic
+            numOfAdsPerBranch = 1;
+          }
+          return numOfAdsPerBranch;
+        }
+
         return Scaffold(
             appBar: AppBar(
               iconTheme: IconThemeData(color: AppColors().white1),
@@ -34,7 +49,7 @@ class AddAdsScreen extends StatelessWidget {
               key: formKey,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -235,8 +250,7 @@ class AddAdsScreen extends StatelessWidget {
                         controller: cubit.branchLocationController,
                         singleSelect: false,
                         enabled: true,
-                        maxSelections:
-                            2, // add a condition based on subscription
+                        maxSelections: getBranchType(plan),
                         searchEnabled: true,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         items: branches.map((branch) {

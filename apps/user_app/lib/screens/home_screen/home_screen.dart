@@ -343,6 +343,10 @@ class HomeScreen extends StatelessWidget {
                                                     viewLocation:
                                                         'View Location'.tr(),
                                                     locationOnPressed: () {},
+                                                    button: ElevatedButton(
+                                                        onPressed: () {},
+                                                        child: Text(
+                                                            "EMPTY-- change this")),
                                                   ),
                                                 );
                                               });
@@ -438,29 +442,29 @@ class HomeScreen extends StatelessWidget {
                                                         .recordClicks(e
                                                             .id!); //add clicks to ad id each time it is viewed
                                                   },
-                                                  child: CustomBottomSheet(
-                                                    image: e.bannerimg!,
-                                                    companyName: e.branch!
-                                                            .business!.name ??
-                                                        "---",
-                                                    iconImage:
-                                                        'assets/svg/$currentLogo.svg',
-                                                    description:
-                                                        e.description ?? "---",
-                                                    remainingDay:
-                                                        "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
-                                                    onPressed: () {
-                                                      getIt
-                                                          .get<DataLayer>()
-                                                          .myReminders
-                                                          .add(e.toJson());
-                                                    },
-                                                    offerType:
-                                                        '40% ${'off'.tr()}',
-                                                    viewLocation:
-                                                        'View Location'.tr(),
-                                                    locationOnPressed: () {},
-                                                  ),
+                                                  // child: CustomBottomSheet(
+                                                  //   image: e.bannerimg!,
+                                                  //   companyName: e.branch!
+                                                  //           .business!.name ??
+                                                  //       "---",
+                                                  //   iconImage:
+                                                  //       'assets/svg/$currentLogo.svg',
+                                                  //   description:
+                                                  //       e.description ?? "---",
+                                                  //   remainingDay:
+                                                  //       "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
+                                                  //   onPressed: () {
+                                                  //     getIt
+                                                  //         .get<DataLayer>()
+                                                  //         .myReminders
+                                                  //         .add(e.toJson());
+                                                  //   },
+                                                  //   offerType:
+                                                  //       '40% ${'off'.tr()}',
+                                                  //   viewLocation:
+                                                  //       'View Location'.tr(),
+                                                  //   locationOnPressed: () {}, button: ElevatedButton(onPressed: (){}, child: Te),
+                                                  // ),
                                                 );
                                               });
                                         },

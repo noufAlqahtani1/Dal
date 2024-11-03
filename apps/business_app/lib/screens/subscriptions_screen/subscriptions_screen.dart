@@ -46,13 +46,15 @@ class SubscriptionsScreen extends StatelessWidget {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       backgroundColor: Theme.of(context).primaryColor,
-                      content: const Text('success')));
+                      content: const Text('Successefully Activatied Plan')));
                 }
                 if (state is SubscriptionErrorState) {
                   Navigator.pop(context);
-
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(const SnackBar(content: Text('error')));
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const CustemErrorDialog(msg: '');
+                      });
                 }
               },
               child: Center(
@@ -188,7 +190,7 @@ class SubscriptionsScreen extends StatelessWidget {
                                             endDate: datePlus30Days,
                                             paymentFunc: () {
                                               bloc.add(confirmSubscription(
-                                                  isFreeTrial: true,
+                                                  isFreeTrial: false,
                                                   start: currentDate,
                                                   end: datePlus30Days));
                                             },

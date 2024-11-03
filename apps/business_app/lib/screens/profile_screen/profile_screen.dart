@@ -85,7 +85,6 @@ class ProfileScreen extends StatelessWidget {
                             firstName: bloc.businessInfo[0]['name'],
                             lastName: '',
                             email: bloc.businessInfo[0]['email'],
-                            
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),

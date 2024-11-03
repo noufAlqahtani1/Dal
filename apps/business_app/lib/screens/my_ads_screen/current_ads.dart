@@ -87,6 +87,22 @@ class CurrentAdsTap extends StatelessWidget {
                       viewLocation: 'location',
                       buttonLable: 'Delete Ad',
                       locationOnPressed: () {},
+                      views: ad['views'],
+                      clicks: ad['clicks'],
+                      button: ElevatedButton(
+                          onPressed: () {
+                            cubit.deleteAd(ad['id']);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xff8CBFAE)),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Delete Ad',
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                            ],
+                          )),
                     );
                   });
             },

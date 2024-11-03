@@ -1,4 +1,3 @@
-
 import 'package:components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -170,7 +169,7 @@ class LineChartSample extends StatelessWidget {
             FlSpot(10, viewsByMonth[11]),
             FlSpot(11, viewsByMonth[12]),
           ],
-          isCurved: false,
+          //  isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,
           ),
