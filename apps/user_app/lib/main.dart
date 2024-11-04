@@ -11,12 +11,24 @@ import 'package:user_app/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:user_app/services/supabase/supabase_configration.dart';
 import 'package:user_app/setup/setup.dart';
 import 'package:lifecycle/lifecycle.dart';
+import 'package:flutter_background/flutter_background.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await SupabaseConfigration.connectSupabase();
   await setup();
+
+  await FlutterBackground.initialize(
+    androidConfig: const FlutterBackgroundAndroidConfig(
+      notificationTitle: "App is running in the background",
+      notificationText: "Location tracking is active",
+      notificationIcon: AndroidResource(name: 'ic_launcher', defType: 'mipmap'),
+    ),
+  );
+
   runApp(
     DevicePreview(
       enabled: false,
@@ -33,6 +45,7 @@ void main() async {
 
   OneSignal.Notifications.requestPermission(true);
 }
+
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});

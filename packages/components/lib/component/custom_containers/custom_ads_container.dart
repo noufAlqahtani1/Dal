@@ -25,7 +25,7 @@ class CustomAdsContainer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 16),
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 6),
+          margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
           width: 160,
           height: 230,
           decoration: BoxDecoration(
