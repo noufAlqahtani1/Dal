@@ -13,19 +13,19 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   }
 
   void onLoadReminders(LoadReminders event, Emitter<ReminderState> emit) async {
-    emit(ReminderLoading());
+    
 
     try {
       // await dataLayer.getUserInfo();
 
       //  if (dataLayer.currentUserInfo != null) {
-      final remindersResponse = await dataLayer.myReminders;
+      final remindersResponse =  dataLayer.myReminders;
 
       /*await dataLayer.supabase
             .from("ad")
             .select();*/
       //  .eq("user_id", dataLayer.currentUserInfo!['id'])
-      ;
+      
       if (remindersResponse.isNotEmpty) {
         // final List<dynamic> remindersData = remindersResponse as List<dynamic>;
 

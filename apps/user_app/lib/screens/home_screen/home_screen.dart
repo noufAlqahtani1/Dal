@@ -228,6 +228,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 16,
+                ),
                 SizedBox(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -320,41 +323,38 @@ class HomeScreen extends StatelessWidget {
                                                   context: context,
                                                   builder: (context) {
                                                     return ImpressionDetector(
-                                                      impressedCallback:
-                                                          () {
+                                                      impressedCallback: () {
                                                         getIt
-                                                            .get<
-                                                                DataLayer>()
-                                                            .recordClicks(
-                                                                e.id!); //add clicks to ad id each time it is viewed
+                                                            .get<DataLayer>()
+                                                            .recordClicks(e
+                                                                .id!); //add clicks to ad id each time it is viewed
                                                       },
                                                       child: CustomBottomSheet(
-                                                          image: e
-                                                              .bannerimg!,
-                                                          companyName: e
-                                                                  .branch!
-                                                                  .business!
-                                                                  .name ??
-                                                              "---",
-                                                          iconImage:
-                                                              'assets/svg/$currentLogo.svg',
-                                                          description:
-                                                              e.description ??
-                                                                  "---",
-                                                          remainingDay:
-                                                              "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
-                                                          offerType: e
-                                                              .offerType!,
-                                                          viewLocation:
-                                                              'View Location'
-                                                                  .tr(),
-                                                          locationOnPressed:
-                                                              () {
-                                                            //
-                                                          },
-                                                          button: cubit
-                                                              .returnButton(
-                                                                  e), buttonLable: 'Remind me',),
+                                                        image: e.bannerimg!,
+                                                        companyName: e
+                                                                .branch!
+                                                                .business!
+                                                                .name ??
+                                                            "---",
+                                                        iconImage:
+                                                            'assets/svg/$currentLogo.svg',
+                                                        description:
+                                                            e.description ??
+                                                                "---",
+                                                        remainingDay:
+                                                            "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
+                                                        offerType: e.offerType!,
+                                                        viewLocation:
+                                                            'View Location'
+                                                                .tr(),
+                                                        locationOnPressed: () {
+                                                          //
+                                                        },
+                                                        button: cubit
+                                                            .returnButton(e),
+                                                        buttonLable:
+                                                            'Remind me',
+                                                      ),
                                                     );
                                                   });
                                             },
@@ -372,6 +372,9 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
 
                 //===============Latest
@@ -445,25 +448,26 @@ class HomeScreen extends StatelessWidget {
                                                             .id!); //add clicks to ad id each time it is viewed
                                                   },
                                                   child: CustomBottomSheet(
-                                                      image: e.bannerimg!,
-                                                      companyName: e.branch!
-                                                              .business!.name ??
-                                                          "---",
-                                                      iconImage:
-                                                          'assets/svg/$currentLogo.svg',
-                                                      description:
-                                                          e.description ??
-                                                              "---",
-                                                      remainingDay:
-                                                          "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
-                                                      offerType: e.offerType!,
-                                                      viewLocation:
-                                                          'View Location'.tr(),
-                                                      locationOnPressed: () {
-                                                        //
-                                                      },
-                                                      button: cubit
-                                                          .returnButton(e), buttonLable: '',),
+                                                    image: e.bannerimg!,
+                                                    companyName: e.branch!
+                                                            .business!.name ??
+                                                        "---",
+                                                    iconImage:
+                                                        'assets/svg/$currentLogo.svg',
+                                                    description:
+                                                        e.description ?? "---",
+                                                    remainingDay:
+                                                        "${getIt.get<DataLayer>().getRemainingTime(e.enddate!)}d",
+                                                    offerType: e.offerType!,
+                                                    viewLocation:
+                                                        'View Location'.tr(),
+                                                    locationOnPressed: () {
+                                                      //
+                                                    },
+                                                    button:
+                                                        cubit.returnButton(e),
+                                                    buttonLable: '',
+                                                  ),
                                                 );
                                               });
                                         },
