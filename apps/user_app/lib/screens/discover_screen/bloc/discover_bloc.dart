@@ -30,6 +30,8 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
     on<ErrorScreenEvent>((event, emit) async {
       emit(ErrorState(msg: event.msg));
     });
+
+    
     on<SendNotificationEvent>((event, emit) async {
       try {
         final Map storedTimes =
@@ -77,7 +79,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                 getIt.get<DataLayer>().lastNotificationTimes[branchId] =
                     now; // Update the last notification time
               } on DioException catch (e) {
-                if (e.response != null) {}
+                emit(ErrorState(msg: e.response!.data));
               } catch (e) {}
             }
           }
@@ -300,5 +302,10 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
         emit(ErrorState(msg: e.toString()));
       }
     });
+  }
+  @override
+  Future<void> close() {
+    positionStream?.cancel();
+    return super.close();
   }
 }

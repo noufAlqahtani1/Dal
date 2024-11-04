@@ -123,7 +123,7 @@ class ProfileScreen extends StatelessWidget {
                             value: bloc.langValue,
                             text: 'Language'.tr(),
                             label1: 'English'.tr(),
-                            label2: 'Arabic'.tr(), hintlabel: '',
+                            label2: 'Arabic'.tr(), 
                           );
                         },
                       ),

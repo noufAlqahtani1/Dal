@@ -18,16 +18,13 @@ class DiscoverScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         final bloc = context.read<DiscoverBloc>();
         try {
-          LocationSettings locationSettings =
-              LocationSettings(distanceFilter: 100);
+          LocationSettings locationSettings = const LocationSettings(
+              distanceFilter: 100, accuracy: LocationAccuracy.high);
           bloc.positionStream =
               Geolocator.getPositionStream(locationSettings: locationSettings)
                   .listen((Position position) {
-            // ignore: use_build_context_synchronously
-            print("inside discover screen ---------- ${position.latitude}");
             bloc.add(LoadScreenEvent(position: position, context: context));
             bloc.add(
-                // ignore: use_build_context_synchronously
                 SendNotificationEvent(position: position, context: context));
           });
         } catch (e) {
