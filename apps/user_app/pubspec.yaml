@@ -50,8 +50,3 @@ flutter:
     - assets/png/
     - assets/json/
     - assets/translations/
-
-flutter_native_splash:
-  color: "#A51361"
-  image: assets/png/Dal_logo.png
-  android_12:

@@ -1,4 +1,3 @@
-
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:components/components.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -56,8 +55,10 @@ class BottomNavBarScreen extends StatelessWidget {
                     itemLabel: 'Home'.tr(),
                   ),
                   BottomBarItem(
-                    inActiveItem: Icon(Icons.search, color: AppColors().grey2),
-                    activeItem: Icon(Icons.search, color: AppColors().white1),
+                    inActiveItem: Icon(Icons.location_on_rounded,
+                        color: AppColors().grey2),
+                    activeItem: Icon(Icons.location_on_rounded,
+                        color: AppColors().white1),
                     itemLabel: 'Discover'.tr(),
                   ),
                   BottomBarItem(
@@ -65,7 +66,7 @@ class BottomNavBarScreen extends StatelessWidget {
                         Icon(Icons.notifications, color: AppColors().grey2),
                     activeItem:
                         Icon(Icons.notifications, color: AppColors().white1),
-                    itemLabel: 'Remind'.tr(),
+                    itemLabel: 'Reminder'.tr(),
                   ),
                   BottomBarItem(
                     inActiveItem: Icon(Icons.person, color: AppColors().grey2),

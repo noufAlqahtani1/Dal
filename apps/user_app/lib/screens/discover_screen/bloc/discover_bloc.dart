@@ -24,8 +24,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
   List<Marker> filteredMarkers = [];
 
   final dio = Dio();
-  Map<String, DateTime> lastNotificationTimes =
-      {}; // Map to track notification times
+  
 
   DiscoverBloc() : super(DiscoverInitial()) {
     on<ErrorScreenEvent>((event, emit) async {
@@ -35,7 +34,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
       try {
         final Map storedTimes =
             getIt.get<DataLayer>().box.read('lastNotificationTimes') ?? {};
-        lastNotificationTimes = storedTimes
+        getIt.get<DataLayer>().lastNotificationTimes = storedTimes
             .map((key, value) => MapEntry(key, DateTime.parse(value)));
 
         for (var location in getIt.get<DataLayer>().allAds) {
@@ -49,7 +48,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
           if (distance <= 1000) {
             String branchId = location.branch!.id!; // store branches ID
             DateTime now = DateTime.now();
-            DateTime? lastNotificationTime = lastNotificationTimes[branchId];
+            DateTime? lastNotificationTime = getIt.get<DataLayer>().lastNotificationTimes[branchId];
 
             if (lastNotificationTime == null ||
                 now.difference(lastNotificationTime).inHours >= 12) {
@@ -74,7 +73,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                   }),
                 );
 
-                lastNotificationTimes[branchId] =
+                getIt.get<DataLayer>().lastNotificationTimes[branchId] =
                     now; // Update the last notification time
               } on DioException catch (e) {
                 if (e.response != null) {}
@@ -84,7 +83,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
         }
 
         // Save the last notification times to GetStorage
-        final Map serializedTimes = lastNotificationTimes
+        final Map serializedTimes = getIt.get<DataLayer>().lastNotificationTimes
             .map((key, value) => MapEntry(key, value.toIso8601String()));
 
         getIt

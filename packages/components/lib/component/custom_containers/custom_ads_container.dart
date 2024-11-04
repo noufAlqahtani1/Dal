@@ -29,7 +29,7 @@ class CustomAdsContainer extends StatelessWidget {
           width: 160,
           height: 230,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(11),
               boxShadow: [
                 BoxShadow(
                     color: const Color(0xff000000).withOpacity(0.2),
@@ -56,8 +56,8 @@ class CustomAdsContainer extends StatelessWidget {
                     color: const Color(0xFFF7F7F7),
                     border: Border.all(color: const Color(0xffB8B8B8)),
                     borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(11),
-                    ),
+                        bottomLeft: Radius.circular(11),
+                        topRight: Radius.circular(11)),
                   ),
                   child: Row(
                     children: [
@@ -84,12 +84,8 @@ class CustomAdsContainer extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).canvasColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                  ),
+                      color: Theme.of(context).canvasColor,
+                      borderRadius: BorderRadius.circular(11)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -7,6 +7,7 @@ class DataLayer {
   final supabase = Supabase.instance.client;
 
   Map? currentUserInfo;
+
   List<Ads> allAds = [];
   List<Ads> nearbyBranches = [];
   List<Ads> liveAds = [];
@@ -16,6 +17,9 @@ class DataLayer {
   List<Ads> fashionCategory = [];
   List<Ads> hotelsCategory = [];
   List<Ads> gymCategory = [];
+
+  Map<String, DateTime> lastNotificationTimes =
+      {}; // Map to track notification times
 
   List<Ads> myReminders = [];
   Map<String, int> impressions = {};
