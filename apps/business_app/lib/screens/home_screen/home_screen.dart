@@ -30,8 +30,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   child: ClipOval(
-                    child: Image.network(
-                      getIt.get<DataLayer>().currentBusinessInfo[0]['logo_img'],
+                    child: Image.asset(
+                      'assets/png/Frame 65.png',
                       fit: BoxFit.cover,
                       width: 60,
                       height: 60,
@@ -75,8 +75,7 @@ class HomeScreen extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 child: SizedBox(
                                   width: 250,
-                                  child: Text(
-                                      'Ship Your Brand into the Spotlight!',
+                                  child: Text('Banner title'.tr(),
                                       style: TextStyle(
                                           fontSize: 24,
                                           color: AppColors().white1,
@@ -91,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                                 child: SizedBox(
                                   width: 200,
                                   child: Text(
-                                    ' Elevate your marketing and let users know about your exciting offers!',
+                                    'Banner subtitle'.tr(),
                                     style:
                                         Theme.of(context).textTheme.labelMedium,
                                   ),
@@ -135,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Know Your Statistics',
+                                'home card title 1'.tr(),
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: AppColors().white1,
@@ -146,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'See how many clicks and views your ads are generating.',
+                                      'home card subtitle 1'.tr(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelMedium,
@@ -238,7 +237,7 @@ class HomeScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Add Your Ads',
+                                'home card title 2'.tr(),
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: AppColors().white1,
@@ -249,7 +248,7 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      'Post your ads and get them in front of local audiences!',
+                                      'home card subtitle 2'.tr(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelMedium,
@@ -271,14 +270,14 @@ class HomeScreen extends StatelessWidget {
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            const AddAdsScreen(),
+                                                            const SubscriptionsScreen(),
                                                       ),
                                                     );
                                                   }
                                                 : Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            const SubscriptionsScreen()));
+                                                            const AddAdsScreen()));
                                           },
                                           icon: Icon(
                                             Icons.arrow_forward_ios_rounded,

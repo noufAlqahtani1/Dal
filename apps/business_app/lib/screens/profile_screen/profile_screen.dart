@@ -19,6 +19,8 @@ class ProfileScreen extends StatelessWidget {
       create: (context) => ProfileBlocBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<ProfileBlocBloc>();
+        List businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
+        Map plan = getIt.get<DataLayer>().latestSubscription;
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: CustomAppBar(
@@ -42,19 +44,22 @@ class ProfileScreen extends StatelessWidget {
                                 .currentBusinessInfo[0]['logo_img'],
                             firstName: bloc.businessInfo[0]['name'],
                             lastName: '',
-                            email: bloc.businessInfo[0]['email'],
+                            email: businessInfo[0]['email'],
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),
                       BlocConsumer<ProfileBlocBloc, ProfileBlocState>(
                         listener: (context, state) {
                           if (state is SuccessState) {
+                            print('suceess');
+                            bloc.add(RefreshScreenEvent());
                           }
                         },
                         builder: (context, state) {
+                          print('profile ------- ${bloc.plan}');
                           return PlanSection(
-                            plan: bloc.getPlanType(bloc.plan),
-                            planDesc: bloc.getPlanDesc(bloc.plan),
+                            plan: bloc.getPlanType(plan),
+                            planDesc: bloc.getPlanDesc(plan),
                             endDate: bloc.planEndDate == ''
                                 ? ''
                                 : "${'End ads'.tr()} ${DateTime.parse(bloc.planEndDate).day}/${DateTime.parse(bloc.planEndDate).month}/${DateTime.parse(bloc.planEndDate).year}",
@@ -72,8 +77,10 @@ class ProfileScreen extends StatelessWidget {
                                         builder: (context) =>
                                             const SubscriptionsScreen(),
                                       ),
-                                    ).then((_) {
-                                      bloc.add(RefreshScreenEvent());
+                                    ).then((value) {
+                                      if (value != null) {
+                                        bloc.add(RefreshScreenEvent());
+                                      }
                                     });
                                   }
                                 : null,
@@ -104,10 +111,10 @@ class ProfileScreen extends StatelessWidget {
                           return LanguageSection(
                             changeLang: (int? value) {
                               switch (value) {
-                                case 1:
+                                case 0:
                                   context.setLocale(const Locale('en'));
                                   break;
-                                case 2:
+                                case 1:
                                   context.setLocale(const Locale('ar'));
                                   break;
                               }
@@ -115,9 +122,8 @@ class ProfileScreen extends StatelessWidget {
                             },
                             value: bloc.langValue,
                             text: 'Language'.tr(),
-                            hintlabel: 'Select a language'.tr(),
                             label1: 'English'.tr(),
-                            label2: 'Arabic'.tr(),
+                            label2: 'Arabic'.tr(), hintlabel: '',
                           );
                         },
                       ),

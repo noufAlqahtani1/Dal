@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:moyasar/moyasar.dart';
 
@@ -28,17 +27,13 @@ class PaymentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-      child: CreditCard(
-        config: paymentConfig(),
-        onPaymentResult: (PaymentResponse data) async {
-      
-          if (data.status.name == "paid") {
-            paymentFunc();
-          }
-        },
-      ),
+    return CreditCard(
+      config: paymentConfig(),
+      onPaymentResult: (PaymentResponse data) async {
+        if (data.status.name == "paid") {
+          paymentFunc();
+        }
+      },
     );
   }
 }

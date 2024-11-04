@@ -142,7 +142,10 @@ class CustomBottomSheet extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.remove_red_eye_outlined,
-                                      color: AppColors().white1),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .color),
                                   const SizedBox(
                                     width: 8,
                                   ),
@@ -152,7 +155,10 @@ class CustomBottomSheet extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.ads_click,
-                                      color: AppColors().white1),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .color),
                                   const SizedBox(
                                     width: 8,
                                   ),
