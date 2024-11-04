@@ -37,7 +37,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
         getIt.get<DataLayer>().lastNotificationTimes = storedTimes
             .map((key, value) => MapEntry(key, DateTime.parse(value)));
 
-        for (var location in getIt.get<DataLayer>().allAds) {
+        for (var location in getIt.get<DataLayer>().liveAds) {
           double distance = Geolocator.distanceBetween(
             event.position!.latitude,
             event.position!.longitude,

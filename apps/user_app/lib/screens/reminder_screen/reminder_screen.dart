@@ -52,23 +52,37 @@ class ReminderScreen extends StatelessWidget {
                                       getIt.get<DataLayer>().recordClicks(item
                                           .id!); //add clicks to ad id each time it is viewed
                                     },
-                                    child: CustomBottomSheet(
-                                      image: item.bannerimg!,
-                                      companyName:
-                                          item.branch!.business!.name ?? "---",
-                                      iconImage: 'assets/svg/$currentLogo.svg',
-                                      description: item.description ?? "---",
-                                      remainingDay:
-                                          "${getIt.get<DataLayer>().getRemainingTime(item.enddate!)}d",
-                                      offerType: item.offerType!,
-                                      viewLocation: 'View Location'.tr(),
-                                      locationOnPressed: () {
-                                        //
-                                      },
-                                      button: context
-                                          .read<HomeCubit>()
-                                          .returnButton(item),
-                                      buttonLable: 'Remind me',
+                                    child: BlocProvider(
+                                      create: (context) => HomeCubit(),
+                                      child: Builder(builder: (context) {
+                                        return BlocBuilder<HomeCubit,
+                                            HomeState>(
+                                          builder: (context, state) {
+                                            return CustomBottomSheet(
+                                              image: item.bannerimg!,
+                                              companyName:
+                                                  item.branch!.business!.name ??
+                                                      "---",
+                                              iconImage:
+                                                  'assets/svg/$currentLogo.svg',
+                                              description:
+                                                  item.description ?? "---",
+                                              remainingDay:
+                                                  "${getIt.get<DataLayer>().getRemainingTime(item.enddate!)}d",
+                                              offerType: item.offerType!,
+                                              viewLocation:
+                                                  'View Location'.tr(),
+                                              locationOnPressed: () {
+                                                //
+                                              },
+                                              button: context
+                                                  .read<HomeCubit>()
+                                                  .returnButton(item),
+                                              buttonLable: 'Remind me',
+                                            );
+                                          },
+                                        );
+                                      }),
                                     ),
                                   );
                                 });
