@@ -77,7 +77,11 @@ class MyAdsScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const AddAdsScreen()),
-                      );
+                      ).then((value){
+                        if(value != null ){
+                          cubit.refreshCurrentAds;
+                        }
+                      });
                     },
                     backgroundColor: AppColors().pink,
                     shape: const CircleBorder(),
