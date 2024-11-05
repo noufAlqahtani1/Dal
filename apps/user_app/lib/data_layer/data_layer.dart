@@ -36,36 +36,29 @@ class DataLayer {
 
   final box = GetStorage();
 
-  List businessBranches = [];
-  List allbusinessAds = [];
+
   List<Map<String, dynamic>>? adS;
 
   DataLayer() {
     //box.erase();
-    //box.write("islogin", true);
+    
     loadData();
-    print(categories);
   }
 
-//call this func to refresh
   getAllAds() async {
     adS = await supabase.from("ad").select(
         '*,branch(*,business(*))'); // select all ads , their branches and business
     for (var element in adS!) {
       allAds.add(Ads.fromJson(element));
     }
-    businessBranches = await supabase
-        .from("branch")
-        .select("*,business(*)"); // select branches to show them on map
+  
 
     liveAds = allAds.where((ad) {
       DateTime endDate = DateTime.parse(ad.enddate!);
       return endDate.isAfter(DateTime.now());
     }).toList();
 
-    // for (var element in allAds) {
-    //   allbusinessAds.add(element);
-    // }
+   
   }
 
   String getRemainingTime(String dateString) {

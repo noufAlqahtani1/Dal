@@ -31,7 +31,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
       emit(ErrorState(msg: event.msg));
     });
 
-    
     on<SendNotificationEvent>((event, emit) async {
       try {
         final Map storedTimes =
@@ -62,12 +61,19 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                     "app_id": "ebdec5c2-30a4-447d-9577-a1c13b6d553e",
                     "contents": {
                       "en":
-                          "Check out ${location.branch!.business!.name!} offer nearby!",
-                      "ar": "لا يطوفك عرض ${location.branch!.business!.name!}!"
+                          "Check out ${location.branch!.business!.name!} offer nearby! 📣",
+                      "ar":
+                          "لا يطوفك عرض ${location.branch!.business!.name!}! 📣"
                     },
                     "include_external_user_ids": [
                       getIt.get<DataLayer>().supabase.auth.currentUser!.id
                     ],
+                    "data": {
+                      "page":
+                          "/offer_details", 
+                      "offer_id": location.id!
+                          .toString(), 
+                    },
                   },
                   options: Options(headers: {
                     "Authorization":
@@ -99,7 +105,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
     });
     on<LoadScreenEvent>((event, emit) async {
       emit(LoadingState());
-      print(event.position?.latitude);
       try {
         positionn = event.position;
         areaDistance = buttonClicked ? 1000 : 500000000;
