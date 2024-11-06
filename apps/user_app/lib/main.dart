@@ -2,6 +2,7 @@ import 'package:components/component/theme/theme.dart';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_background/flutter_background.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:user_app/cubit/theme_cubit.dart';
@@ -12,7 +13,6 @@ import 'package:user_app/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:user_app/services/supabase/supabase_configration.dart';
 import 'package:user_app/setup/setup.dart';
 import 'package:lifecycle/lifecycle.dart';
-import 'package:flutter_background/flutter_background.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,14 +82,19 @@ class _MainAppState extends State<MainApp> with LifecycleAware, LifecycleMixin {
               routes: {
                 "/": (context) => LifecycleWrapper(
                     onLifecycleEvent: (LifecycleEvent event) async {
-                      if (event == LifecycleEvent.invisible &&
-                          getIt.get<DataLayer>().impressions.keys.length > 2) {
+                      if (event == LifecycleEvent.invisible) {
+                        
                         //when user stop using app
                         await getIt
                             .get<DataLayer>()
                             .getAllAds(); //update live ads list
-                        for (var adId
-                            in getIt.get<DataLayer>().impressions.keys) {
+                         getIt
+                            .get<DataLayer>()
+                            .locationBgStream(); //update live ads list
+                        final impressionKeys =
+                            List.from(getIt.get<DataLayer>().impressions.keys);
+
+                        for (var adId in impressionKeys) {
                           await getIt
                               .get<DataLayer>()
                               .supabase
@@ -115,8 +120,13 @@ class _MainAppState extends State<MainApp> with LifecycleAware, LifecycleMixin {
                         await getIt
                             .get<DataLayer>()
                             .getAllAds(); //update live ads list
-                        for (var adId
-                            in getIt.get<DataLayer>().impressions.keys) {
+                         getIt
+                            .get<DataLayer>()
+                            .locationBgStream(); //update live ads list
+                        final impressionKeys =
+                            List.from(getIt.get<DataLayer>().impressions.keys);
+
+                        for (var adId in impressionKeys) {
                           await getIt
                               .get<DataLayer>()
                               .supabase

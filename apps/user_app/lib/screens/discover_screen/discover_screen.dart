@@ -7,8 +7,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lottie/lottie.dart' as lottie;
+import 'package:user_app/data_layer/data_layer.dart';
 import 'package:user_app/screens/discover_screen/bloc/discover_bloc.dart';
 import 'package:user_app/screens/search_screen/search_screen.dart';
+import 'package:user_app/setup/setup.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -19,10 +21,11 @@ class DiscoverScreen extends StatelessWidget {
       create: (context) => DiscoverBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<DiscoverBloc>();
+        getIt.get<DataLayer>().positionStream!.cancel();
         try {
           LocationSettings locationSettings = const LocationSettings(
               distanceFilter: 100, accuracy: LocationAccuracy.high);
-          bloc.positionStream =
+          getIt.get<DataLayer>().positionStream =
               Geolocator.getPositionStream(locationSettings: locationSettings)
                   .listen((Position position) {
             bloc.add(LoadScreenEvent(position: position, context: context));

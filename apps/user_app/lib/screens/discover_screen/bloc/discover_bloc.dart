@@ -21,7 +21,6 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
   double areaDistance = 1000;
 
   Position? positionn;
-  StreamSubscription<Position>? positionStream;
   List<Marker> filteredMarkers = [];
 
   final dio = Dio();
@@ -45,8 +44,10 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
             location.branch!.latitude!,
             location.branch!.longitude!,
           );
+          final currentCategory = location.category!.toString();
 
-          if (distance <= 1000) {
+          if (distance <= 1000 &&
+              getIt.get<DataLayer>().categories[currentCategory] == true) {
             String branchId = location.branch!.id!; // store branches ID
             DateTime now = DateTime.now();
             DateTime? lastNotificationTime =
@@ -69,10 +70,8 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
                       getIt.get<DataLayer>().supabase.auth.currentUser!.id
                     ],
                     "data": {
-                      "page":
-                          "/offer_details", 
-                      "offer_id": location.id!
-                          .toString(), 
+                      "page": "/offer_details",
+                      "offer_id": location.id!.toString(),
                     },
                   },
                   options: Options(headers: {
@@ -310,7 +309,7 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
   }
   @override
   Future<void> close() {
-    positionStream?.cancel();
+    getIt.get<DataLayer>().locationBgStream();
     return super.close();
   }
 }
