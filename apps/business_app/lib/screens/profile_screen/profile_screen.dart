@@ -20,7 +20,6 @@ class ProfileScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         final bloc = context.read<ProfileBlocBloc>();
         List businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
-        Map plan = getIt.get<DataLayer>().latestSubscription;
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: CustomAppBar(
@@ -48,18 +47,11 @@ class ProfileScreen extends StatelessWidget {
                             child: const SizedBox.shrink(),
                           )),
                       const Divider(height: 40),
-                      BlocConsumer<ProfileBlocBloc, ProfileBlocState>(
-                        listener: (context, state) {
-                          if (state is SuccessState) {
-                            print('suceess');
-                            bloc.add(RefreshScreenEvent());
-                          }
-                        },
+                      BlocBuilder<ProfileBlocBloc, ProfileBlocState>(
                         builder: (context, state) {
-                          print('profile ------- ${bloc.plan}');
                           return PlanSection(
-                            plan: bloc.getPlanType(plan),
-                            planDesc: bloc.getPlanDesc(plan),
+                            plan: bloc.getPlanType(bloc.plan),
+                            planDesc: bloc.getPlanDesc(bloc.plan),
                             endDate: bloc.planEndDate == ''
                                 ? ''
                                 : "${'End ads'.tr()} ${DateTime.parse(bloc.planEndDate).day}/${DateTime.parse(bloc.planEndDate).month}/${DateTime.parse(bloc.planEndDate).year}",
@@ -123,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
                             value: bloc.langValue,
                             text: 'Language'.tr(),
                             label1: 'English'.tr(),
-                            label2: 'Arabic'.tr(), 
+                            label2: 'Arabic'.tr(),
                           );
                         },
                       ),

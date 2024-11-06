@@ -31,11 +31,11 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
     });
 
     //Refresh
-    on<RefreshScreenEvent>((event, emit)  async{
-    await  getIt.get<DataLayer>().getBusinessInfo();
-      businessInfo =  getIt.get<DataLayer>().currentBusinessInfo;
+    on<RefreshScreenEvent>((event, emit) async {
+      await getIt.get<DataLayer>().getBusinessInfo();
+      businessInfo = getIt.get<DataLayer>().currentBusinessInfo;
       plan = getIt.get<DataLayer>().latestSubscription;
-      print(plan);
+      planEndDate = getIt.get<DataLayer>().latestSubscription['end_date'] ?? '';
       emit(SuccessState());
     });
   }
@@ -43,13 +43,13 @@ class ProfileBlocBloc extends Bloc<ProfileBlocEvent, ProfileBlocState> {
   String getPlanType(Map currentPlan) {
     final String planType;
     if (plan['subscription_type'] == 'Basic') {
-      return 'Basic'.tr();
+      return 'Basic';
     } else if (plan['subscription_type'] == 'Premium') {
-      return 'Basic'.tr();
+      return 'Premium';
     } else if (plan['subscription_type'] == 'Enterprise') {
-      return 'Basic'.tr();
+      return 'Enterprise';
     } else {
-      planType = 'No Subscriptio';
+      planType = 'No Subscription';
     }
 
     return planType;
