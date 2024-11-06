@@ -61,8 +61,10 @@ class DataLayer {
     }
 
     liveAds = allAds.where((ad) {
+      DateTime startDate = DateTime.parse(ad.enddate!);
       DateTime endDate = DateTime.parse(ad.enddate!);
-      return endDate.isAfter(DateTime.now());
+      DateTime now = DateTime.now();
+      return now.isAfter(startDate) && now.isBefore(endDate);
     }).toList();
   }
 
